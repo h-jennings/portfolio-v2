@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '@scss/Home.module.scss';
 
-export default function Home(): React.ReactNode {
+export default function Home(): JSX.Element {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,9 +10,7 @@ export default function Home(): React.ReactNode {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href='https://nextjs.org'>Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Welcome to Next.js!</h1>
 
         <p className={styles.description}>
           Get started by editing{' '}

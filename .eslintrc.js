@@ -27,6 +27,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
+  plugins: ['@typescript-eslint', 'react-hooks'],
   rules: {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     indent: ['error', 2, { SwitchCase: 1 }],
@@ -37,5 +38,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-console': 1,
     'react/prop-types': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };
