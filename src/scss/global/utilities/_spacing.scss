@@ -1,3 +1,4 @@
+// * PADDING AND MARGIN
 $props: (
   p: padding,
   m: margin,
@@ -37,7 +38,21 @@ $spacings: map-get($app-config, spacings);
   }
 }
 
-// * Parent/Child Relationship Spacing Helpers
+$gap-property-names: (
+  gap: gap,
+  col-gap: column-gap,
+  row-gap: row-gap,
+);
+// * GAP PROPERTIES
+@each $p-name, $p-val in $gap-property-names {
+  @each $space-key, $space-val in $spacings {
+    .#{$p-name}-#{$space-key} {
+      #{$p-val}: $space-val;
+    }
+  }
+}
+
+// * PARENT/CHILD RELATIONSHIP SPACING HELPERS
 @each $space-key, $space-val in $spacings {
   .space-y-#{$space-key} {
     > :not(template) {
