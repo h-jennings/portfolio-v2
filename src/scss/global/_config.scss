@@ -1,0 +1,51 @@
+$app-config: (
+  'breakpoints': (
+    'sm': 420px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1440px,
+  ),
+  'colors': (
+    'black': #222222,
+    'white': #fcfcfc,
+    'grey': #a0abbb,
+    'blue': #3943b7,
+    'orange': #c16200,
+  ),
+  'dimensions': (
+    'auto': auto,
+    'none': none,
+    'fill': 100%,
+  ),
+  'font-families': (
+    'primary': (
+      'Basier Circle',
+      -apple-system,
+      system-ui,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Helvetica,
+      Arial,
+      sans-serif,
+    ),
+  ),
+  'font-weights': (
+    'normal': 400,
+    'bold': 700,
+  ),
+  'line-heights': (
+    'compact': 1.1,
+    'default': 1.5,
+  ),
+  'spacings': (
+    '0': 0,
+  ),
+  'z-indexes': (
+    'under': -1,
+    'over': 1,
+  ),
+  'rounded-corners': (
+    'none': 0,
+    'round': 50%,
+  ),
+);

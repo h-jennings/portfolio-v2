@@ -1,0 +1,5 @@
+@include generator(bg, background-color, map-get($app-config, colors));
+@include generator(c, color, map-get($app-config, colors));
+@include generator(ff, font-family, map-get($app-config, font-families));
+@include generator(fw, font-weight, map-get($app-config, font-weights));
+@include generator(lh, line-height, map-get($app-config, line-heights));

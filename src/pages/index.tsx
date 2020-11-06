@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import styles from '@scss/pages/Home.module.scss';
+import classnames from 'classnames';
 
 export default function Home(): JSX.Element {
   return (
-    <div className={styles.container}>
+    <div className={classnames(['d-block', styles.container])}>
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
