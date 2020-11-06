@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
+    "test:staged": "jest --findRelatedTests",
     "lint": "eslint --fix .",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,json}'"
   },
@@ -17,7 +18,9 @@
   },
   "lint-staged": {
     "./**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write",
+      "npm run test:staged"
     ]
   },
   "dependencies": {

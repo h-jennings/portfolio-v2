@@ -5,7 +5,8 @@ import Home from '@/pages/index';
 describe('Homepage', () => {
   it('Renders the homepage without crashing', () => {
     render(<Home />);
-    const h1 = screen.getByRole('heading', { name: 'Welcome to Next.js!' });
+    const h1 = screen.getByTestId('headline');
     expect(h1).toBeInTheDocument();
+    expect(h1).toHaveTextContent('Welcome to Next.js!');
   });
 });
