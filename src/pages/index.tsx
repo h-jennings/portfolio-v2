@@ -4,18 +4,23 @@ import classnames from 'classnames';
 
 export default function Home(): JSX.Element {
   return (
-    <div className={classnames(['d-block', styles.container])}>
+    <div className={classnames(['d-block p-x-xl', styles.container])}>
       <Head>
         <title>Create Next App</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <main className={styles.main}>
-        <h1 data-testid='headline' className={styles.title}>
+        <h1
+          data-testid='headline'
+          className={classnames(
+            'c-orange fw-bold m-b-xl ta-center lg-compact',
+            styles.title,
+          )}>
           Welcome to Next.js!
         </h1>
 
-        <p className={styles.description}>
+        <p className={classnames('c-blue', styles.description)}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
