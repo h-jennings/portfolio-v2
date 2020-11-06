@@ -1,0 +1,58 @@
+$props: (
+  p: padding,
+  m: margin,
+);
+$dirs: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+
+$spacings: map-get($app-config, spacings);
+@each $prop-key, $prop-val in $props {
+  @each $space-key, $space-val in $spacings {
+    .#{$prop-key}-#{$space-key} {
+      #{$prop-val}: $space-val;
+    }
+  }
+  @each $space-key, $space-val in $spacings {
+    .#{$prop-key}-x-#{$space-key} {
+      #{$prop-val}-left: $space-val;
+      #{$prop-val}-right: $space-val;
+    }
+  }
+  @each $space-key, $space-val in $spacings {
+    .#{$prop-key}-y-#{$space-key} {
+      #{$prop-val}-top: $space-val;
+      #{$prop-val}-bottom: $space-val;
+    }
+  }
+  @each $dir-key, $dir-val in $dirs {
+    @each $space-key, $space-val in $spacings {
+      .#{$prop-key}-#{$dir-key}-#{$space-key} {
+        #{$prop-val}-#{$dir-val}: $space-val;
+      }
+    }
+  }
+}
+
+// * Parent/Child Relationship Spacing Helpers
+@each $space-key, $space-val in $spacings {
+  .space-y-#{$space-key} {
+    > :not(template) {
+      margin-bottom: $space-val;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  .space-x-#{$space-key} {
+    > :not(template) {
+      margin-right: $space-val;
+    }
+    > :last-child {
+      margin-right: 0;
+    }
+  }
+}

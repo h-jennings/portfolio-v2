@@ -3,3 +3,15 @@
 @include generator(ff, font-family, map-get($app-config, font-families));
 @include generator(fw, font-weight, map-get($app-config, font-weights));
 @include generator(lh, line-height, map-get($app-config, line-heights));
+@include generator(rc, border-radius, map-get($app-config, rounded-corners));
+@include generator(z, z-index, map-get($app-config, z-indexes));
+@include generator(
+  ta,
+  text-align,
+  (
+    l: left,
+    r: right,
+    c: center,
+    j: justify,
+  )
+);

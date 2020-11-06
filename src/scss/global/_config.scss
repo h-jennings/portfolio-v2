@@ -15,7 +15,7 @@ $app-config: (
   'dimensions': (
     'auto': auto,
     'none': none,
-    'fill': 100%,
+    'full': 100%,
   ),
   'font-families': (
     'primary': (
@@ -38,7 +38,13 @@ $app-config: (
     'default': 1.5,
   ),
   'spacings': (
-    '0': 0,
+    'none': 0,
+    'xsm': 8px,
+    'sm': 16px,
+    'md': 24px,
+    'lg': 48px,
+    'xl': 64px,
+    'xxl': 96px,
   ),
   'z-indexes': (
     'under': -1,
