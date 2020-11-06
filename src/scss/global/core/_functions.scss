@@ -1,0 +1,11 @@
+@function safe-map-get($map, $key) {
+  $val: map-get($map, $key);
+  @if (type-of($val) == 'null') {
+    @error 'Key `#{$key}` not found in provided map: `#{$map}`';
+  }
+  @return $val;
+}
+
+@function aspect-ratio($w, $h) {
+  @return ($h / $w) * 100%;
+}

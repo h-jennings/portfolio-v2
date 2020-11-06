@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '@scss/Home.module.scss';
+import styles from '@scss/pages/Home.module.scss';
 
 export default function Home(): JSX.Element {
   return (

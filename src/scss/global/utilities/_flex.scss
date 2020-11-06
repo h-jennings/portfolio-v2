@@ -1,0 +1,106 @@
+$flex-property-names: (
+  flx-g: flex-grow,
+  flx-s: flex-shrink,
+  flx-b: flex-basis,
+  flx-d: flex-direction,
+  flx-a: flex-align,
+  flx-j: justify-content,
+);
+
+$flex-property-values: (
+  flx-g: (
+    0,
+    1,
+  ),
+  flx-s: (
+    0,
+    1,
+  ),
+  flx-b: (
+    0,
+    auto,
+    (
+      fill: 100%,
+    ),
+  ),
+  flx-d: (
+    (
+      c: column,
+    ),
+    (
+      cr: column-reverse,
+    ),
+    (
+      r: row,
+    ),
+    (
+      rr: row-reverse,
+    ),
+  ),
+  flx-a: (
+    (
+      fs: flex-start,
+    ),
+    (
+      fe: flex-end,
+    ),
+    (
+      c: center,
+    ),
+    (
+      s: stretch,
+    ),
+    (
+      sa: space-around,
+    ),
+    (
+      sb: space-between,
+    ),
+  ),
+  flx-j: (
+    (
+      s: start,
+    ),
+    (
+      fs: flex-start,
+    ),
+    (
+      e: end,
+    ),
+    (
+      fe: flex-end,
+    ),
+    (
+      c: center,
+    ),
+    (
+      s: stretch,
+    ),
+    (
+      se: space-evenly,
+    ),
+    (
+      sa: space-around,
+    ),
+    (
+      sb: space-between,
+    ),
+  ),
+);
+
+@each $p-key, $p-list in $flex-property-values {
+  $p-name: safe-map-get($flex-property-names, $p-key);
+  @each $p-val in $p-list {
+    @if type-of($p-val) == 'map' {
+      @each $alias, $val in $p-val {
+        .#{$p-key}-#{$alias} {
+          #{$p-name}: $val;
+        }
+      }
+    } @else {
+      .#{$p-key}-#{$p-val} {
+        #{$p-name}: $p-val;
+      }
+    }
+  }
+}

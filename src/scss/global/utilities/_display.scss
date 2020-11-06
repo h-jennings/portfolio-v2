@@ -1,0 +1,25 @@
+$display-property-names: (
+  d: display,
+);
+
+$display-property-values: (
+  d: (
+    none,
+    inline,
+    inline-block,
+    block,
+    flex,
+    inline-flex,
+    grid,
+    table,
+  ),
+);
+
+@each $p-key, $p-list in $display-property-values {
+  $p-name: safe-map-get($display-property-names, $p-key);
+  @each $p-val in $p-list {
+    .#{$p-key}-#{$p-val} {
+      #{$p-name}: $p-val;
+    }
+  }
+}
