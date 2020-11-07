@@ -1,8 +1,11 @@
+import Link from 'next/link';
 import Head from 'next/head';
 import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
+import { MainLayout } from '@/components/layout/MainLayout/MainLayout';
+import { PageWithLayoutType } from '@/components/layout/layout.model';
 
-export default function Home(): JSX.Element {
+const Home: React.FC = () => {
   return (
     <div className={classnames(['d-block p-x-xl', styles.container])}>
       <Head>
@@ -19,7 +22,9 @@ export default function Home(): JSX.Element {
           )}>
           Welcome to Next.js!
         </h1>
-
+        <Link href='about'>
+          <a>about</a>
+        </Link>
         <p className={classnames('c-blue', styles.description)}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
@@ -65,4 +70,14 @@ export default function Home(): JSX.Element {
       </footer>
     </div>
   );
-}
+};
+
+(Home as PageWithLayoutType).getLayout = (page) => {
+  return (
+    <MainLayout>
+      <div className='testing'>testing</div>
+      {page}
+    </MainLayout>
+  );
+};
+export default Home;
