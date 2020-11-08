@@ -33,6 +33,17 @@ $app-config: (
     'normal': 400,
     'bold': 700,
   ),
+  'font-sizes': (
+    'micro': 7px,
+    'xsm': 12px,
+    'sm': 14px,
+    'base': 20px,
+    'md': 28px,
+    'lg': 40px,
+    'xl': 56px,
+    'xxl': 80px,
+    'super': 113px,
+  ),
   'line-heights': (
     'compact': 1.1,
     'default': 1.5,
