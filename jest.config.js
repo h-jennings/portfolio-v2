@@ -15,8 +15,10 @@ module.exports = {
   ],
   moduleNameMapper: {
     '\\.(css|less|scss)$': '<rootDir>/node_modules/jest-css-modules',
+    '\\.svg$': '<rootDir>/src/tests/__mocks__/svgrMock.js',
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
     '^@scss/(.*)$': '<rootDir>/src/scss/$1',
+    '^@assets/(.*)$': '<rootDir>/src/assets/$1',
   },
 };

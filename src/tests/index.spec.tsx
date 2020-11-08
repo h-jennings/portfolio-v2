@@ -7,6 +7,5 @@ describe('Homepage', () => {
     render(<Home />);
     const h1 = screen.getByTestId('headline');
     expect(h1).toBeInTheDocument();
-    expect(h1).toHaveTextContent('Welcome to Next.js!');
   });
 });

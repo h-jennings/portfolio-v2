@@ -1,4 +1,5 @@
 @import '@/scss/global/core/_index';
 .home {
   @include link-reset;
+  width: 24px;
 }

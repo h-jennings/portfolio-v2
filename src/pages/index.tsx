@@ -1,19 +1,17 @@
 import { PageWithLayoutType } from '@/components/layout/layout.model';
 import { MainLayout } from '@/components/layout/MainLayout/MainLayout';
 import { decodeHtml } from '@/helpers/decode-html';
-import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
 
 const Home: React.FC = () => {
   return (
-    <div className={classnames(['d-block p-x-xl', styles.container])}>
-      <main className={styles.main}>
+    <div className={classnames(['d-block p-x-xl'])}>
+      <main>
         <div style={{ minHeight: '100vh' }}>
           <h1
             data-testid='headline'
             className={classnames(
               'c-orange fw-bold m-b-xl ta-center lg-compact',
-              styles.title,
             )}>
             Welcome to Next.js!
           </h1>
