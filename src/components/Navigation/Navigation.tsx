@@ -9,6 +9,7 @@ import { SvgContainer } from '../SvgContainer/SvgContainer';
 export const Navigation: React.FC = () => {
   return (
     <nav className={classnames(['w-full d-flex flx-j-c', styles.navContainer])}>
+      {/* TODO: Make padding dynamic based on scroll */}
       <div
         className={classnames([
           'd-flex flx-j-sb p-y-xl w-full w-max-xl',
