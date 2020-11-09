@@ -16,11 +16,9 @@ export const MainLayout: React.FC<{ pageTitle: string }> = ({
         <title>{pageTitle}</title>
       </Head>
       <div className={classnames(['d-flex flx-j-c', styles.wrapper])}>
-        <div
-          id='site-layout'
-          className={classnames('w-full', [styles.container])}>
+        <div className={classnames(['w-full w-max-xl', styles.main])}>
           <Navigation />
-          {children}
+          <div className={classnames(['flx-g-1 flx-s-1'])}>{children}</div>
           <footer>footer</footer>
         </div>
       </div>

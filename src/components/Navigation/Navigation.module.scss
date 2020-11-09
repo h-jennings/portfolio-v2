@@ -1,5 +1,17 @@
 @import '@/scss/global/core/_index';
+.navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 var(--gutter, 90px);
+}
 .home {
   @include link-reset;
   width: 24px;
+}
+
+.icon {
+  path {
+    fill: var(--ui-02);
+  }
 }

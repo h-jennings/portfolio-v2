@@ -1,6 +1,10 @@
 .wrapper {
-  padding: 0 90px;
+  padding: 0 var(--gutter, 90px);
 }
-.container {
-  max-width: 1440px;
+
+.main {
+  min-height: 100vh;
+  padding-top: var(--nav-height, 152px);
+  display: flex;
+  flex-flow: column;
 }
