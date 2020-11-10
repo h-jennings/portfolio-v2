@@ -1,3 +1,6 @@
+@import '@scss/global/config';
+@import '@scss/global/breakpoints';
+
 // TODO: Create helper or layout wrapper for this page
 .content {
   display: grid;
@@ -7,6 +10,9 @@
 
 .contentLeft {
   grid-column: 1 / 4;
+  @include break-max-width(xl) {
+    grid-column: 1 / 5;
+  }
 }
 
 .contentLeftWrapper {
@@ -16,12 +22,9 @@
 
 .contentRight {
   grid-column: 6 / -1;
-  display: grid;
-  grid-template-columns: subgrid;
 }
 
 .contentRightWrapper {
-  grid-column: span 5;
 }
 
 .image {

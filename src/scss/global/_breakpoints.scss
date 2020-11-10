@@ -1,0 +1,14 @@
+$bps: map-get($app-config, breakpoints);
+
+@mixin break-min-width($size) {
+  @media screen and (min-width: map-get($bps, $size)) {
+    @content;
+  }
+}
+
+@mixin break-max-width($size) {
+  // prevent min and max width overlap pixel
+  @media screen and (max-width: #{map-get($bps, $size) - 1}) {
+    @content;
+  }
+}
