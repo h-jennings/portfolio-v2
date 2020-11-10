@@ -1,0 +1,30 @@
+.footer {
+  background-color: var(--color-grey);
+  padding: 0 var(--gutter, 90px);
+
+  :not(template) {
+    color: var(--color-black);
+    line-height: 1.33;
+  }
+
+  p {
+    text-align: left;
+  }
+}
+
+.content {
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 24px;
+}
+
+.copyright {
+  grid-column: span 3;
+}
+.time {
+  grid-column: span 2;
+}
+.weather {
+  grid-column: span 2;
+}

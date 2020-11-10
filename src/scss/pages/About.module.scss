@@ -13,6 +13,10 @@
   @include break-max-width(xl) {
     grid-column: 1 / 5;
   }
+
+  @include break-max-width(lg) {
+    grid-column: 1 / 6;
+  }
 }
 
 .contentLeftWrapper {
@@ -22,9 +26,22 @@
 
 .contentRight {
   grid-column: 6 / -1;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 24px;
+
+  @include break-max-width(lg) {
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 7 / -1;
+  }
 }
 
 .contentRightWrapper {
+  grid-column: span 5;
+
+  @include break-max-width(xl) {
+    grid-column: span 6;
+  }
 }
 
 .image {

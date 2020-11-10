@@ -25,6 +25,10 @@ p {
 h1 {
   font-size: var(--fz-xxl);
   line-height: 1;
+
+  @include break-max-width(lg) {
+    font-size: var(--fz-xl);
+  }
 }
 
 p {
