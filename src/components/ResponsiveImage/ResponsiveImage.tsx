@@ -15,7 +15,8 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   return (
     <div
       className={styles.outer}
-      style={{ paddingTop: `${(height / width) * 100}%` }}>
+      style={{ paddingTop: `${(height / width) * 100}%` }}
+      data-testid='responsive-image-container'>
       <div className={styles.inner}>
         <Image src={src} width={width} height={height} />
       </div>

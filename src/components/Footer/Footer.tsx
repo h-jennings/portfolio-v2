@@ -30,14 +30,18 @@ export const Footer: React.FC = () => {
   }, []);
 
   return (
-    <footer className={classnames(['w-full d-flex flx-j-c', styles.footer])}>
+    <footer
+      aria-label='footer'
+      className={classnames(['w-full d-flex flx-j-c', styles.footer])}>
       <div className={classnames(['w-full p-t-xxl p-b-xl', styles.content])}>
         <div className={styles.copyright}>
           <p>design and development &mdash;</p>
-          <p className='p-l-md'>&copy; Hunter Jennings {year}</p>
+          <p className='p-l-md'>
+            &copy; Hunter Jennings <span data-testid='year'>{year}</span>
+          </p>
         </div>
         <div className={styles.time}>
-          <p>{currentTime ?? '0:00'}</p>
+          <p data-testid='time'>{currentTime ?? '0:00'}</p>
           <p>Washington D.C.</p>
         </div>
         <div className={styles.weather}>
