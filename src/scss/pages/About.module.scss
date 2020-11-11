@@ -5,7 +5,7 @@
 .content {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
+  column-gap: var(--gap-primary);
 }
 
 .contentLeft {
@@ -28,7 +28,7 @@
   grid-column: 6 / -1;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  column-gap: 24px;
+  column-gap: var(--gap-primary);
 
   @include break-max-width(lg) {
     grid-template-columns: repeat(6, 1fr);
@@ -45,6 +45,23 @@
 }
 
 .image {
-  height: 670px;
-  background-color: var(--color-blue);
+  max-width: 511px;
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(2, 190px);
+  gap: var(--gap-primary);
+}
+.experienceListItem {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 190px);
+  column-gap: var(--gap-primary);
+  justify-content: start;
+  border-bottom: 1px solid var(--color-grey);
+
+  &:first-of-type {
+    border-top: 1px solid var(--color-grey);
+    border-bottom: 1px solid var(--color-grey);
+  }
 }

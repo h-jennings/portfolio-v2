@@ -16,7 +16,7 @@
   max-width: 1440px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 24px;
+  column-gap: var(--gap-primary);
 }
 
 .copyright {

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import styles from './Navigation.module.scss';
 import { Paths } from '@/models/paths';
-import { ReactComponent as HomeIcon } from '@assets/home-icon.svg';
+import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 
 export const Navigation: React.FC = () => {

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
+const withImages = require('next-images');
 
 const nextConfig = {
   webpack: (config) => {
@@ -22,6 +24,12 @@ const nextConfig = {
 
 module.exports = withPlugins(
   [
+    [
+      withImages,
+      {
+        exclude: path.resolve(__dirname, 'src/assets/svg'),
+      },
+    ],
     [
       withBundleAnalyzer({
         enabled: process.env.ANALYZE === 'true',

@@ -3,14 +3,17 @@ import classnames from 'classnames';
 import { PageWithLayoutType } from '@/components/layout/layout.model';
 import { MainLayout } from '@/components/layout/MainLayout/MainLayout';
 import { decodeHtml } from '@/helpers/decode-html';
+import { jobs, skills } from '@/data/about';
+import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import headshot from '@assets/images/headshot-cropped.jpg';
 
 const About: React.FC = () => {
   return (
     <main className={styles.content}>
       <div className={styles.contentLeft}>
         <div className={styles.contentLeftWrapper}>
-          <h1 className={classnames(['m-b-xl'])}>About</h1>
-          <p className={classnames(['m-b-md'])}>
+          <h1 className='m-b-xl'>About</h1>
+          <p className='m-b-md'>
             Hey there, I&apos;m Hunter. I&apos;ve been wrangling pixels and
             shapes since &apos;17. I create beautiful user interfaces with
             cutting-edge web technologies. My primary areas of focus are
@@ -28,27 +31,38 @@ const About: React.FC = () => {
       </div>
       <div className={styles.contentRight}>
         <div className={styles.contentRightWrapper}>
-          <div className={classnames(['m-b-xl', styles.image])}></div>
+          <div className={classnames(['m-b-xl', styles.image])}>
+            <ResponsiveImage src={headshot} width={646} height={667} />
+          </div>
           <section className='m-b-xl'>
-            <h2 className='m-b-sm'>What I Do</h2>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde
-              omnis tenetur incidunt fugiat animi ex iste dolore odit, cum
-              dolorem similique accusantium minus cumque doloremque quae quis.
-              Illo, eum esse!
-            </p>
+            <h2 className='m-b-md'>What I Do</h2>
+            <ul className={classnames([styles.skillsList])}>
+              {skills.map(({ title, content }) => (
+                <li key={title}>
+                  <h3 className='m-b-xsm'>{title}</h3>
+                  <p>{content}</p>
+                </li>
+              ))}
+            </ul>
           </section>
           <section>
-            <h2 className='m-b-sm'>Where I&apos;ve done it</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Repellat, asperiores excepturi laudantium accusamus unde atque
-              expedita dicta enim quaerat omnis, dolores distinctio. Corporis
-              aut neque similique inventore! Expedita ab esse ea inventore
-              distinctio minima animi eaque voluptatem eius obcaecati, debitis
-              perspiciatis voluptatum excepturi sit consequatur molestias unde
-              exercitationem et a?
-            </p>
+            <h2 className='m-b-md'>Where I&apos;ve done it</h2>
+            <ul className={styles.experienceList}>
+              {jobs.map(({ title, when, company }) => (
+                <li
+                  key={company}
+                  className={classnames([
+                    'p-y-sm p-x-xsm',
+                    styles.experienceListItem,
+                  ])}>
+                  <div className='text-h3'>{when}</div>
+                  <div>
+                    <div className='text-p'>{title}</div>
+                    <div className='text-p c-grey'>{company}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
       </div>
