@@ -12,7 +12,8 @@ const nextConfig = {
         {
           loader: '@svgr/webpack',
           options: {
-            SVGO: false,
+            svgo: false,
+            titleProp: true,
           },
         },
         'url-loader',

@@ -19,7 +19,9 @@ export const MainLayout: React.FC<{ pageTitle: string }> = ({
       <div className={classnames(['d-flex flx-j-c'])}>
         <div className={classnames(['w-full', styles.main])}>
           <Navigation />
-          <div className={classnames(['flx-g-1 flx-s-1', styles.content])}>
+          <div
+            aria-label='page-content'
+            className={classnames(['flx-g-1 flx-s-1', styles.content])}>
             {children}
           </div>
           <Footer />

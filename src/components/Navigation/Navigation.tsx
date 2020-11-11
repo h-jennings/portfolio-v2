@@ -8,7 +8,9 @@ import { SvgContainer } from '../SvgContainer/SvgContainer';
 
 export const Navigation: React.FC = () => {
   return (
-    <nav className={classnames(['w-full d-flex flx-j-c', styles.navContainer])}>
+    <nav
+      aria-label='primary-navigation'
+      className={classnames(['w-full d-flex flx-j-c', styles.navContainer])}>
       {/* TODO: Make padding dynamic based on scroll */}
       <div
         className={classnames([
@@ -16,9 +18,9 @@ export const Navigation: React.FC = () => {
           styles.wrapper,
         ])}>
         <Link href={Paths.home}>
-          <a className={classnames([styles.home])}>
+          <a aria-label='home' className={classnames([styles.home])}>
             <SvgContainer svgWidth={24} svgHeight={24}>
-              <HomeIcon className={styles.icon} />
+              <HomeIcon className={styles.icon} title='home icon' />
             </SvgContainer>
           </a>
         </Link>

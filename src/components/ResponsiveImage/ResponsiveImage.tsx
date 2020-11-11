@@ -7,6 +7,7 @@ type ResponsiveImageProps = {
   width: number;
   src: string;
   bgColor?: string;
+  altText?: string;
 };
 
 export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
@@ -14,6 +15,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   width,
   height,
   bgColor = Colors.grey,
+  altText = '',
 }) => {
   return (
     <div
@@ -24,7 +26,7 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       }}
       data-testid='responsive-image-container'>
       <div className={styles.inner}>
-        <Image src={src} width={width} height={height} />
+        <Image src={src} width={width} height={height} alt={altText} />
       </div>
     </div>
   );

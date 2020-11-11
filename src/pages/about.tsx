@@ -32,7 +32,12 @@ const About: React.FC = () => {
       <div className={styles.contentRight}>
         <div className={styles.contentRightWrapper}>
           <div className={classnames(['m-b-xl', styles.image])}>
-            <ResponsiveImage src={headshot} width={646} height={667} />
+            <ResponsiveImage
+              src={headshot}
+              altText='Picture of me'
+              width={646}
+              height={667}
+            />
           </div>
           <section className='m-b-xl'>
             <h2 className='m-b-md'>What I Do</h2>
