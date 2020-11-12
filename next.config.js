@@ -5,7 +5,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withImages = require('next-images');
 
 const nextConfig = {
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      require('./src/scripts/generate-sitemap');
+    }
     config.module.rules.push({
       test: /\.svg$/,
       use: [

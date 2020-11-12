@@ -10,7 +10,7 @@
     "test": "jest --watch",
     "test:staged": "jest --findRelatedTests",
     "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,json}'"
+    "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,scss,json}'"
   },
   "husky": {
     "hooks": {
@@ -18,7 +18,7 @@
     }
   },
   "lint-staged": {
-    "./**/*.{js,jsx,ts,tsx}": [
+    "./src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --write",
       "npm run test:staged"
@@ -58,6 +58,7 @@
     "eslint-plugin-prettier": "~3.1.4",
     "eslint-plugin-react": "~7.21.5",
     "eslint-plugin-react-hooks": "~4.2.0",
+    "globby": "^11.0.1",
     "husky": "~4.3.0",
     "jest": "~26.6.3",
     "jest-css-modules": "~2.1.0",
