@@ -1,6 +1,5 @@
 import { PageWithLayoutType } from '@/components/layout/layout.model';
 import { MainLayout } from '@/components/layout/MainLayout/MainLayout';
-import { decodeHtml } from '@/helpers/decode-html';
 import classnames from 'classnames';
 
 const Home: React.FC = () => {
@@ -25,11 +24,7 @@ const Home: React.FC = () => {
 };
 
 (Home as PageWithLayoutType).getLayout = (page) => {
-  return (
-    <MainLayout pageTitle={`Portfolio ${decodeHtml('&mdash;')} Home`}>
-      {page}
-    </MainLayout>
-  );
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default Home;

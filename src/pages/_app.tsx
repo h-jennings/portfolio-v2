@@ -9,8 +9,7 @@ type AppLayoutProps = {
 
 const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
   const getLayout =
-    Component.getLayout ||
-    ((page) => <MainLayout pageTitle='Portfolio'>{page}</MainLayout>);
+    Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
   return getLayout(<Component {...pageProps} />);
 };
 
