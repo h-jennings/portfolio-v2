@@ -24,13 +24,15 @@ export const Navigation: React.FC = () => {
             </SvgContainer>
           </a>
         </Link>
-        <div className={classnames(['d-flex space-x-xl'])}>
-          <Link href={Paths.work}>
-            <a>work</a>
-          </Link>
-          <Link href={Paths.about}>
-            <a>about</a>
-          </Link>
+        <div>
+          <div className={classnames(['d-flex space-x-xl'])}>
+            <Link href={Paths.work}>
+              <a className='underline-effect'>work</a>
+            </Link>
+            <Link href={Paths.about}>
+              <a className='underline-effect'>about</a>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

@@ -73,6 +73,10 @@
   cursor: pointer;
 }
 
+@mixin default-transition {
+  transition: all 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 // TY Bootstrap
 // https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
 @mixin sr-only {

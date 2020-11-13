@@ -12,10 +12,12 @@ export const MainLayout: React.FC = ({ children }) => {
       <div className={classnames(['d-flex flx-j-c'])}>
         <div className={classnames(['w-full', styles.main])}>
           <Navigation />
-          <div
-            aria-label='page-content'
-            className={classnames(['flx-g-1 flx-s-1', styles.content])}>
-            {children}
+          <div className={styles.contentWrapper}>
+            <div
+              aria-label='page-content'
+              className={classnames(['flx-g-1 flx-s-1', styles.content])}>
+              {children}
+            </div>
           </div>
           <Footer />
         </div>

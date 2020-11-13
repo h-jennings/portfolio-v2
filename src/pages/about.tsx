@@ -1,8 +1,8 @@
 import styles from '@scss/pages/About.module.scss';
 import classnames from 'classnames';
-import { PageWithLayoutType } from '@/components/layout/layout.model';
-import { MainLayout } from '@/components/layout/MainLayout/MainLayout';
-import { SplitLayout } from '@/components/layout/SplitLayout/SplitLayout';
+import { PageWithLayoutType } from '@/components/layouts/layout.model';
+import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { SplitLayout } from '@/components/layouts/SplitLayout/SplitLayout';
 import { jobs, skills } from '@/data/about';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
 import headshot from '@assets/images/headshot-cropped.jpg';

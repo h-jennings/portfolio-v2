@@ -1,0 +1,13 @@
+.container {
+  li {
+    display: flex;
+  }
+  a {
+    color: var(--color-grey);
+    display: inline-block;
+
+    &::after {
+      background-color: var(--color-grey);
+    }
+  }
+}

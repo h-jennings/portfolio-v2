@@ -1,5 +1,5 @@
-import { PageWithLayoutType } from '@/components/layout/layout.model';
-import { MainLayout } from '@/components/layout/MainLayout/MainLayout';
+import { PageWithLayoutType } from '@/components/layouts/layout.model';
+import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import classnames from 'classnames';
 
 const Home: React.FC = () => {
