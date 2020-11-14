@@ -29,4 +29,12 @@ $dim-props: (
   @include break-max-width(lg) {
     --gutter: 64px;
   }
+
+  @include break-max-width(md) {
+    --gutter: 48px;
+  }
+
+  @include break-max-width(sm) {
+    --gutter: 24px;
+  }
 }

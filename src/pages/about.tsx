@@ -54,14 +54,16 @@ const About: React.FC = () => {
       </div>
       <section className='m-b-xl'>
         <h2 className='m-b-md'>What I Do</h2>
-        <ul className={classnames([styles.skillsList])}>
-          {skills.map(({ title, content }) => (
-            <li key={title}>
-              <h3 className='m-b-xsm'>{title}</h3>
-              <p>{content}</p>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.skillsListWrapper}>
+          <ul className={classnames([styles.skillsList])}>
+            {skills.map(({ title, content }) => (
+              <li key={title}>
+                <h3 className='m-b-xsm'>{title}</h3>
+                <p>{content}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
       <section>
         <h2 className='m-b-md'>Where I&apos;ve done it</h2>
@@ -75,7 +77,7 @@ const About: React.FC = () => {
               ])}>
               <div className='text-h3'>{when}</div>
               <div>
-                <div className='text-p'>{title}</div>
+                <div className='text-p ta-l'>{title}</div>
                 <div className='text-p c-grey'>{company}</div>
               </div>
             </li>

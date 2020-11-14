@@ -1,11 +1,11 @@
 @import '@scss/global/config';
 @import '@scss/global/breakpoints';
 
-// TODO: Create helper or layout wrapper for this page
 .content {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: var(--gap-primary);
+  row-gap: 48px;
 }
 
 .contentLeft {
@@ -18,11 +18,20 @@
   @include break-max-width(lg) {
     grid-column: 1 / 6;
   }
+
+  @include break-max-width(md) {
+    grid-column: 1 / -1;
+  }
 }
 
 .contentLeftWrapper {
   position: sticky;
   top: var(--nav-height);
+
+  @include break-max-width(md) {
+    position: static;
+    top: unset;
+  }
 }
 
 .contentRight {
@@ -34,6 +43,10 @@
   @include break-max-width(lg) {
     // grid-template-columns: repeat(6, 1fr);
     grid-column: 7 / -1;
+  }
+
+  @include break-max-width(md) {
+    grid-column: 1 / -1;
   }
 }
 

@@ -1,15 +1,23 @@
+@import '@scss/global/config';
+@import '@scss/global/breakpoints';
+
 .image {
   max-width: 511px;
 }
-
+.skillsListWrapper {
+  max-width: 404px;
+}
 .skillsList {
   display: grid;
-  grid-template-columns: repeat(2, 190px);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: var(--gap-primary);
 }
+.experienceList {
+  max-width: 380px;
+}
 .experienceListItem {
-  display: inline-grid;
-  grid-template-columns: repeat(2, 190px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: var(--gap-primary);
   justify-content: start;
   border-bottom: 1px solid var(--color-grey);
@@ -18,4 +26,8 @@
     border-top: 1px solid var(--color-grey);
     border-bottom: 1px solid var(--color-grey);
   }
+
+  // @include break-max-width(lg) {
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
 }

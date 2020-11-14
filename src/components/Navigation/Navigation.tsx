@@ -10,7 +10,10 @@ export const Navigation: React.FC = () => {
   return (
     <nav
       aria-label='primary-navigation'
-      className={classnames(['w-full d-flex flx-j-c', styles.navContainer])}>
+      className={classnames([
+        'w-full d-flex flx-j-c z-over',
+        styles.navContainer,
+      ])}>
       {/* TODO: Make padding dynamic based on scroll */}
       <div
         className={classnames([
