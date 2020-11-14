@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 export const ProjectNavigationLinks: React.FC = () => {
   return (
-    <ul className={classnames(['space-y-xsm w-full', styles.container])}>
+    <ul className={classnames(['space-y-xsm', styles.container])}>
       <li>
         <a className='underline-effect'>Previous Project</a>
       </li>

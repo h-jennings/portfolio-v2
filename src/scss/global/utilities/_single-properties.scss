@@ -2,6 +2,7 @@
 @include generator(c, color, map-get($app-config, colors));
 @include generator(ff, font-family, map-get($app-config, font-families));
 @include generator(fw, font-weight, map-get($app-config, font-weights));
+@include generator(fz, font-size, map-get($app-config, font-sizes));
 @include generator(lh, line-height, map-get($app-config, line-heights));
 @include generator(rc, border-radius, map-get($app-config, rounded-corners));
 @include generator(z, z-index, map-get($app-config, z-indexes));

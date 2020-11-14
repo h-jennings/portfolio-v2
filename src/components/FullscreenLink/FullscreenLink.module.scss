@@ -1,0 +1,30 @@
+@import '@scss/global/core/_mixins';
+
+// * NEXT PROJECT LINK
+.container {
+  height: 100vh;
+  min-height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--gutter, 90px);
+}
+.link {
+  .imageContainer {
+    overflow: hidden;
+    transform: scale(1.1);
+    @include default-transition;
+    img {
+      @include default-transition;
+      transform: scale(0.9);
+    }
+  }
+  &:hover {
+    .imageContainer {
+      transform: scale(1);
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
