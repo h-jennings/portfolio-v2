@@ -1,0 +1,15 @@
+.root[data-theme='dark'] {
+  --ui-bg: var(--color-black, #222222);
+  --ui-01: var(--color-black, #222222);
+  --ui-02: var(--color-white, #fcfcfc);
+  --text-01: var(--color-white, #fcfcfc);
+  --text-02: var(--color-grey, #a0abbb);
+}
+
+.root[data-theme='light'] {
+  --ui-bg: var(--color-white);
+  --ui-01: var(--color-white);
+  --ui-02: var(--color-black);
+  --text-01: var(--color-black);
+  --text-02: var(--color-grey);
+}

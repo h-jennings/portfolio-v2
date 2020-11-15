@@ -1,6 +1,8 @@
 html {
   font-family: var(--ff-primary);
-  background-color: var(--ui-bg);
   color: var(--color-white);
   font-size: var(--fz-base);
+}
+.root {
+  background-color: var(--ui-bg);
 }
