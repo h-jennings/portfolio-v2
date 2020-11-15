@@ -25,7 +25,7 @@ const About: React.FC = () => {
   const leftContent = (
     <>
       <h1 className='m-b-xl'>About</h1>
-      <p className='m-b-md'>
+      <p className={classnames(['m-b-md', styles.paragraph])}>
         Hey there, I&apos;m Hunter. I&apos;ve been wrangling pixels and shapes
         since &apos;17. I create beautiful user interfaces with cutting-edge web
         technologies. My primary areas of focus are component architecture,
@@ -35,7 +35,7 @@ const About: React.FC = () => {
         chain application for a multi-million dollar account in the public
         sector.
       </p>
-      <p>
+      <p className={styles.paragraph}>
         I&apos;m a life long learner who can&apos;t wait to start the next
         project.
       </p>
