@@ -5,7 +5,6 @@ import {
   useMemo,
   useRef,
   useState,
-  useLayoutEffect,
   MutableRefObject,
   useContext,
   useEffect,
@@ -23,7 +22,7 @@ const ThemeContext = createContext({} as ThemeContextType);
 
 const ThemeProvider: React.FC = ({ children }) => {
   const root = useRef() as MutableRefObject<HTMLDivElement>;
-  const [theme, setTheme] = useState<AppThemes>('light');
+  const [theme, setTheme] = useState<AppThemes>('dark');
   useEffect(() => {
     root.current.dataset.theme = theme;
   }, [theme]);

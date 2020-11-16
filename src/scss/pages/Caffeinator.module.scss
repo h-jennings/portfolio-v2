@@ -1,3 +1,6 @@
+@import '@scss/global/_config';
+@import '@scss/global/_breakpoints';
+
 .mediaContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -26,4 +29,20 @@
 
 .text3 {
   grid-column: 1 / 7;
+}
+
+@include break-max-width(lg) {
+  .image2,
+  .text1,
+  .text2,
+  .image3,
+  .text3 {
+    grid-column: 1 / -1;
+  }
+}
+
+@include break-max-width(sm) {
+  .mediaContainer {
+    row-gap: 24px;
+  }
 }
