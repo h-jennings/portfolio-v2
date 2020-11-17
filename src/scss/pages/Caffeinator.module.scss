@@ -1,6 +1,9 @@
 @import '@scss/global/_config';
 @import '@scss/global/_breakpoints';
 
+.details {
+  max-width: 342px;
+}
 .mediaContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

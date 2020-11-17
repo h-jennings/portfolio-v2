@@ -23,11 +23,11 @@ const Caffeinator: React.FC = () => {
 
   const leftContent = (
     <>
-      <h1 className='m-b-xl'>Caffeinator</h1>
+      <h1 className='m-b-xl md:m-b-md'>Caffeinator</h1>
       <h2 className='m-b-lg lh-default'>
         An app for building the perfect cup of coffee.
       </h2>
-      <div className='d-flex space-x-lg'>
+      <div className={classnames(['d-flex space-x-lg', styles.details])}>
         <ProjectNavigationLinks />
 
         {/* make component */}

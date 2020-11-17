@@ -1,7 +1,6 @@
 import '@scss/index.scss';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
-import { ThemeProvider } from '@/context/theme';
 
 type AppLayoutProps = {
   Component: PageWithLayoutType;

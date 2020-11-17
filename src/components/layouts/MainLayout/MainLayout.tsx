@@ -5,14 +5,26 @@ import { Footer } from '@components/Footer/Footer';
 import { DefaultSeo } from 'next-seo';
 import SEO from 'next-seo.config';
 import { ThemeProvider } from '@/context/theme';
+import Media from 'react-media';
+import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
 
 export const MainLayout: React.FC = ({ children }) => {
+  const breakpoint = '(max-width: 768px)';
   return (
     <ThemeProvider>
       <DefaultSeo {...SEO} />
       <div className={classnames(['d-flex flx-j-c'])}>
         <div className={classnames(['w-full', styles.main])}>
-          <Navigation />
+          <Media
+            queries={{
+              mobile: breakpoint,
+            }}>
+            {(matches) => {
+              return (
+                <>{matches.mobile ? <MobileNavigation /> : <Navigation />}</>
+              );
+            }}
+          </Media>
           <div className={styles.contentWrapper}>
             <div
               aria-label='page-content'

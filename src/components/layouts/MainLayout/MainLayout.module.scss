@@ -1,9 +1,15 @@
+@import '@scss/global/_config';
+@import '@scss/global/_breakpoints';
+
 .main {
   min-height: 100vh;
   padding-top: var(--nav-height, 152px);
   display: flex;
   flex-flow: column;
   align-items: center;
+  @include break-max-width(md) {
+    padding-top: calc(var(--nav-height, 152px) + 48px);
+  }
 }
 .contentWrapper {
   padding: 0 var(--gutter, 90px);

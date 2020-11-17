@@ -24,7 +24,7 @@ const About: React.FC = () => {
 
   const leftContent = (
     <>
-      <h1 className='m-b-xl'>About</h1>
+      <h1 className='m-b-xl md:m-b-md'>About</h1>
       <p className={classnames(['m-b-md', styles.paragraph])}>
         Hey there, I&apos;m Hunter. I&apos;ve been wrangling pixels and shapes
         since &apos;17. I create beautiful user interfaces with cutting-edge web

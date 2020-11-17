@@ -12,7 +12,7 @@ const Home: React.FC = () => {
           <h1
             data-testid='headline'
             className={classnames(
-              'c-orange fw-bold m-b-xl ta-center lg-compact',
+              'c-orange fw-bold m-b-xl sm:m-b-md ta-center lg-compact',
             )}>
             Welcome to Next.js!
           </h1>

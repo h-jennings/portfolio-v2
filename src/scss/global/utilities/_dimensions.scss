@@ -32,6 +32,7 @@ $dim-props: (
 
   @include break-max-width(md) {
     --gutter: 48px;
+    --nav-height: 56px;
   }
 
   @include break-max-width(sm) {
