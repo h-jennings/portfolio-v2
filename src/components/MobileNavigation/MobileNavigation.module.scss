@@ -8,10 +8,25 @@
   height: 56px;
   display: flex;
   align-items: center;
+  background-color: var(--ui-bg);
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
 }
-.icon {
+
+.menu {
   @include button-reset;
   width: 48px;
-  height: 56px;
-  margin-right: 24px;
+  height: 100%;
+}
+
+.home {
+  @include link-reset;
+  width: 24px;
+}
+
+.icon {
+  path {
+    fill: var(--ui-02);
+  }
 }

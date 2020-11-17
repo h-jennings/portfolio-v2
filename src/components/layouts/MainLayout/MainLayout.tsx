@@ -1,3 +1,4 @@
+import React from 'react';
 import classnames from 'classnames';
 import styles from './MainLayout.module.scss';
 import { Navigation } from '@components/Navigation/Navigation';
@@ -10,15 +11,15 @@ import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation
 
 export const MainLayout: React.FC = ({ children }) => {
   const breakpoint = '(max-width: 768px)';
+
   return (
     <ThemeProvider>
       <DefaultSeo {...SEO} />
       <div className={classnames(['d-flex flx-j-c'])}>
         <div className={classnames(['w-full', styles.main])}>
           <Media
-            queries={{
-              mobile: breakpoint,
-            }}>
+            queries={{ mobile: breakpoint }}
+            defaultMatches={{ mobile: false }}>
             {(matches) => {
               return (
                 <>{matches.mobile ? <MobileNavigation /> : <Navigation />}</>
