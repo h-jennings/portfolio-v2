@@ -33,15 +33,11 @@ p {
   padding: 0;
 }
 
-// TODO: Use Clamp feature for page headline
 h1,
 .text-h1 {
   font-size: var(--fz-xxl);
+  font-size: clamp(var(--fz-lg), 5.6vw, var(--fz-xxl));
   line-height: 1;
-
-  @include break-max-width(lg) {
-    font-size: var(--fz-xl);
-  }
 }
 
 h2,
