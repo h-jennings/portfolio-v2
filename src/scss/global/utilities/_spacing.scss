@@ -38,6 +38,39 @@ $spacings: map-get($app-config, spacings);
   }
 }
 
+// * Responsive Classnames
+$breakpoints: map-get($app-config, breakpoints);
+@each $bp-key, $bp in $breakpoints {
+  @include break-max-width($bp-key) {
+    @each $prop-key, $prop-val in $props {
+      @each $space-key, $space-val in $spacings {
+        .#{$bp-key}\:#{$prop-key}-#{$space-key} {
+          #{$prop-val}: $space-val;
+        }
+      }
+      @each $space-key, $space-val in $spacings {
+        .#{$bp-key}\:#{$prop-key}-x-#{$space-key} {
+          #{$prop-val}-left: $space-val;
+          #{$prop-val}-right: $space-val;
+        }
+      }
+      @each $space-key, $space-val in $spacings {
+        .#{$bp-key}\:#{$prop-key}-y-#{$space-key} {
+          #{$prop-val}-top: $space-val;
+          #{$prop-val}-bottom: $space-val;
+        }
+      }
+      @each $dir-key, $dir-val in $dirs {
+        @each $space-key, $space-val in $spacings {
+          .#{$bp-key}\:#{$prop-key}-#{$dir-key}-#{$space-key} {
+            #{$prop-val}-#{$dir-val}: $space-val;
+          }
+        }
+      }
+    }
+  }
+}
+
 $gap-property-names: (
   gap: gap,
   col-gap: column-gap,
