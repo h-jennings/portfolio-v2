@@ -12,6 +12,7 @@ import styles from '@scss/pages/Caffeinator.module.scss';
 import classnames from 'classnames';
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import headshot from '@assets/images/headshot-cropped.jpg';
+import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
 
 const Caffeinator: React.FC = () => {
   const title = `Portfolio ${decodeHtml('&mdash;')} Caffeinator`;
@@ -54,20 +55,22 @@ const Caffeinator: React.FC = () => {
         </SplitContentLeft>
         <SplitContentRight>
           <div className={styles.mediaContainer}>
-            <div
-              className={styles.image1}
-              style={{
-                width: '100%',
-                backgroundColor: 'var(--color-blue)',
-                height: '370px',
-              }}></div>
-            <div
-              className={styles.image2}
-              style={{
-                width: '100%',
-                backgroundColor: 'var(--color-blue)',
-                height: '252px',
-              }}></div>
+            <div className={styles.image1}>
+              <ResponsiveImage
+                height={816}
+                width={1450}
+                src='/images/caffeinator/caffeinator-image-1.png'
+                altText='screenshot of caffeinator homepage'
+              />
+            </div>
+            <div className={styles.image2}>
+              <ResponsiveImage
+                height={646}
+                width={808}
+                src='/images/caffeinator/caffeinator-image-2.png'
+                altText='screenshot of caffeinator homepage'
+              />
+            </div>
             <p className={styles.text1}>
               My goal for this project was simple: I wanted to learn the concept
               of hierarchal finite state machines. To accomplish this, I chose
@@ -85,25 +88,27 @@ const Caffeinator: React.FC = () => {
               production-level applications due to their framework-agnostic
               nature.
             </p>
-            <div
-              className={styles.image3}
-              style={{
-                width: '100%',
-                backgroundColor: 'var(--color-blue)',
-                height: '327px',
-              }}></div>
+            <div className={styles.image3}>
+              <ResponsiveImage
+                height={1160}
+                width={1450}
+                src='/images/caffeinator/caffeinator-image-3.png'
+                altText='screenshot of caffeinator homepage'
+              />
+            </div>
             <p className={classnames(['fz-base', styles.text3])}>
               The original concept of Hierarchal Finite State Machines
               (Statecharts) was formalized in the 1980s by computer scientist,
               David Harel.
             </p>
-            <div
-              className={styles.image2}
-              style={{
-                width: '100%',
-                backgroundColor: 'var(--color-blue)',
-                height: '252px',
-              }}></div>
+            <div className={styles.image2}>
+              <ResponsiveImage
+                height={696}
+                width={1236}
+                src='/images/caffeinator/caffeinator-image-4.png'
+                altText='screenshot of caffeinator homepage'
+              />
+            </div>
           </div>
         </SplitContentRight>
       </SplitLayout>
