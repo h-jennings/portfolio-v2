@@ -1,3 +1,4 @@
+import React from 'react';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { NextSeo } from 'next-seo';
@@ -11,10 +12,36 @@ import classnames from 'classnames';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
 import styles from '@scss/pages/Portfolio-v1.module.scss';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import {
+  getCurrentProject,
+  getNextProject,
+  getPreviousProject,
+} from '@/helpers/get-projects';
+import { NextPage } from 'next';
+import { projects, Projects } from '@/data/projects';
 
-const PortfolioV1: React.FC = () => {
+interface PortfolioV1Props {
+  projects: Projects;
+  pathname: string;
+}
+
+const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
+  const currentProject = React.useMemo(
+    () => getCurrentProject(projects, pathname),
+    [projects, pathname],
+  );
+  const nextProject = React.useMemo(
+    () => getNextProject(projects, currentProject),
+    [projects, currentProject],
+  );
+  const prevProject = React.useMemo(
+    () => getPreviousProject(projects, currentProject),
+    [projects, currentProject],
+  );
+
+  // * SEO
   const title = `Portfolio ${decodeHtml('&mdash;')} V1`;
-  const description = 'My first portfolio, created 2019.';
+  const description = 'My first portfolio, created in 2019.';
   const SEO = {
     title,
     description,
@@ -23,6 +50,9 @@ const PortfolioV1: React.FC = () => {
       description,
     },
   };
+
+  const imagePlaceholderBackgroundColor = '#f72d2e';
+
   return (
     <>
       <NextSeo {...SEO} />
@@ -30,10 +60,10 @@ const PortfolioV1: React.FC = () => {
         <SplitContentLeft>
           <h1 className='m-b-xl md:m-b-md'>Portfolio V1</h1>
           <h2 className='m-b-lg lh-default'>
-            My first portfolio, created 2019.
+            My first portfolio, created in 2019.
           </h2>
           <div className={classnames(['d-flex space-x-lg', styles.details])}>
-            <ProjectNavigationLinks />
+            <ProjectNavigationLinks next={nextProject} previous={prevProject} />
 
             {/* make component */}
             <div style={{ flex: 1 }}>
@@ -58,6 +88,7 @@ const PortfolioV1: React.FC = () => {
                 width={1450}
                 src='/images/portfolio-v1/portfolio-v1-mobile-images.jpg'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
             <div className={styles.image2}>
@@ -66,6 +97,7 @@ const PortfolioV1: React.FC = () => {
                 width={808}
                 src='/images/portfolio-v1/portfolio-v1-logo.jpg'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
             <p className={styles.text1}>
@@ -91,6 +123,7 @@ const PortfolioV1: React.FC = () => {
                 width={1857}
                 src='/images/portfolio-v1/portfolio-v1-full.jpg'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
           </div>
@@ -100,6 +133,14 @@ const PortfolioV1: React.FC = () => {
   );
 };
 
+PortfolioV1.getInitialProps = async ({ pathname }) => {
+  const proj = projects;
+
+  return {
+    projects: proj,
+    pathname,
+  };
+};
 (PortfolioV1 as PageWithLayoutType).getLayout = (page) => {
   return <MainLayout>{page}</MainLayout>;
 };

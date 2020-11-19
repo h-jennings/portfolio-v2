@@ -1,3 +1,4 @@
+import React from 'react';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { decodeHtml } from '@/helpers/decode-html';
@@ -11,10 +12,37 @@ import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/Proj
 import styles from '@scss/pages/Caffeinator.module.scss';
 import classnames from 'classnames';
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
-import headshot from '@assets/images/headshot-cropped.jpg';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { NextPage } from 'next';
+import { Projects, projects } from '@/data/projects';
+import {
+  getCurrentProject,
+  getNextProject,
+  getPreviousProject,
+} from '@/helpers/get-projects';
 
-const Caffeinator: React.FC = () => {
+interface CaffeinatorProps {
+  projects: Projects;
+  pathname: string;
+}
+
+const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
+  const currentProject = React.useMemo(
+    () => getCurrentProject(projects, pathname),
+    [projects, pathname],
+  );
+  const nextProject = React.useMemo(
+    () => getNextProject(projects, currentProject),
+    [projects, currentProject],
+  );
+  const prevProject = React.useMemo(
+    () => getPreviousProject(projects, currentProject),
+    [projects, currentProject],
+  );
+
+  const projectName = currentProject.name;
+
+  const imagePlaceholderBackgroundColor = '#FFB959';
   const title = `Portfolio ${decodeHtml('&mdash;')} Caffeinator`;
   const description = 'An app for building the perfect cup of coffee.';
   const SEO = {
@@ -31,12 +59,12 @@ const Caffeinator: React.FC = () => {
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
-          <h1 className='m-b-xl md:m-b-md'>Caffeinator</h1>
+          <h1 className='m-b-xl md:m-b-md'>{projectName ?? 'Project'}</h1>
           <h2 className='m-b-lg lh-default'>
             An app for building the perfect cup of coffee.
           </h2>
           <div className={classnames(['d-flex space-x-lg', styles.details])}>
-            <ProjectNavigationLinks />
+            <ProjectNavigationLinks next={nextProject} previous={prevProject} />
 
             {/* make component */}
             <div style={{ flex: 1 }}>
@@ -61,6 +89,7 @@ const Caffeinator: React.FC = () => {
                 width={1450}
                 src='/images/caffeinator/caffeinator-image-1.png'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
             <div className={styles.image2}>
@@ -69,6 +98,7 @@ const Caffeinator: React.FC = () => {
                 width={808}
                 src='/images/caffeinator/caffeinator-image-2.png'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
             <p className={styles.text1}>
@@ -94,6 +124,7 @@ const Caffeinator: React.FC = () => {
                 width={1450}
                 src='/images/caffeinator/caffeinator-image-3.png'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
             <p className={classnames(['fz-base', styles.text3])}>
@@ -107,22 +138,34 @@ const Caffeinator: React.FC = () => {
                 width={1236}
                 src='/images/caffeinator/caffeinator-image-4.png'
                 altText='screenshot of caffeinator homepage'
+                bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
           </div>
         </SplitContentRight>
       </SplitLayout>
-      <FullscreenLink
-        cta='Explore next project'
-        href='/'
-        title='Portfolio - V1'
-        imageWidth={646}
-        imageHeight={667}
-        alt='Picture of me'
-        src={headshot}
-      />
+      {nextProject ? (
+        <FullscreenLink
+          cta='Explore next project'
+          href={nextProject.path}
+          title={nextProject.name}
+          imageWidth={nextProject.preview.width}
+          imageHeight={nextProject.preview.height}
+          alt='Picture of me'
+          src={nextProject.preview.src}
+        />
+      ) : null}
     </>
   );
+};
+
+Caffeinator.getInitialProps = async ({ pathname }) => {
+  const proj = projects;
+
+  return {
+    projects: proj,
+    pathname,
+  };
 };
 
 (Caffeinator as PageWithLayoutType).getLayout = (page) => {
