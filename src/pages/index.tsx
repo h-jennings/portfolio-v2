@@ -19,6 +19,9 @@ const Home: React.FC = () => {
           <Link href={Paths.caffeinator}>
             <a>caffeinator</a>
           </Link>
+          <Link href={Paths.portfolioV1}>
+            <a>Portfolio V1</a>
+          </Link>
         </div>
         <h1 id='selected-work' style={{ minHeight: '100vh' }}>
           Selected Work

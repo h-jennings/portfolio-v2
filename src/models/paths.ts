@@ -3,4 +3,5 @@ export enum Paths {
   work = '/#selected-work',
   about = '/about',
   caffeinator = '/caffeinator',
+  portfolioV1 = '/portfolio-v1',
 }

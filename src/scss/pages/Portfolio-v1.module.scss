@@ -4,6 +4,7 @@
 .details {
   max-width: 342px;
 }
+
 .mediaContainer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -28,7 +29,7 @@
 }
 
 .image3 {
-  grid-column: 1 / 7;
+  grid-column: 1 / -1;
 }
 
 .image4 {

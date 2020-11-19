@@ -1,22 +1,20 @@
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { NextSeo } from 'next-seo';
 import { decodeHtml } from '@/helpers/decode-html';
 import {
   SplitContentLeft,
   SplitContentRight,
   SplitLayout,
 } from '@/components/layouts/SplitLayout/SplitLayout';
-import { NextSeo } from 'next-seo';
-import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
-import styles from '@scss/pages/Caffeinator.module.scss';
 import classnames from 'classnames';
-import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
-import headshot from '@assets/images/headshot-cropped.jpg';
+import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
+import styles from '@scss/pages/Portfolio-v1.module.scss';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
 
-const Caffeinator: React.FC = () => {
-  const title = `Portfolio ${decodeHtml('&mdash;')} Caffeinator`;
-  const description = 'An app for building the perfect cup of coffee.';
+const PortfolioV1: React.FC = () => {
+  const title = `Portfolio ${decodeHtml('&mdash;')} V1`;
+  const description = 'My first portfolio, created 2019.';
   const SEO = {
     title,
     description,
@@ -25,15 +23,14 @@ const Caffeinator: React.FC = () => {
       description,
     },
   };
-
   return (
     <>
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
-          <h1 className='m-b-xl md:m-b-md'>Caffeinator</h1>
+          <h1 className='m-b-xl md:m-b-md'>Portfolio V1</h1>
           <h2 className='m-b-lg lh-default'>
-            An app for building the perfect cup of coffee.
+            My first portfolio, created 2019.
           </h2>
           <div className={classnames(['d-flex space-x-lg', styles.details])}>
             <ProjectNavigationLinks />
@@ -47,7 +44,7 @@ const Caffeinator: React.FC = () => {
                 </li>
                 <li>
                   <h3 className='m-b-sm'>Tech</h3>
-                  <p>React, TypeScript, XState, Sass, Framer Motion, Webpack</p>
+                  <p>React, Sass, Framer Motion, Webpack</p>
                 </li>
               </ul>
             </div>
@@ -57,9 +54,9 @@ const Caffeinator: React.FC = () => {
           <div className={styles.mediaContainer}>
             <div className={styles.image1}>
               <ResponsiveImage
-                height={816}
+                height={1160}
                 width={1450}
-                src='/images/caffeinator/caffeinator-image-1.png'
+                src='/images/portfolio-v1/portfolio-v1-mobile-images.jpg'
                 altText='screenshot of caffeinator homepage'
               />
             </div>
@@ -67,7 +64,7 @@ const Caffeinator: React.FC = () => {
               <ResponsiveImage
                 height={646}
                 width={808}
-                src='/images/caffeinator/caffeinator-image-2.png'
+                src='/images/portfolio-v1/portfolio-v1-logo.jpg'
                 altText='screenshot of caffeinator homepage'
               />
             </div>
@@ -90,43 +87,21 @@ const Caffeinator: React.FC = () => {
             </p>
             <div className={styles.image3}>
               <ResponsiveImage
-                height={1160}
-                width={1450}
-                src='/images/caffeinator/caffeinator-image-3.png'
-                altText='screenshot of caffeinator homepage'
-              />
-            </div>
-            <p className={classnames(['fz-base', styles.text3])}>
-              The original concept of Hierarchal Finite State Machines
-              (Statecharts) was formalized in the 1980s by computer scientist,
-              David Harel.
-            </p>
-            <div className={styles.image4}>
-              <ResponsiveImage
-                height={696}
-                width={1236}
-                src='/images/caffeinator/caffeinator-image-4.png'
+                height={2529}
+                width={1857}
+                src='/images/portfolio-v1/portfolio-v1-full.jpg'
                 altText='screenshot of caffeinator homepage'
               />
             </div>
           </div>
         </SplitContentRight>
       </SplitLayout>
-      <FullscreenLink
-        cta='Explore next project'
-        href='/'
-        title='Portfolio - V1'
-        imageWidth={646}
-        imageHeight={667}
-        alt='Picture of me'
-        src={headshot}
-      />
     </>
   );
 };
 
-(Caffeinator as PageWithLayoutType).getLayout = (page) => {
+(PortfolioV1 as PageWithLayoutType).getLayout = (page) => {
   return <MainLayout>{page}</MainLayout>;
 };
 
-export default Caffeinator;
+export default PortfolioV1;
