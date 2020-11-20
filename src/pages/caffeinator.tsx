@@ -21,10 +21,10 @@ import {
   getPreviousProject,
 } from '@/helpers/get-projects';
 
-interface CaffeinatorProps {
+type CaffeinatorProps = {
   projects: Projects;
   pathname: string;
-}
+};
 
 const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
   const currentProject = React.useMemo(

@@ -20,10 +20,10 @@ import {
 import { NextPage } from 'next';
 import { projects, Projects } from '@/data/projects';
 
-interface PortfolioV1Props {
+type PortfolioV1Props = {
   projects: Projects;
   pathname: string;
-}
+};
 
 const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   const currentProject = React.useMemo(

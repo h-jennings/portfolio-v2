@@ -4,10 +4,10 @@ import styles from './ProjectNavigationLinks.module.scss';
 import classnames from 'classnames';
 import { Project } from '@/data/projects';
 
-interface ProjectNavigationLinksProps {
+type ProjectNavigationLinksProps = {
   next: Project | null;
   previous: Project | null;
-}
+};
 
 export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
   next,

@@ -1,14 +1,15 @@
 import { ProjectPaths } from '@/models/paths';
-interface Preview {
+type Preview = {
   src: string;
   height: number;
   width: number;
-}
-export interface Project {
+};
+
+export type Project = {
   name: string;
   path: string;
   preview: Preview;
-}
+};
 
 export type Projects = Project[];
 
