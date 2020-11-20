@@ -1,14 +1,4 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useMemo,
-  useRef,
-  useState,
-  MutableRefObject,
-  useContext,
-  useEffect,
-} from 'react';
+import React, { Dispatch, SetStateAction, MutableRefObject } from 'react';
 
 export type AppThemes = 'dark' | 'light';
 type UpdateAppTheme = Dispatch<SetStateAction<AppThemes>>;
@@ -18,16 +8,16 @@ type ThemeContextType = {
   setTheme: UpdateAppTheme;
 };
 
-const ThemeContext = createContext({} as ThemeContextType);
+const ThemeContext = React.createContext({} as ThemeContextType);
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const root = useRef() as MutableRefObject<HTMLDivElement>;
-  const [theme, setTheme] = useState<AppThemes>('dark');
-  useEffect(() => {
+  const root = React.useRef() as MutableRefObject<HTMLDivElement>;
+  const [theme, setTheme] = React.useState<AppThemes>('dark');
+  React.useEffect(() => {
     root.current.dataset.theme = theme;
   }, [theme]);
 
-  const value = useMemo(
+  const value = React.useMemo(
     () => ({
       theme,
       setTheme,
@@ -45,7 +35,7 @@ const ThemeProvider: React.FC = ({ children }) => {
 };
 
 function useTheme(): ThemeContextType {
-  const context = useContext(ThemeContext);
+  const context = React.useContext(ThemeContext);
   if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
