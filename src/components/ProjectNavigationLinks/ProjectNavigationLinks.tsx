@@ -1,8 +1,10 @@
-import { Paths } from '@/models/paths';
-import Link from 'next/link';
-import styles from './ProjectNavigationLinks.module.scss';
 import classnames from 'classnames';
+import Link from 'next/link';
+
 import { Project } from '@/data/projects';
+import { Paths } from '@/models/paths';
+
+import styles from './ProjectNavigationLinks.module.scss';
 
 type ProjectNavigationLinksProps = {
   next: Project | null;

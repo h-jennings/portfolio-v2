@@ -1,20 +1,21 @@
+import styles from '@scss/pages/Caffeinator.module.scss';
+import classnames from 'classnames';
+import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 import React from 'react';
+
+import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { decodeHtml } from '@/helpers/decode-html';
 import {
   SplitContentLeft,
   SplitContentRight,
   SplitLayout,
 } from '@/components/layouts/SplitLayout/SplitLayout';
-import { NextSeo } from 'next-seo';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
-import styles from '@scss/pages/Caffeinator.module.scss';
-import classnames from 'classnames';
-import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
-import { NextPage } from 'next';
 import { Projects, projects } from '@/data/projects';
+import { decodeHtml } from '@/helpers/decode-html';
 import {
   getCurrentProject,
   getNextProject,

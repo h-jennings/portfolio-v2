@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, MutableRefObject } from 'react';
+import React, { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
 export type AppThemes = 'dark' | 'light';
 type UpdateAppTheme = Dispatch<SetStateAction<AppThemes>>;

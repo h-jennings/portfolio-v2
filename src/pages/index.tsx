@@ -1,8 +1,9 @@
+import classnames from 'classnames';
+import Link from 'next/link';
+
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { Paths } from '@/models/paths';
-import classnames from 'classnames';
-import Link from 'next/link';
 
 const Home: React.FC = () => {
   return (
