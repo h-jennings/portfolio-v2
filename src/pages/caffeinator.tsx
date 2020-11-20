@@ -4,9 +4,9 @@ import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 
-import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { ProjectLayout } from '@/components/layouts/ProjectLayout/ProjectLayout';
 import {
   SplitContentLeft,
   SplitContentRight,
@@ -56,7 +56,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
   };
 
   return (
-    <>
+    <ProjectLayout>
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
@@ -145,18 +145,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
           </div>
         </SplitContentRight>
       </SplitLayout>
-      {nextProject ? (
-        <FullscreenLink
-          cta='Explore next project'
-          href={nextProject.path}
-          title={nextProject.name}
-          imageWidth={nextProject.preview.width}
-          imageHeight={nextProject.preview.height}
-          alt='Picture of me'
-          src={nextProject.preview.src}
-        />
-      ) : null}
-    </>
+    </ProjectLayout>
   );
 };
 

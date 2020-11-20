@@ -6,6 +6,7 @@ import React from 'react';
 
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { ProjectLayout } from '@/components/layouts/ProjectLayout/ProjectLayout';
 import {
   SplitContentLeft,
   SplitContentRight,
@@ -55,7 +56,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   const imagePlaceholderBackgroundColor = '#f72d2e';
 
   return (
-    <>
+    <ProjectLayout>
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
@@ -130,7 +131,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
           </div>
         </SplitContentRight>
       </SplitLayout>
-    </>
+    </ProjectLayout>
   );
 };
 

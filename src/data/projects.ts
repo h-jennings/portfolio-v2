@@ -15,6 +15,15 @@ export type Projects = Project[];
 
 export const projects: Projects = [
   {
+    name: 'Department of Defense',
+    path: ProjectPaths.dod.toString(),
+    preview: {
+      src: '/images/caffeinator/caffeinator-image-1.png',
+      width: 1450,
+      height: 816,
+    },
+  },
+  {
     name: 'Caffeinator',
     path: ProjectPaths.caffeinator.toString(),
     preview: {

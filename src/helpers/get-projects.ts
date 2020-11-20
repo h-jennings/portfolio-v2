@@ -1,6 +1,6 @@
 import { Project, Projects } from '@/data/projects';
 
-export const getNextProject = (
+const getNextProject = (
   projects: Projects,
   current: Project,
 ): Project | null => {
@@ -13,7 +13,7 @@ export const getNextProject = (
   return nextProject ? nextProject : null;
 };
 
-export const getPreviousProject = (
+const getPreviousProject = (
   projects: Projects,
   current: Project,
 ): Project | null => {
@@ -26,10 +26,9 @@ export const getPreviousProject = (
   return prevProject ? prevProject : null;
 };
 
-export const getCurrentProject = (
-  projects: Projects,
-  path: string,
-): Project => {
+const getCurrentProject = (projects: Projects, path: string): Project => {
   const currentProject = projects.filter((project) => project.path === path)[0];
   return currentProject;
 };
+
+export { getCurrentProject, getNextProject, getPreviousProject };
