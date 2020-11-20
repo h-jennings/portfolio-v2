@@ -1,0 +1,58 @@
+@import '@scss/global/_config';
+@import '@scss/global/_breakpoints';
+
+.details {
+  max-width: 342px;
+}
+
+.mediaContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 28px;
+  row-gap: 48px;
+}
+
+.image1 {
+  grid-column: 1 / -1;
+}
+
+.image2 {
+  grid-column: 1 / 5;
+}
+
+.text1 {
+  grid-column: 5 / -1;
+}
+
+.text2 {
+  grid-column: 1 / 5;
+}
+
+.image3 {
+  grid-column: 1 / -1;
+}
+
+.image4 {
+  grid-column: 1 / 6;
+}
+
+.text3 {
+  grid-column: 1 / 7;
+}
+
+@include break-max-width(lg) {
+  .image2,
+  .text1,
+  .text2,
+  .image3,
+  .image4,
+  .text3 {
+    grid-column: 1 / -1;
+  }
+}
+
+@include break-max-width(sm) {
+  .mediaContainer {
+    row-gap: 24px;
+  }
+}
