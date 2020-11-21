@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
-  const [year, setYear] = useState<number | null>(null);
-  const [currentTime, setCurrentTime] = useState<string | null>(null);
+  const [year, setYear] = React.useState<number | null>(null);
+  const [currentTime, setCurrentTime] = React.useState<string | null>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const date = new Date();
     setYear(date.getFullYear());
   }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const tick = setInterval(() => {
       const date = new Date();
 

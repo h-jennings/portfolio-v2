@@ -1,4 +1,4 @@
-import styles from '@scss/pages/Caffeinator.module.scss';
+import styles from '@scss/pages/Portfolio-v1.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
@@ -22,12 +22,12 @@ import {
   getPreviousProject,
 } from '@/helpers/get-projects';
 
-type CaffeinatorProps = {
+type DoD = {
   projects: Projects;
   pathname: string;
 };
 
-const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
+const DoD: NextPage<DoD> = ({ projects, pathname }) => {
   const currentProject = React.useMemo(
     () => getCurrentProject(projects, pathname),
     [projects, pathname],
@@ -41,11 +41,10 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
     [projects, currentProject],
   );
 
-  const projectName = currentProject.name;
-
-  const imagePlaceholderBackgroundColor = '#FFB959';
-  const title = `Portfolio ${decodeHtml('&mdash;')} Caffeinator`;
-  const description = 'An app for building the perfect cup of coffee.';
+  // * SEO
+  const title = `Portfolio ${decodeHtml('&mdash;')} DoD`;
+  const description =
+    'Web application for the next generation of defense technology';
   const SEO = {
     title,
     description,
@@ -55,15 +54,15 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
     },
   };
 
+  const imagePlaceholderBackgroundColor = '#969eaa';
+
   return (
     <ProjectLayout>
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
-          <h1 className='m-b-xl md:m-b-md'>{projectName ?? 'Project'}</h1>
-          <h2 className='m-b-lg lh-default'>
-            An app for building the perfect cup of coffee.
-          </h2>
+          <h1 className='m-b-xl md:m-b-md'>{currentProject.name}</h1>
+          <h2 className='m-b-lg lh-default'>{description}</h2>
           <div className={classnames(['d-flex space-x-lg', styles.details])}>
             <ProjectNavigationLinks next={nextProject} previous={prevProject} />
 
@@ -72,11 +71,14 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
               <ul className='space-y-md'>
                 <li>
                   <h3 className='m-b-sm'>What I Did</h3>
-                  <p>Design and Development</p>
+                  <p>Front End Development</p>
                 </li>
                 <li>
                   <h3 className='m-b-sm'>Tech</h3>
-                  <p>React, TypeScript, XState, Sass, Framer Motion, Webpack</p>
+                  <p>
+                    Angular, TypeScript, NgRx, Jest, Testing Library, Sass, D3,
+                    Azure AD
+                  </p>
                 </li>
               </ul>
             </div>
@@ -86,9 +88,9 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
           <div className={styles.mediaContainer}>
             <div className={styles.image1}>
               <ResponsiveImage
-                height={816}
+                height={1160}
                 width={1450}
-                src='/images/caffeinator/caffeinator-image-1.png'
+                src='/images/f35/f35-devices-images.jpg'
                 altText='screenshot of caffeinator homepage'
                 bgColor={imagePlaceholderBackgroundColor}
               />
@@ -97,47 +99,29 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
               <ResponsiveImage
                 height={646}
                 width={808}
-                src='/images/caffeinator/caffeinator-image-2.png'
+                src='/images/f35/f35-logo.jpg'
                 altText='screenshot of caffeinator homepage'
                 bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
             <p className={styles.text1}>
-              My goal for this project was simple: I wanted to learn the concept
-              of hierarchal finite state machines. To accomplish this, I chose
-              to use the growing JavaScript library: XState. In order to learn
-              the ins-and-outs of the programming concept, I decided to make an
-              app that was complex enough to go beyond the basics, but still be
-              a reasonable side project.
+              The F-35 Joint Strike Fighter Program needed a way to make sense
+              of data disseminated across a massive, multi-decade long project
+              to create the next generation of defense technology.
             </p>
             <p className={styles.text2}>
-              The bulk of the application is essentially a gigantic state
-              machine with complex transitions based on user interactions and
-              time. This project completely changed the way I think about front
-              end interactions and application state. Since completing this app,
-              I&apos;ve taken these concepts and applied them to
-              production-level applications due to their framework-agnostic
-              nature.
+              The application is dynamic hub of critical insights and
+              information built with cutting-edge web technology. Using
+              interactive visualizations, world class design, and information
+              hierarchy, the application cuts through the noise and provides
+              stakeholders with a single source of truth about the aircraft they
+              need insights on.
             </p>
             <div className={styles.image3}>
               <ResponsiveImage
                 height={1160}
                 width={1450}
-                src='/images/caffeinator/caffeinator-image-3.png'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
-            </div>
-            <p className={classnames(['fz-base', styles.text3])}>
-              The original concept of Hierarchal Finite State Machines
-              (Statecharts) was formalized in the 1980s by computer scientist,
-              David Harel.
-            </p>
-            <div className={styles.image4}>
-              <ResponsiveImage
-                height={696}
-                width={1236}
-                src='/images/caffeinator/caffeinator-image-4.png'
+                src='/images/f35/f35-mobile-phones.jpg'
                 altText='screenshot of caffeinator homepage'
                 bgColor={imagePlaceholderBackgroundColor}
               />
@@ -149,7 +133,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
   );
 };
 
-Caffeinator.getInitialProps = async ({ pathname }) => {
+DoD.getInitialProps = async ({ pathname }) => {
   const proj = projects;
 
   return {
@@ -157,9 +141,8 @@ Caffeinator.getInitialProps = async ({ pathname }) => {
     pathname,
   };
 };
-
-(Caffeinator as PageWithLayoutType).getLayout = (page) => {
+(DoD as PageWithLayoutType).getLayout = (page) => {
   return <MainLayout>{page}</MainLayout>;
 };
 
-export default Caffeinator;
+export default DoD;

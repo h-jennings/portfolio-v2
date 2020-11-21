@@ -1,18 +1,28 @@
 import { ProjectPaths } from '@/models/paths';
-interface Preview {
+type Preview = {
   src: string;
   height: number;
   width: number;
-}
-export interface Project {
+};
+
+export type Project = {
   name: string;
   path: string;
   preview: Preview;
-}
+};
 
 export type Projects = Project[];
 
 export const projects: Projects = [
+  {
+    name: 'Department of Defense',
+    path: ProjectPaths.dod.toString(),
+    preview: {
+      src: '/images/caffeinator/caffeinator-image-1.png',
+      width: 1450,
+      height: 816,
+    },
+  },
   {
     name: 'Caffeinator',
     path: ProjectPaths.caffeinator.toString(),

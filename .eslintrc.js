@@ -27,7 +27,7 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'simple-import-sort', 'react-hooks'],
   rules: {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     indent: ['error', 2, { SwitchCase: 1 }],
@@ -42,5 +42,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/no-explicit-any': 0,
+    'simple-import-sort/imports': 'warn',
+    'simple-import-sort/exports': 'warn',
   },
 };

@@ -1,8 +1,9 @@
+import classnames from 'classnames';
+import Link from 'next/link';
+
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { Paths } from '@/models/paths';
-import classnames from 'classnames';
-import Link from 'next/link';
 
 const Home: React.FC = () => {
   return (
@@ -16,11 +17,14 @@ const Home: React.FC = () => {
             )}>
             Welcome to Next.js!
           </h1>
+          <Link href={Paths.dod}>
+            <a className='d-block'>Department of Defense</a>
+          </Link>
           <Link href={Paths.caffeinator}>
-            <a>caffeinator</a>
+            <a className='d-block'>caffeinator</a>
           </Link>
           <Link href={Paths.portfolioV1}>
-            <a>Portfolio V1</a>
+            <a className='d-block'>Portfolio V1</a>
           </Link>
         </div>
         <h1 id='selected-work' style={{ minHeight: '100vh' }}>

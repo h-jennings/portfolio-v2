@@ -1,29 +1,31 @@
+import styles from '@scss/pages/Portfolio-v1.module.scss';
+import classnames from 'classnames';
+import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
 import React from 'react';
+
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { NextSeo } from 'next-seo';
-import { decodeHtml } from '@/helpers/decode-html';
+import { ProjectLayout } from '@/components/layouts/ProjectLayout/ProjectLayout';
 import {
   SplitContentLeft,
   SplitContentRight,
   SplitLayout,
 } from '@/components/layouts/SplitLayout/SplitLayout';
-import classnames from 'classnames';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
-import styles from '@scss/pages/Portfolio-v1.module.scss';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { Projects, projects } from '@/data/projects';
+import { decodeHtml } from '@/helpers/decode-html';
 import {
   getCurrentProject,
   getNextProject,
   getPreviousProject,
 } from '@/helpers/get-projects';
-import { NextPage } from 'next';
-import { projects, Projects } from '@/data/projects';
 
-interface PortfolioV1Props {
+type PortfolioV1Props = {
   projects: Projects;
   pathname: string;
-}
+};
 
 const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   const currentProject = React.useMemo(
@@ -54,7 +56,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   const imagePlaceholderBackgroundColor = '#f72d2e';
 
   return (
-    <>
+    <ProjectLayout>
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
@@ -129,7 +131,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
           </div>
         </SplitContentRight>
       </SplitLayout>
-    </>
+    </ProjectLayout>
   );
 };
 

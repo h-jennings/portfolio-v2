@@ -1,5 +1,8 @@
+import headshot from '@assets/images/headshot-cropped.jpg';
 import styles from '@scss/pages/About.module.scss';
 import classnames from 'classnames';
+import { NextSeo } from 'next-seo';
+
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import {
@@ -7,10 +10,8 @@ import {
   SplitContentRight,
   SplitLayout,
 } from '@/components/layouts/SplitLayout/SplitLayout';
-import { jobs, skills } from '@/data/about';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
-import headshot from '@assets/images/headshot-cropped.jpg';
-import { NextSeo } from 'next-seo';
+import { jobs, skills } from '@/data/about';
 import { decodeHtml } from '@/helpers/decode-html';
 
 const About: React.FC = () => {
