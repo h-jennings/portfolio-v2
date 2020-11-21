@@ -22,10 +22,10 @@ import {
   getPreviousProject,
 } from '@/helpers/get-projects';
 
-type PortfolioV1Props = {
+interface PortfolioV1Props {
   projects: Projects;
   pathname: string;
-};
+}
 
 const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   const currentProject = React.useMemo(

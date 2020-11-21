@@ -6,10 +6,10 @@ import { Paths } from '@/models/paths';
 
 import styles from './ProjectNavigationLinks.module.scss';
 
-type ProjectNavigationLinksProps = {
+interface ProjectNavigationLinksProps {
   next: Project | null;
   previous: Project | null;
-};
+}
 
 export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
   next,
