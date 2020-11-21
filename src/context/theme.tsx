@@ -13,10 +13,10 @@ import {
 export type AppThemes = 'dark' | 'light';
 type UpdateAppTheme = Dispatch<SetStateAction<AppThemes>>;
 
-type ThemeContextType = {
+interface ThemeContextType {
   theme: AppThemes;
   setTheme: UpdateAppTheme;
-};
+}
 
 const ThemeContext = createContext({} as ThemeContextType);
 

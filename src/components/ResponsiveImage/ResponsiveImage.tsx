@@ -2,13 +2,13 @@ import Image from 'next/image';
 import styles from './ResponsiveImage.module.scss';
 import { Colors } from '@/models/colors';
 
-type ResponsiveImageProps = {
+interface ResponsiveImageProps {
   height: number;
   width: number;
   src: string;
   bgColor?: string;
   altText?: string;
-};
+}
 
 export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   src,

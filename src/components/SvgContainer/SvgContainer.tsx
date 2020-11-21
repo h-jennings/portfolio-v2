@@ -1,9 +1,9 @@
 import styles from './SvgContainer.module.scss';
 
-type SvgContainerProps = {
+interface SvgContainerProps {
   svgWidth?: number;
   svgHeight?: number;
-};
+}
 export const SvgContainer: React.FC<SvgContainerProps> = ({
   children,
   svgHeight = 1,

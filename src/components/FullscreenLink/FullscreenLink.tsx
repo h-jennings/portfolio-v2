@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './FullscreenLink.module.scss';
 
-type FullscreenLinkProps = {
+interface FullscreenLinkProps {
   cta: string;
   href: string;
   title: string;
@@ -10,7 +10,7 @@ type FullscreenLinkProps = {
   imageHeight: number;
   src: string;
   alt?: string;
-};
+}
 
 export const FullscreenLink: React.FC<FullscreenLinkProps> = ({
   cta,
