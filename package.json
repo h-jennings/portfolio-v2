@@ -9,7 +9,8 @@
     "start": "next start",
     "test": "jest --watch",
     "test:staged": "jest --findRelatedTests",
-    "lint": "eslint --fix ./src/**/*.{js,ts,tsx}",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "format": "prettier --write './src/**/*.{js,jsx,ts,tsx,css,scss,json}'"
   },
   "husky": {

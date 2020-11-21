@@ -1,10 +1,12 @@
-import Link from 'next/link';
-import classnames from 'classnames';
-import styles from './MobileNavigation.module.scss';
+import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
 import { ReactComponent as MenuIcon } from '@assets/svg/mobile-menu.svg';
 import { SvgContainer } from '@components/SvgContainer/SvgContainer';
+import classnames from 'classnames';
+import Link from 'next/link';
+
 import { Paths } from '@/models/paths';
-import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
+
+import styles from './MobileNavigation.module.scss';
 
 export const MobileNavigation: React.FC = () => {
   return (

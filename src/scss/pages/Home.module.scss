@@ -1,0 +1,17 @@
+@import '@scss/global/config';
+@import '@scss/global/breakpoints';
+
+.container {
+  min-height: calc(100vh - var(--nav-height));
+}
+.headline {
+  font-size: clamp(var(--fz-lg), 7.8vw, var(--fz-super));
+  :first-child {
+    padding-right: 6.2vw;
+  }
+}
+.intro {
+  @include break-max-width(sm) {
+    font-size: var(--fz-sm);
+  }
+}

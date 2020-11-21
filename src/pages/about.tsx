@@ -28,7 +28,7 @@ const About: React.FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
@@ -91,7 +91,7 @@ const About: React.FC = () => {
           </section>
         </SplitContentRight>
       </SplitLayout>
-    </>
+    </div>
   );
 };
 

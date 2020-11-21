@@ -32,7 +32,7 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
         </li>
       ) : null}
       <li>
-        <Link href={Paths.work}>
+        <Link href={Paths.home}>
           <a className='underline-effect'>All Projects</a>
         </Link>
       </li>

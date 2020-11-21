@@ -1,6 +1,7 @@
 @import '@scss/global/core/_index';
 .navContainer {
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   padding: 0 var(--gutter, 90px);

@@ -25,6 +25,7 @@ $dim-props: (
 :root {
   --gutter: 90px;
   --nav-height: 152px;
+  --footer-height: 196px;
 
   @include break-max-width(lg) {
     --gutter: 64px;

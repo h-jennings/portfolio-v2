@@ -1,9 +1,12 @@
+import classnames from 'classnames';
 import { useRouter } from 'next/router';
 import React from 'react';
 
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
+
+import styles from './ProjectLayout.module.scss';
 
 export const ProjectLayout: React.FC = ({ children }) => {
   const { pathname } = useRouter();
@@ -16,7 +19,7 @@ export const ProjectLayout: React.FC = ({ children }) => {
     [currentProject],
   );
   return (
-    <>
+    <div className={classnames({ [styles.pagePad]: !nextProject })}>
       {children}
       {nextProject ? (
         <FullscreenLink
@@ -29,6 +32,6 @@ export const ProjectLayout: React.FC = ({ children }) => {
           src={nextProject.preview.src}
         />
       ) : null}
-    </>
+    </div>
   );
 };

@@ -1,6 +1,8 @@
 import Image from 'next/image';
-import styles from './ResponsiveImage.module.scss';
+
 import { Colors } from '@/models/colors';
+
+import styles from './ResponsiveImage.module.scss';
 
 interface ResponsiveImageProps {
   height: number;

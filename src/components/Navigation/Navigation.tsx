@@ -1,10 +1,11 @@
-import Link from 'next/link';
-import classnames from 'classnames';
-
-import styles from './Navigation.module.scss';
-import { Paths } from '@/models/paths';
 import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
+import classnames from 'classnames';
+import Link from 'next/link';
+
+import { Paths } from '@/models/paths';
+
 import { SvgContainer } from '../SvgContainer/SvgContainer';
+import styles from './Navigation.module.scss';
 
 export const Navigation: React.FC = () => {
   return (
@@ -28,7 +29,7 @@ export const Navigation: React.FC = () => {
         </Link>
         <div>
           <div className={classnames(['d-flex space-x-xl'])}>
-            <Link href={Paths.work}>
+            <Link href={Paths.home}>
               <a className='underline-effect'>work</a>
             </Link>
             <Link href={Paths.about}>

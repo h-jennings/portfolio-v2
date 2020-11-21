@@ -1,36 +1,24 @@
+import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
-import Link from 'next/link';
 
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { Paths } from '@/models/paths';
 
 const Home: React.FC = () => {
   return (
-    <div className={classnames(['d-block p-x-xl'])}>
-      <main>
-        <div style={{ minHeight: '100vh' }}>
-          <h1
-            data-testid='headline'
-            className={classnames(
-              'c-orange fw-bold m-b-xl sm:m-b-md ta-center lg-compact',
-            )}>
-            Welcome to Next.js!
-          </h1>
-          <Link href={Paths.dod}>
-            <a className='d-block'>Department of Defense</a>
-          </Link>
-          <Link href={Paths.caffeinator}>
-            <a className='d-block'>caffeinator</a>
-          </Link>
-          <Link href={Paths.portfolioV1}>
-            <a className='d-block'>Portfolio V1</a>
-          </Link>
-        </div>
-        <h1 id='selected-work' style={{ minHeight: '100vh' }}>
-          Selected Work
+    <div className={styles.container}>
+      <div className='d-flex flx-j-fe'>
+        <h1 className={classnames(['ta-r', styles.headline])}>
+          <span className={classnames(['d-block'])}>Front End</span>
+          <span className={classnames(['d-block'])}>Engineer</span>
         </h1>
-      </main>
+      </div>
+      <p className={classnames(['fz-base', styles.intro])}>
+        Hunter Jennings is currently working at Guidehouse in Washington D.C.{' '}
+        <span role='img' aria-label='American Flag emoji'>
+          🇺🇸
+        </span>
+      </p>
     </div>
   );
 };
