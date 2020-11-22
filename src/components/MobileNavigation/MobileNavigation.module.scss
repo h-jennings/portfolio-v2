@@ -2,13 +2,13 @@
 
 .container {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   right: 0;
   height: 56px;
   display: flex;
   align-items: center;
-  background-color: var(--ui-bg);
+  // background-color: var(--ui-bg);
   width: 100%;
   justify-content: space-between;
   padding: 0 var(--gutter);

@@ -1,0 +1,22 @@
+$position-property-names: (
+  p: position,
+);
+
+$position-property-values: (
+  p: (
+    absolute,
+    relative,
+    static,
+    sticky,
+    fixed,
+  ),
+);
+
+@each $p-key, $p-list in $position-property-values {
+  $p-name: safe-map-get($position-property-names, $p-key);
+  @each $p-val in $p-list {
+    .#{$p-key}-#{$p-val} {
+      #{$p-name}: $p-val;
+    }
+  }
+}

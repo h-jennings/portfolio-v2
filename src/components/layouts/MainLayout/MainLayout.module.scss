@@ -1,6 +1,17 @@
 @import '@scss/global/_config';
 @import '@scss/global/_breakpoints';
 
+.layoutContainer {
+  position: relative;
+}
+.siteContent {
+  &[data-drawer-status='open'] {
+    overflow: hidden;
+    position: fixed;
+    z-index: -1;
+  }
+}
+
 .bgBlock {
   width: 100%;
   height: var(--nav-height);
@@ -8,9 +19,12 @@
   position: absolute;
   top: 0;
   right: 0;
+
+  @include break-max-width(md) {
+    height: calc(var(--nav-height, 152px) + 48px);
+  }
 }
 .main {
-  min-height: 100vh;
   padding-top: var(--nav-height, 152px);
   background-color: var(--ui-03);
   display: flex;

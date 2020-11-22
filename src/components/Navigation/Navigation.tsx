@@ -2,12 +2,16 @@ import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
 import classnames from 'classnames';
 import Link from 'next/link';
 
+import { DrawerActions } from '@/helpers/menu-drawer-reducer';
 import { Paths } from '@/models/paths';
 
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './Navigation.module.scss';
 
-export const Navigation: React.FC = () => {
+interface NavigationProps {
+  dispatch: React.Dispatch<DrawerActions>;
+}
+export const Navigation: React.FC<NavigationProps> = ({ dispatch }) => {
   return (
     <nav
       aria-label='primary-navigation'
@@ -29,9 +33,7 @@ export const Navigation: React.FC = () => {
         </Link>
         <div>
           <div className={classnames(['d-flex space-x-xl'])}>
-            <Link href={Paths.home}>
-              <a className='underline-effect'>work</a>
-            </Link>
+            <button onClick={() => dispatch({ type: 'OPEN' })}>work</button>
             <Link href={Paths.about}>
               <a className='underline-effect'>about</a>
             </Link>

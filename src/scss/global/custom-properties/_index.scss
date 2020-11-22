@@ -10,4 +10,5 @@
   @include to-css-vars(color, map-get($app-config, colors));
   @include to-css-vars(ff, map-get($app-config, font-families));
   @include to-css-vars(fz, map-get($app-config, font-sizes));
+  @include to-css-vars(space, map-get($app-config, spacings));
 }

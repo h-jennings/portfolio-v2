@@ -3,6 +3,10 @@
 
 .container {
   min-height: calc(100vh - var(--nav-height));
+
+  @include break-max-width(md) {
+    min-height: calc(100vh - (var(--nav-height) + 48px));
+  }
 }
 .headline {
   font-size: clamp(var(--fz-lg), 7.8vw, var(--fz-super));
@@ -11,7 +15,11 @@
   }
 }
 .intro {
-  @include break-max-width(sm) {
+  bottom: 64px;
+  left: 0;
+  max-width: 297px;
+  @include break-max-width(md) {
     font-size: var(--fz-sm);
+    position: static;
   }
 }
