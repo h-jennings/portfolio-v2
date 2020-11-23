@@ -66,26 +66,25 @@ a {
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
+}
+.underline-effect {
+  position: relative;
 
-  &.underline-effect {
-    position: relative;
-
+  &::after {
+    content: '';
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--color-white);
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    max-width: 0;
+    @include default-transition;
+  }
+  &:hover {
     &::after {
-      content: '';
-      overflow: hidden;
-      width: 100%;
-      background-color: var(--color-white);
-      height: 1px;
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      max-width: 0;
-      @include default-transition;
-    }
-    &:hover {
-      &::after {
-        max-width: 100%;
-      }
+      max-width: 100%;
     }
   }
 }

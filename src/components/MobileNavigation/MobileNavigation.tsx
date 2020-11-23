@@ -4,18 +4,14 @@ import { SvgContainer } from '@components/SvgContainer/SvgContainer';
 import classnames from 'classnames';
 import Link from 'next/link';
 
-import { DrawerActions } from '@/helpers/menu-drawer-reducer';
+import { useMenuDrawer } from '@/context/menu-drawer';
 import { Paths } from '@/models/paths';
 
 import styles from './MobileNavigation.module.scss';
 
-interface MobileNavigationProps {
-  dispatch: React.Dispatch<DrawerActions>;
-}
+export const MobileNavigation: React.FC = () => {
+  const { dispatch } = useMenuDrawer();
 
-export const MobileNavigation: React.FC<MobileNavigationProps> = ({
-  dispatch,
-}) => {
   return (
     <nav className={classnames([styles.container])}>
       <Link href={Paths.home}>

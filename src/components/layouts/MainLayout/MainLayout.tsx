@@ -9,15 +9,17 @@ import Media from 'react-media';
 
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
-import { ThemeProvider } from '@/context/theme';
 import {
   drawerReducer,
   initialDrawerState,
-} from '@/helpers/menu-drawer-reducer';
+  MenuDrawerContext,
+} from '@/context/menu-drawer';
+import { ThemeProvider } from '@/context/theme';
 
 import styles from './MainLayout.module.scss';
 
 export const MainLayout: React.FC = ({ children }) => {
+  // Breakpoint for the navigation options
   const breakpoint = '(max-width: 768px)';
 
   // Animation (transform) values gathered from viewport scroll progress
@@ -35,50 +37,59 @@ export const MainLayout: React.FC = ({ children }) => {
     initialDrawerState,
   );
 
+  const value = React.useMemo(
+    () => ({
+      drawerState,
+      dispatch,
+    }),
+    [drawerState],
+  );
+
   return (
     <ThemeProvider>
-      <DefaultSeo {...SEO} />
-      <div className={styles.layoutContainer}>
-        <MenuDrawer state={drawerState} dispatch={dispatch} />
-        <div
-          data-drawer-status={drawerState.status}
-          className={classnames(['d-flex flx-j-c w-full', styles.siteContent])}>
-          <div className={styles.bgBlock} />
-          <div className={classnames(['w-full', styles.main])}>
-            <Media
-              queries={{ mobile: breakpoint }}
-              defaultMatches={{ mobile: false }}>
-              {(matches) => {
-                return (
-                  <>
-                    {matches.mobile ? (
-                      <MobileNavigation dispatch={dispatch} />
-                    ) : (
-                      <Navigation dispatch={dispatch} />
-                    )}
-                  </>
-                );
-              }}
-            </Media>
-            <motion.div
-              style={{ scale: containerScale, opacity: containerOpacity }}
-              className={styles.contentWrapper}>
-              <div
-                aria-label='page-content'
-                className={classnames(['flx-g-1 flx-s-1', styles.content])}>
-                {children}
-              </div>
-            </motion.div>
-            <motion.div
-              style={{ opacity: footerOpacity }}
-              className={styles.footerContainer}>
-              <div className={styles.footerWrapper}>
-                <Footer />
-              </div>
-            </motion.div>
+      <MenuDrawerContext.Provider value={value}>
+        <DefaultSeo {...SEO} />
+        <div className={styles.layoutContainer}>
+          <MenuDrawer />
+          <div
+            data-drawer-status={drawerState.status}
+            className={classnames([
+              'd-flex flx-j-c w-full',
+              styles.siteContent,
+            ])}>
+            <div className={styles.bgBlock} />
+            <div className={classnames(['w-full', styles.main])}>
+              <Media
+                queries={{ mobile: breakpoint }}
+                defaultMatches={{ mobile: false }}>
+                {(matches) => {
+                  return (
+                    <>
+                      {matches.mobile ? <MobileNavigation /> : <Navigation />}
+                    </>
+                  );
+                }}
+              </Media>
+              <motion.div
+                style={{ scale: containerScale, opacity: containerOpacity }}
+                className={styles.contentWrapper}>
+                <div
+                  aria-label='page-content'
+                  className={classnames(['flx-g-1 flx-s-1', styles.content])}>
+                  {children}
+                </div>
+              </motion.div>
+              <motion.div
+                style={{ opacity: footerOpacity }}
+                className={styles.footerContainer}>
+                <div className={styles.footerWrapper}>
+                  <Footer />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
+      </MenuDrawerContext.Provider>
     </ThemeProvider>
   );
 };

@@ -16,3 +16,10 @@
     j: justify,
   )
 );
+
+.button-reset {
+  @include button-reset;
+}
+.pointer {
+  cursor: pointer;
+}

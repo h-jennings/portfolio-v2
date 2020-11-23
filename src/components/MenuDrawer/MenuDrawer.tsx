@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import classnames from 'classnames';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import React from 'react';
 
+import { useMenuDrawer } from '@/context/menu-drawer';
 import { projects } from '@/data/projects';
-import { DrawerActions, DrawerState } from '@/helpers/menu-drawer-reducer';
 import { useClickOutside } from '@/helpers/use-click-outside';
 import { defaultSpringAnimation } from '@/models/spring-animation';
 
@@ -24,15 +27,12 @@ const menuDrawerContainerVariants = {
   },
 };
 
-interface MenuDrawerProps {
-  state: DrawerState;
-  dispatch: React.Dispatch<DrawerActions>;
-}
-export const MenuDrawer: React.FC<MenuDrawerProps> = ({ state, dispatch }) => {
+export const MenuDrawer: React.FC = () => {
+  const { dispatch, drawerState } = useMenuDrawer();
   const projs = [...projects];
   const ref = React.useRef(null);
 
-  const { status } = state;
+  const { status } = drawerState;
 
   const handleClickOutsideDrawer = () => {
     if (status === 'closed') return;
@@ -60,7 +60,11 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({ state, dispatch }) => {
           </header>
           <ol>
             {projs.map((proj) => (
-              <li key={proj.path}>{proj.name}</li>
+              <li key={proj.path}>
+                <Link href={proj.path}>
+                  <a onClick={() => dispatch({ type: 'CLOSE' })}>{proj.name}</a>
+                </Link>
+              </li>
             ))}
           </ol>
         </motion.div>

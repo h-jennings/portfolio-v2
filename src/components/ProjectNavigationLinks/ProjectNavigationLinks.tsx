@@ -1,8 +1,8 @@
 import classnames from 'classnames';
 import Link from 'next/link';
 
+import { useMenuDrawer } from '@/context/menu-drawer';
 import { Project } from '@/data/projects';
-import { Paths } from '@/models/paths';
 
 import styles from './ProjectNavigationLinks.module.scss';
 
@@ -15,6 +15,7 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
   next,
   previous,
 }) => {
+  const { dispatch } = useMenuDrawer();
   return (
     <ul className={classnames(['space-y-xsm', styles.container])}>
       {previous ? (
@@ -32,9 +33,11 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
         </li>
       ) : null}
       <li>
-        <Link href={Paths.home}>
-          <a className='underline-effect'>All Projects</a>
-        </Link>
+        <button
+          className='underline-effect button-reset pointer'
+          onClick={() => dispatch({ type: 'OPEN' })}>
+          All Projects
+        </button>
       </li>
     </ul>
   );

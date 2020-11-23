@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type DrawerState = { status: 'open' } | { status: 'closed' };
 export type DrawerActions =
   | {
@@ -25,5 +27,19 @@ function drawerReducer(state: DrawerState, action: DrawerActions): DrawerState {
       throw new Error('impossible state');
   }
 }
+interface MenuDrawerContextType {
+  drawerState: DrawerState;
+  dispatch: React.Dispatch<DrawerActions>;
+}
 
-export { drawerReducer, initialDrawerState };
+const MenuDrawerContext = React.createContext({} as MenuDrawerContextType);
+
+function useMenuDrawer(): MenuDrawerContextType {
+  const context = React.useContext(MenuDrawerContext);
+  if (context === undefined) {
+    throw new Error('useMenuDrawer must be used within a MenuDrawerProvider');
+  }
+  return context;
+}
+
+export { drawerReducer, initialDrawerState, MenuDrawerContext, useMenuDrawer };

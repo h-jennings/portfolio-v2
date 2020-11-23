@@ -10,6 +10,10 @@
   @include link-reset;
   width: 24px;
 }
+.work {
+  @include button-reset;
+  cursor: pointer;
+}
 
 .icon {
   path {
