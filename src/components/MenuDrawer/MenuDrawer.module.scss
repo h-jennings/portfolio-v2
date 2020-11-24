@@ -17,13 +17,19 @@
   height: 100vh;
   width: 100vw;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
 }
 .drawer {
   color: var(--text-01);
   background-color: var(--color-blue);
-  width: 494px;
+  // width: 494px;
   z-index: 1;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px;
 }
 .blur {
   -webkit-backdrop-filter: blur(9px);
@@ -36,4 +42,15 @@
   top: 0;
   right: 0;
   z-index: -1;
+}
+
+.list {
+  list-style: none;
+}
+
+.listItem {
+  font-size: var(--fz-lg);
+  a {
+    font-size: inherit;
+  }
 }

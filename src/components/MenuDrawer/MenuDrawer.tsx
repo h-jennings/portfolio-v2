@@ -8,6 +8,7 @@ import React from 'react';
 import { useMenuDrawer } from '@/context/menu-drawer';
 import { projects } from '@/data/projects';
 import { useClickOutside } from '@/helpers/use-click-outside';
+import { useKeypressListener } from '@/helpers/use-keypress-listener';
 import { defaultSpringAnimation } from '@/models/spring-animation';
 
 import styles from './MenuDrawer.module.scss';
@@ -20,7 +21,7 @@ const menuDrawerContainerVariants = {
     },
   },
   closed: {
-    x: '-100%',
+    x: '100%',
     transition: {
       ...defaultSpringAnimation,
     },
@@ -40,7 +41,16 @@ export const MenuDrawer: React.FC = () => {
     dispatch({ type: 'CLOSE' });
   };
 
+  // * Handling click outside-of-drawer-container-to-close UX
   useClickOutside(ref, handleClickOutsideDrawer);
+
+  // * Handling Escape Keypress for drawer !
+  const handleKeyPress = (): void => {
+    if (drawerState.status === 'closed') return;
+    dispatch({ type: 'CLOSE' });
+  };
+
+  useKeypressListener('Escape', handleKeyPress);
 
   return (
     <div
@@ -54,13 +64,13 @@ export const MenuDrawer: React.FC = () => {
           variants={menuDrawerContainerVariants}
           initial='closed'
           className={styles.drawer}>
-          <header>
-            <h1>Work</h1>
+          <header className='d-flex flx-j-sb'>
+            <h1 className='fz-md'>Selected Work</h1>
             <button onClick={() => dispatch({ type: 'CLOSE' })}>close</button>
           </header>
-          <ol>
+          <ol className={classnames(['space-y-sm', styles.list])}>
             {projs.map((proj) => (
-              <li key={proj.path}>
+              <li key={proj.path} className={styles.listItem}>
                 <Link href={proj.path}>
                   <a onClick={() => dispatch({ type: 'CLOSE' })}>{proj.name}</a>
                 </Link>

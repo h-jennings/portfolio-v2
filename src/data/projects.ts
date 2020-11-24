@@ -9,6 +9,7 @@ export interface Project {
   name: string;
   path: string;
   preview: Preview;
+  year: number;
 }
 
 export type Projects = Project[];
@@ -16,6 +17,7 @@ export type Projects = Project[];
 export const projects: Projects = [
   {
     name: 'Department of Defense',
+    year: 2020,
     path: ProjectPaths.dod.toString(),
     preview: {
       src: '/images/caffeinator/caffeinator-image-1.png',
@@ -25,6 +27,7 @@ export const projects: Projects = [
   },
   {
     name: 'Caffeinator',
+    year: 2019,
     path: ProjectPaths.caffeinator.toString(),
     preview: {
       src: '/images/caffeinator/caffeinator-image-1.png',
@@ -34,6 +37,7 @@ export const projects: Projects = [
   },
   {
     name: 'Portfolio - V1',
+    year: 2019,
     path: ProjectPaths.portfolioV1.toString(),
     preview: {
       src: '/images/portfolio-v1/portfolio-v1-mobile-images.jpg',
