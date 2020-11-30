@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { WithPageAnimation } from '@/components/layouts/WithPageAnimation/WithPageAnimation';
+import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
@@ -23,12 +24,17 @@ const Home: NextPage<HomeProps> = () => {
             <RevealText>Engineer</RevealText>
           </h1>
         </div>
-        <p className={classnames(['fz-base p-absolute', styles.intro])}>
-          Hunter Jennings is currently working at Guidehouse in Washington D.C.{' '}
-          <span role='img' aria-label='American Flag emoji'>
-            🇺🇸
-          </span>
-        </p>
+        <div className={classnames(['p-absolute', styles.intro])}>
+          <RevealBox>
+            <p className={classnames(['fz-base'])}>
+              Hunter Jennings is currently working at Guidehouse in Washington
+              D.C.{' '}
+              <span role='img' aria-label='American Flag emoji'>
+                🇺🇸
+              </span>
+            </p>
+          </RevealBox>
+        </div>
       </section>
       <section
         id='selected-work'

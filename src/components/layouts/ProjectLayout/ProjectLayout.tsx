@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
+import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
 
@@ -24,15 +25,17 @@ export const ProjectLayout: React.FC = ({ children }) => {
       <div className={classnames({ [styles.pagePad]: !nextProject })}>
         {children}
         {nextProject ? (
-          <FullscreenLink
-            cta='Explore next project'
-            href={nextProject.path}
-            title={nextProject.name}
-            imageWidth={nextProject.preview.width}
-            imageHeight={nextProject.preview.height}
-            alt='Picture of me'
-            src={nextProject.preview.src}
-          />
+          <RevealBox>
+            <FullscreenLink
+              cta='Explore next project'
+              href={nextProject.path}
+              title={nextProject.name}
+              imageWidth={nextProject.preview.width}
+              imageHeight={nextProject.preview.height}
+              alt='Picture of me'
+              src={nextProject.preview.src}
+            />
+          </RevealBox>
         ) : null}
       </div>
     </WithPageAnimation>

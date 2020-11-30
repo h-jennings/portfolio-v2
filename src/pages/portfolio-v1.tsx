@@ -14,6 +14,7 @@ import {
 } from '@/components/layouts/SplitLayout/SplitLayout';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
@@ -65,71 +66,90 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
             <RevealText>Portfolio V1</RevealText>
           </h1>
           <h2 className='m-b-lg lh-default'>
-            My first portfolio, created in 2019.
+            <RevealText>{description}</RevealText>
           </h2>
-          <div className={classnames(['d-flex space-x-lg', styles.details])}>
-            <ProjectNavigationLinks next={nextProject} previous={prevProject} />
+          <RevealBox>
+            <div className={classnames(['d-flex space-x-lg', styles.details])}>
+              <ProjectNavigationLinks
+                next={nextProject}
+                previous={prevProject}
+              />
 
-            {/* make component */}
-            <div style={{ flex: 1 }}>
-              <ul className='space-y-md'>
-                <li>
-                  <h3 className='m-b-sm'>What I Did</h3>
-                  <p>Design and Development</p>
-                </li>
-                <li>
-                  <h3 className='m-b-sm'>Tech</h3>
-                  <p>React, Sass, Framer Motion, Webpack</p>
-                </li>
-              </ul>
+              {/* make component */}
+              <div style={{ flex: 1 }}>
+                <ul className='space-y-md'>
+                  <li>
+                    <h3 className='m-b-sm'>What I Did</h3>
+                    <p>Design and Development</p>
+                  </li>
+                  <li>
+                    <h3 className='m-b-sm'>Tech</h3>
+                    <p>React, Sass, Framer Motion, Webpack</p>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </RevealBox>
         </SplitContentLeft>
         <SplitContentRight>
           <div className={styles.mediaContainer}>
             <div className={styles.image1}>
-              <ResponsiveImage
-                height={1160}
-                width={1450}
-                src='/images/portfolio-v1/portfolio-v1-mobile-images.jpg'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <RevealBox>
+                <ResponsiveImage
+                  height={1160}
+                  width={1450}
+                  src='/images/portfolio-v1/portfolio-v1-mobile-images.jpg'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </RevealBox>
             </div>
             <div className={styles.image2}>
-              <ResponsiveImage
-                height={646}
-                width={808}
-                src='/images/portfolio-v1/portfolio-v1-logo.jpg'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <RevealBox>
+                <ResponsiveImage
+                  height={646}
+                  width={808}
+                  src='/images/portfolio-v1/portfolio-v1-logo.jpg'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </RevealBox>
             </div>
-            <p className={styles.text1}>
-              My goal for this project was simple: I wanted to learn the concept
-              of hierarchal finite state machines. To accomplish this, I chose
-              to use the growing JavaScript library: XState. In order to learn
-              the ins-and-outs of the programming concept, I decided to make an
-              app that was complex enough to go beyond the basics, but still be
-              a reasonable side project.
-            </p>
-            <p className={styles.text2}>
-              The bulk of the application is essentially a gigantic state
-              machine with complex transitions based on user interactions and
-              time. This project completely changed the way I think about front
-              end interactions and application state. Since completing this app,
-              I&apos;ve taken these concepts and applied them to
-              production-level applications due to their framework-agnostic
-              nature.
-            </p>
+            <div className={styles.text1}>
+              <RevealBox>
+                <p>
+                  My goal for this project was simple: I wanted to learn the
+                  concept of hierarchal finite state machines. To accomplish
+                  this, I chose to use the growing JavaScript library: XState.
+                  In order to learn the ins-and-outs of the programming concept,
+                  I decided to make an app that was complex enough to go beyond
+                  the basics, but still be a reasonable side project.
+                </p>
+              </RevealBox>
+            </div>
+            <div className={styles.text2}>
+              <RevealBox>
+                <p className={styles.text2}>
+                  The bulk of the application is essentially a gigantic state
+                  machine with complex transitions based on user interactions
+                  and time. This project completely changed the way I think
+                  about front end interactions and application state. Since
+                  completing this app, I&apos;ve taken these concepts and
+                  applied them to production-level applications due to their
+                  framework-agnostic nature.
+                </p>
+              </RevealBox>
+            </div>
             <div className={styles.image3}>
-              <ResponsiveImage
-                height={2529}
-                width={1857}
-                src='/images/portfolio-v1/portfolio-v1-full.png'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <RevealBox>
+                <ResponsiveImage
+                  height={2529}
+                  width={1857}
+                  src='/images/portfolio-v1/portfolio-v1-full.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </RevealBox>
             </div>
           </div>
         </SplitContentRight>

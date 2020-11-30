@@ -7,7 +7,7 @@ const imageRevealVariant = {
     opacity: 1,
     transition: {
       type: 'tween',
-      duration: 0.3,
+      duration: 0.25,
       delay: 0.1,
     },
   },
@@ -17,7 +17,7 @@ const imageRevealVariant = {
   },
 };
 
-export const Reveal: React.FC = ({ children }) => {
+export const RevealBox: React.FC = ({ children }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
