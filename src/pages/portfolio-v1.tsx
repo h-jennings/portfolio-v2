@@ -123,7 +123,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
               <ResponsiveImage
                 height={2529}
                 width={1857}
-                src='/images/portfolio-v1/portfolio-v1-full.jpg'
+                src='/images/portfolio-v1/portfolio-v1-full.png'
                 altText='screenshot of caffeinator homepage'
                 bgColor={imagePlaceholderBackgroundColor}
               />
