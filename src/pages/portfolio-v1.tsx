@@ -14,6 +14,7 @@ import {
 } from '@/components/layouts/SplitLayout/SplitLayout';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { RevealText } from '@/components/RevealText/RevealText';
 import { Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
 import {
@@ -60,7 +61,9 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
-          <h1 className='m-b-xl md:m-b-md'>Portfolio V1</h1>
+          <h1 className='m-b-xl md:m-b-md'>
+            <RevealText>Portfolio V1</RevealText>
+          </h1>
           <h2 className='m-b-lg lh-default'>
             My first portfolio, created in 2019.
           </h2>

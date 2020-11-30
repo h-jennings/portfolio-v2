@@ -14,6 +14,7 @@ import {
 } from '@/components/layouts/SplitLayout/SplitLayout';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { RevealText } from '@/components/RevealText/RevealText';
 import { Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
 import {
@@ -61,7 +62,9 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
       <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
-          <h1 className='m-b-xl md:m-b-md'>{currentProject.name}</h1>
+          <h1 className='m-b-xl md:m-b-md'>
+            <RevealText>{currentProject.name}</RevealText>
+          </h1>
           <h2 className='m-b-lg lh-default'>{description}</h2>
           <div className={classnames(['d-flex space-x-lg', styles.details])}>
             <ProjectNavigationLinks next={nextProject} previous={prevProject} />

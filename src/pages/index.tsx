@@ -5,6 +5,7 @@ import { NextPage } from 'next';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { WithPageAnimation } from '@/components/layouts/WithPageAnimation/WithPageAnimation';
+import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
 
@@ -18,8 +19,8 @@ const Home: NextPage<HomeProps> = () => {
       <section className={classnames(['p-relative', styles.container])}>
         <div className='d-flex flx-j-fe'>
           <h1 className={classnames(['ta-r md:m-b-md', styles.headline])}>
-            <span className={classnames(['d-block'])}>Front End</span>
-            <span className={classnames(['d-block'])}>Engineer</span>
+            <RevealText>Front End</RevealText>
+            <RevealText>Engineer</RevealText>
           </h1>
         </div>
         <p className={classnames(['fz-base p-absolute', styles.intro])}>
