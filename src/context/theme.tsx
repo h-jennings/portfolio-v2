@@ -1,6 +1,6 @@
 import React, { Dispatch, MutableRefObject, SetStateAction } from 'react';
 
-export type AppThemes = 'dark' | 'light';
+export type AppThemes = 'dark' | 'light' | 'orange' | 'blue' | 'grey';
 type UpdateAppTheme = Dispatch<SetStateAction<AppThemes>>;
 
 interface ThemeContextType {

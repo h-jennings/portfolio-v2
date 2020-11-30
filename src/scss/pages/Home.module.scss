@@ -1,8 +1,10 @@
 @import '@scss/global/config';
 @import '@scss/global/breakpoints';
+@import '@scss/global/core/_mixins';
 
 .container {
   min-height: calc(100vh - var(--nav-height));
+  // min-height: 700px;
 
   @include break-max-width(md) {
     min-height: calc(100vh - (var(--nav-height) + 48px));
@@ -22,4 +24,35 @@
     font-size: var(--fz-sm);
     position: static;
   }
+}
+
+.selectedWorkList {
+  list-style: none;
+}
+
+.bar {
+  @include default-transition;
+  width: 2px;
+}
+
+.link {
+  &:hover {
+    .bar {
+      background-color: var(--color-white) !important;
+    }
+  }
+}
+
+.listItemText {
+  flex: 1;
+  font-size: var(--fz-xxl);
+}
+
+.hoverImage {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }

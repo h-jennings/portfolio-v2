@@ -15,7 +15,6 @@ import {
   MenuDrawerContext,
 } from '@/context/menu-drawer';
 import { ThemeProvider } from '@/context/theme';
-import { useKeypressListener } from '@/helpers/use-keypress-listener';
 
 import styles from './MainLayout.module.scss';
 

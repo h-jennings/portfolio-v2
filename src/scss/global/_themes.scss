@@ -13,3 +13,27 @@
   --text-01: var(--color-black);
   --text-02: var(--color-grey);
 }
+
+.root[data-theme='orange'] {
+  --ui-bg: var(--color-orange);
+  --ui-01: var(--color-white);
+  --ui-02: var(--color-white);
+  --text-01: var(--color-white);
+  --text-02: var(--color-grey);
+}
+
+.root[data-theme='blue'] {
+  --ui-bg: var(--color-blue);
+  --ui-01: var(--color-white);
+  --ui-02: var(--color-white);
+  --text-01: var(--color-white);
+  --text-02: var(--color-grey);
+}
+
+.root[data-theme='grey'] {
+  --ui-bg: var(--color-grey);
+  --ui-01: var(--color-black);
+  --ui-02: var(--color-white);
+  --text-01: var(--color-white);
+  --text-02: var(--color-black);
+}

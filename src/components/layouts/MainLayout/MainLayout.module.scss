@@ -1,5 +1,6 @@
 @import '@scss/global/_config';
 @import '@scss/global/_breakpoints';
+@import '@scss/global/core/mixins';
 
 .layoutContainer {
   position: relative;
@@ -19,6 +20,8 @@
   position: absolute;
   top: 0;
   right: 0;
+
+  @include default-transition;
 
   @include break-max-width(md) {
     height: calc(var(--nav-height, 152px) + 48px);
@@ -41,6 +44,7 @@
   display: flex;
   justify-content: center;
   background-color: var(--ui-bg);
+  @include default-transition;
   z-index: 1;
   position: relative;
   transform-origin: center;
