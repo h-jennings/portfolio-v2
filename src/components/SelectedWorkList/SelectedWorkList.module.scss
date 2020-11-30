@@ -1,0 +1,28 @@
+@import '@scss/global/core/_mixins';
+
+.list {
+  list-style: none;
+}
+
+.bar {
+  @include default-transition;
+  width: 2px;
+}
+
+.link {
+  &:hover {
+    .bar {
+      background-color: var(--color-white) !important;
+    }
+  }
+}
+
+.listItem {
+  z-index: 2;
+  position: relative;
+}
+
+.listItemText {
+  flex: 1;
+  font-size: var(--fz-xxl);
+}

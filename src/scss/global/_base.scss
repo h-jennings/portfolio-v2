@@ -6,3 +6,8 @@ html {
 .root {
   background-color: var(--ui-bg);
 }
+
+// Util for identifying elements in the DOM
+.\? {
+  outline: 1px solid red;
+}
