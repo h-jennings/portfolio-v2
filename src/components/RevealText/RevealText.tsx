@@ -21,6 +21,7 @@ const textVariant = {
 export const RevealText: React.FC = ({ children }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
+    threshold: 0.2,
   });
   return (
     <span ref={ref} className={styles.outer}>

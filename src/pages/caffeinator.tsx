@@ -14,6 +14,7 @@ import {
 } from '@/components/layouts/SplitLayout/SplitLayout';
 import { ProjectNavigationLinks } from '@/components/ProjectNavigationLinks/ProjectNavigationLinks';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { Reveal } from '@/components/Reveal/Reveal';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
@@ -88,22 +89,26 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
         <SplitContentRight>
           <div className={styles.mediaContainer}>
             <div className={styles.image1}>
-              <ResponsiveImage
-                height={816}
-                width={1450}
-                src='/images/caffeinator/caffeinator-image-1.png'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <Reveal>
+                <ResponsiveImage
+                  height={816}
+                  width={1450}
+                  src='/images/caffeinator/caffeinator-image-1.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </Reveal>
             </div>
             <div className={styles.image2}>
-              <ResponsiveImage
-                height={646}
-                width={808}
-                src='/images/caffeinator/caffeinator-image-2.png'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <Reveal>
+                <ResponsiveImage
+                  height={646}
+                  width={808}
+                  src='/images/caffeinator/caffeinator-image-2.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </Reveal>
             </div>
             <p className={styles.text1}>
               My goal for this project was simple: I wanted to learn the concept
@@ -123,13 +128,15 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
               nature.
             </p>
             <div className={styles.image3}>
-              <ResponsiveImage
-                height={1160}
-                width={1450}
-                src='/images/caffeinator/caffeinator-image-3.png'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <Reveal>
+                <ResponsiveImage
+                  height={1160}
+                  width={1450}
+                  src='/images/caffeinator/caffeinator-image-3.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </Reveal>
             </div>
             <p className={classnames(['fz-base', styles.text3])}>
               The original concept of Hierarchal Finite State Machines
@@ -137,13 +144,15 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
               David Harel.
             </p>
             <div className={styles.image4}>
-              <ResponsiveImage
-                height={696}
-                width={1236}
-                src='/images/caffeinator/caffeinator-image-4.png'
-                altText='screenshot of caffeinator homepage'
-                bgColor={imagePlaceholderBackgroundColor}
-              />
+              <Reveal>
+                <ResponsiveImage
+                  height={696}
+                  width={1236}
+                  src='/images/caffeinator/caffeinator-image-4.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </Reveal>
             </div>
           </div>
         </SplitContentRight>
