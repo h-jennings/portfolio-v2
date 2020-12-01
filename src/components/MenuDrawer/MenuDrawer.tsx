@@ -53,24 +53,26 @@ export const MenuDrawer: React.FC = () => {
   useKeypressListener('Escape', handleKeyPress);
 
   return (
-    <div
+    <motion.div
       data-drawer-status={status}
       tabIndex={-1}
+      animate={status}
+      variants={menuDrawerContainerVariants}
+      initial='closed'
       className={classnames(['p-fixed', styles.container])}>
       <div className={styles.wrapper}>
         <motion.div
           ref={ref}
-          animate={status}
-          variants={menuDrawerContainerVariants}
-          initial='closed'
-          className={styles.drawer}>
+          className={classnames(['p-y-lg p-x-md', styles.drawer])}>
           <header className='d-flex flx-j-sb'>
-            <h1 className='fz-md'>Selected Work</h1>
+            <h1 className='fz-base'>Selected Work</h1>
             <button onClick={() => dispatch({ type: 'CLOSE' })}>close</button>
           </header>
           <ol className={classnames(['space-y-sm', styles.list])}>
             {projs.map((proj) => (
-              <li key={proj.path} className={styles.listItem}>
+              <li
+                key={proj.path}
+                className={classnames(['fz-md', styles.listItem])}>
                 <Link href={proj.path}>
                   <a onClick={() => dispatch({ type: 'CLOSE' })}>{proj.name}</a>
                 </Link>
@@ -78,14 +80,7 @@ export const MenuDrawer: React.FC = () => {
             ))}
           </ol>
         </motion.div>
-        <motion.div
-          className={styles.blur}
-          animate={{ opacity: status === 'closed' ? 0 : 1 }}
-          initial={{ opacity: 0 }}
-          transition={defaultSpringAnimation}
-          onClick={() => dispatch({ type: 'CLOSE' })}
-        />
       </div>
-    </div>
+    </motion.div>
   );
 };

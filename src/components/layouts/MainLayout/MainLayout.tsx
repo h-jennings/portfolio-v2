@@ -50,7 +50,6 @@ export const MainLayout: React.FC = ({ children }) => {
       <MenuDrawerContext.Provider value={value}>
         <DefaultSeo {...SEO} />
         <div className={styles.layoutContainer}>
-          {/* <MenuDrawer /> */}
           <div
             data-drawer-status={drawerState.status}
             className={classnames([
@@ -88,6 +87,7 @@ export const MainLayout: React.FC = ({ children }) => {
               </motion.div>
             </div>
           </div>
+          <MenuDrawer />
         </div>
       </MenuDrawerContext.Provider>
     </ThemeProvider>

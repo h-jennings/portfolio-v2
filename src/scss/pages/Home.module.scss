@@ -6,7 +6,6 @@
   min-height: calc(100vh - var(--nav-height));
 
   @include break-max-width(md) {
-    // min-height: calc(100vh - (var(--nav-height) + 48px));
     min-height: calc(100vh - (var(--nav-height) + 48px));
   }
 }
