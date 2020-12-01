@@ -9,6 +9,7 @@ import { Project } from '@/data/projects';
 import { Colors } from '@/models/colors';
 
 import { HoverImage } from '../HoverImage/HoverImage';
+import { RevealText } from '../RevealText/RevealText';
 import styles from './SelectedWorkList.module.scss';
 
 type HoverImageState =
@@ -117,27 +118,33 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
     handleHoverImageStateChange(i);
   };
   return (
-    <ol className={classnames(['space-y-xl p-b-xxl', styles.list])}>
+    <ol
+      className={classnames(['space-y-xl md:space-y-md p-b-xxl', styles.list])}>
       {projects.map((proj, i) => (
         <li key={proj.path} className={styles.listItem}>
-          <Link href={proj.path}>
-            <a
-              onMouseEnter={() => handleLinkAction(i)}
-              onMouseLeave={() => handleLinkAction()}
-              onFocus={() => handleLinkAction(i)}
-              onBlur={() => handleLinkAction()}
-              onClick={() => handleLinkAction()}
-              className={classnames(['d-flex space-x-lg', styles.link])}>
-              <div
-                aria-hidden={true}
-                className={styles.bar}
-                style={{ backgroundColor: linkData[i].hex ?? Colors.white }}
-              />
-              <div className={classnames(['lh-1', styles.listItemText])}>
-                {proj.name}
-              </div>
-            </a>
-          </Link>
+          <RevealText>
+            <Link href={proj.path}>
+              <a
+                onMouseEnter={() => handleLinkAction(i)}
+                onMouseLeave={() => handleLinkAction()}
+                onFocus={() => handleLinkAction(i)}
+                onBlur={() => handleLinkAction()}
+                onClick={() => handleLinkAction()}
+                className={classnames([
+                  'd-flex space-x-lg md:space-x-md',
+                  styles.link,
+                ])}>
+                <div
+                  aria-hidden={true}
+                  className={styles.bar}
+                  style={{ backgroundColor: linkData[i].hex ?? Colors.white }}
+                />
+                <div className={classnames(['lh-1', styles.listItemText])}>
+                  {proj.name}
+                </div>
+              </a>
+            </Link>
+          </RevealText>
         </li>
       ))}
       <HoverImage src={hoverImageState.src} status={hoverImageState.status} />

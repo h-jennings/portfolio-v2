@@ -19,7 +19,7 @@ const Home: NextPage<HomeProps> = () => {
     <WithPageAnimation>
       <section className={classnames(['p-relative', styles.container])}>
         <div className='d-flex flx-j-fe'>
-          <h1 className={classnames(['ta-r md:m-b-md', styles.headline])}>
+          <h1 className={classnames(['ta-r md:m-b-lg', styles.headline])}>
             <RevealText>Front End</RevealText>
             <RevealText>Engineer</RevealText>
           </h1>
@@ -38,8 +38,14 @@ const Home: NextPage<HomeProps> = () => {
       </section>
       <section
         id='selected-work'
-        className={classnames(['p-t-xxl', styles.work])}>
-        <h1 className='fz-lg m-b-xxl'>Selected Work</h1>
+        className={classnames(['p-t-xxl md:p-t-lg', styles.work])}>
+        <h1
+          className={classnames([
+            'fz-lg m-b-xxl md:m-b-lg',
+            styles.workHeadline,
+          ])}>
+          <RevealText>Selected Work</RevealText>
+        </h1>
         <SelectedWorkList projects={projects} />
       </section>
     </WithPageAnimation>

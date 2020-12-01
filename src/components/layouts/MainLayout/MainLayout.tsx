@@ -50,7 +50,7 @@ export const MainLayout: React.FC = ({ children }) => {
       <MenuDrawerContext.Provider value={value}>
         <DefaultSeo {...SEO} />
         <div className={styles.layoutContainer}>
-          <MenuDrawer />
+          {/* <MenuDrawer /> */}
           <div
             data-drawer-status={drawerState.status}
             className={classnames([

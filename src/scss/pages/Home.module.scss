@@ -6,10 +6,12 @@
   min-height: calc(100vh - var(--nav-height));
 
   @include break-max-width(md) {
+    // min-height: calc(100vh - (var(--nav-height) + 48px));
     min-height: calc(100vh - (var(--nav-height) + 48px));
   }
 }
 .headline {
+  line-height: 1.2;
   font-size: clamp(var(--fz-lg), 7.8vw, var(--fz-super));
   :first-child {
     padding-right: 6.2vw;
@@ -20,11 +22,21 @@
   left: 0;
   max-width: 297px;
   @include break-max-width(md) {
-    font-size: var(--fz-sm);
+    p {
+      font-size: var(--fz-sm);
+    }
     position: static;
   }
 }
 
 .work {
   min-height: 100vh;
+  @include break-max-width(md) {
+    // min-height: calc(100vh - (var(--nav-height) + 48px));
+    min-height: 80vh;
+  }
+}
+
+.workHeadline {
+  font-size: clamp(var(--fz-base), 5vw, var(--fz-lg));
 }

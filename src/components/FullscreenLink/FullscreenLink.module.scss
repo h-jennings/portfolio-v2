@@ -9,6 +9,11 @@
   align-items: center;
   padding: 0 var(--gutter, 90px);
 }
+
+.title {
+  font-size: clamp(var(--fz-md), 7.8vw, var(--fz-xl));
+}
+
 .link {
   max-width: 619px;
   .imageContainer {

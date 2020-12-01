@@ -104,3 +104,28 @@ $gap-property-names: (
     }
   }
 }
+
+// * RESPONSIVE PARENT/CHILD RELATIONSHIP SPACING HELPERS
+$breakpoints: map-get($app-config, breakpoints);
+@each $bp-key, $bp in $breakpoints {
+  @include break-max-width($bp-key) {
+    @each $space-key, $space-val in $spacings {
+      .#{$bp-key}\:space-y-#{$space-key} {
+        > :not(template) {
+          margin-bottom: $space-val;
+        }
+        > :last-child {
+          margin-bottom: 0;
+        }
+      }
+      .#{$bp-key}\:space-x-#{$space-key} {
+        > :not(template) {
+          margin-right: $space-val;
+        }
+        > :last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

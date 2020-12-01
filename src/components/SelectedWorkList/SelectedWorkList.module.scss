@@ -24,5 +24,6 @@
 
 .listItemText {
   flex: 1;
-  font-size: var(--fz-xxl);
+  font-size: clamp(var(--fz-md), 5.5vw, var(--fz-xxl));
+  line-height: 1.2;
 }
