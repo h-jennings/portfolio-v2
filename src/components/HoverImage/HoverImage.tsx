@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
+import { defaultSpringAnimation } from '@/animation/spring-animation';
 import { useMouseCoordinates } from '@/helpers/use-mouse-coordinates';
-import { defaultSpringAnimation } from '@/models/spring-animation';
 
 import styles from './HoverImage.module.scss';
 

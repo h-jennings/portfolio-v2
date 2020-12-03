@@ -5,11 +5,11 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 
+import { defaultSpringAnimation } from '@/animation/spring-animation';
 import { useMenuDrawer } from '@/context/menu-drawer';
 import { projects } from '@/data/projects';
 import { useClickOutside } from '@/helpers/use-click-outside';
 import { useKeypressListener } from '@/helpers/use-keypress-listener';
-import { defaultSpringAnimation } from '@/models/spring-animation';
 
 import styles from './MenuDrawer.module.scss';
 
