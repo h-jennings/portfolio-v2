@@ -1,15 +1,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import classnames from 'classnames';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useReducer } from 'react';
+import Media from 'react-media';
 
+import { HoverImage } from '@/components/HoverImage/HoverImage';
+import { RevealText } from '@/components/RevealText/RevealText';
 import { AppThemes, useTheme } from '@/context/theme';
 import { Project } from '@/data/projects';
 import { Colors } from '@/models/colors';
 
-import { HoverImage } from '../HoverImage/HoverImage';
-import { RevealText } from '../RevealText/RevealText';
 import styles from './SelectedWorkList.module.scss';
 
 type HoverImageState =
@@ -61,9 +63,29 @@ interface SelectedWorkListProps {
   projects: Project[];
 }
 
-export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
-  projects,
-}) => {
+const SelectedWorkList: React.FC<SelectedWorkListProps> = ({ projects }) => {
+  // Breakpoint for the navigation options
+  const breakpoint = '(max-width: 768px)';
+  return (
+    <Media queries={{ mobile: breakpoint }} defaultMatches={{ mobile: false }}>
+      {(matches) => {
+        return (
+          <>
+            {matches.mobile ? (
+              <Mobile projects={projects} />
+            ) : (
+              <Desktop projects={projects} />
+            )}
+          </>
+        );
+      }}
+    </Media>
+  );
+};
+
+const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
+  // TODO: Reset theme on route
+
   const { setTheme } = useTheme();
   const [hoverImageState, dispatch] = useReducer(
     hoverImageReducer,
@@ -101,33 +123,33 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
       },
     },
   ];
-  const handleThemeChange = (i?: number): void => {
-    i !== undefined ? setTheme(linkData[i].theme) : setTheme('dark');
+  const handleThemeChange = (idx?: number): void => {
+    idx !== undefined ? setTheme(linkData[idx].theme) : setTheme('dark');
   };
-  const handleHoverImageStateChange = (i?: number): void => {
-    i !== undefined
-      ? dispatch(linkData[i].action)
+  const handleHoverImageStateChange = (idx?: number): void => {
+    idx !== undefined
+      ? dispatch(linkData[idx].action)
       : dispatch({ type: 'DESTROY', payload: { src: null } });
   };
 
-  const handleLinkAction = (i?: number): void => {
+  const handleLinkAction = (idx?: number): void => {
     // Setting Application Theme
-    handleThemeChange(i);
+    handleThemeChange(idx);
 
     // Altering Hover Image State
-    handleHoverImageStateChange(i);
+    handleHoverImageStateChange(idx);
   };
   return (
     <ol
       className={classnames(['space-y-xl md:space-y-md p-b-xxl', styles.list])}>
-      {projects.map((proj, i) => (
+      {projects.map((proj, idx) => (
         <li key={proj.path} className={styles.listItem}>
           <RevealText>
             <Link href={proj.path}>
               <a
-                onMouseEnter={() => handleLinkAction(i)}
+                onMouseEnter={() => handleLinkAction(idx)}
                 onMouseLeave={() => handleLinkAction()}
-                onFocus={() => handleLinkAction(i)}
+                onFocus={() => handleLinkAction(idx)}
                 onBlur={() => handleLinkAction()}
                 onClick={() => handleLinkAction()}
                 className={classnames([
@@ -137,7 +159,7 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
                 <div
                   aria-hidden={true}
                   className={styles.bar}
-                  style={{ backgroundColor: linkData[i].hex ?? Colors.white }}
+                  style={{ backgroundColor: linkData[idx].hex ?? Colors.white }}
                 />
                 <div className={classnames(['lh-1', styles.listItemText])}>
                   {proj.name}
@@ -151,3 +173,27 @@ export const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
     </ol>
   );
 };
+
+const Mobile: React.FC<SelectedWorkListProps> = ({ projects }) => {
+  return (
+    <ol className={styles.mobileList}>
+      {projects.map((proj) => (
+        <li key={proj.path} className={styles.mobilePreviewItem}>
+          <div className={styles.mobilePreview}>
+            <div className={styles.mobilePreviewImageContainerOuter}>
+              <div className={styles.mobilePreviewImageContainerInner}>
+                <Image
+                  className={styles.mobilePreviewImage}
+                  src={proj.preview.src}
+                  layout='fill'
+                />
+              </div>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+};
+
+export { SelectedWorkList };

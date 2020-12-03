@@ -27,3 +27,35 @@
   font-size: clamp(var(--fz-md), 5.5vw, var(--fz-xxl));
   line-height: 1.2;
 }
+
+// * MOBILE STYLES
+.mobilePreviewItem {
+  &:nth-of-type(odd) {
+    padding-right: var(--gutter);
+    .mobilePreview {
+      transform: translateX(calc(var(--gutter) * -1));
+    }
+  }
+  &:nth-of-type(even) {
+    padding-left: var(--gutter);
+    .mobilePreview {
+      transform: translateX(var(--gutter));
+    }
+  }
+}
+.mobilePreviewImageContainerOuter {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  .mobilePreviewImageContainerInner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+.mobilePreviewImage {
+  object-fit: cover;
+}

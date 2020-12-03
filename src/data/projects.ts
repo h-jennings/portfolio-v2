@@ -20,7 +20,7 @@ export const projects: Projects = [
     year: 2020,
     path: ProjectPaths.dod.toString(),
     preview: {
-      src: '/images/caffeinator/caffeinator-image-1.png',
+      src: '/images/f35/f35-devices-images.jpg',
       width: 1450,
       height: 816,
     },
@@ -30,9 +30,9 @@ export const projects: Projects = [
     year: 2019,
     path: ProjectPaths.caffeinator.toString(),
     preview: {
-      src: '/images/caffeinator/caffeinator-image-1.png',
+      src: '/images/caffeinator/caffeinator-image-3.png',
       width: 1450,
-      height: 816,
+      height: 1160,
     },
   },
   {

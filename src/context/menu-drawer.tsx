@@ -7,7 +7,7 @@ export type DrawerActions =
     }
   | { type: 'CLOSE' };
 
-const initialDrawerState: DrawerState = { status: 'open' };
+const initialDrawerState: DrawerState = { status: 'closed' };
 
 function drawerReducer(state: DrawerState, action: DrawerActions): DrawerState {
   switch (action.type) {
