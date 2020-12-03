@@ -161,7 +161,7 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
       {projects.map((proj, idx) => (
         <li key={proj.path} className={styles.listItem}>
           <RevealText>
-            <Link href={proj.path}>
+            <Link scroll={false} href={proj.path}>
               <a
                 onMouseEnter={() => handleLinkAction(idx)}
                 onMouseLeave={() => handleLinkAction()}

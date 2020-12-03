@@ -1,19 +1,20 @@
 import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
-import { motion } from 'framer-motion';
 import { NextPage } from 'next';
 
-import { pageTransitionVariants } from '@/animation/page-transition';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
+import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 interface HomeProps {
   projects: Projects;
 }
 
 const Home: NextPage<HomeProps> = () => {
+  useScrollToTop();
+
   return (
     <MainLayout>
       <section className={classnames(['p-relative', styles.container])}>

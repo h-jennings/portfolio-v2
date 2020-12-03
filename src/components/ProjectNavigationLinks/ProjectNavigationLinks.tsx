@@ -19,20 +19,20 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
     <ul className={classnames(['space-y-xsm', styles.container])}>
       {previous ? (
         <li>
-          <Link href={previous.path}>
+          <Link scroll={false} href={previous.path}>
             <a className='underline-effect'>Previous Project</a>
           </Link>
         </li>
       ) : null}
       {next ? (
         <li>
-          <Link href={next.path}>
+          <Link scroll={false} href={next.path}>
             <a className='underline-effect'>Next Project</a>
           </Link>
         </li>
       ) : null}
       <li>
-        <Link href={Paths.work}>
+        <Link scroll={false} href={Paths.work}>
           <a className='underline-effect'>All Projects</a>
         </Link>
       </li>

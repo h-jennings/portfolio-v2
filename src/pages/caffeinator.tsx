@@ -20,6 +20,7 @@ import {
   getNextProject,
   getPreviousProject,
 } from '@/helpers/get-projects';
+import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 interface CaffeinatorProps {
   projects: Projects;
@@ -27,6 +28,8 @@ interface CaffeinatorProps {
 }
 
 const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
+  useScrollToTop();
+
   const currentProject = React.useMemo(
     () => getCurrentProject(projects, pathname),
     [projects, pathname],

@@ -15,7 +15,7 @@ export const MobileNavigation: React.FC = () => {
   return (
     <>
       <nav className={classnames([styles.container])}>
-        <Link href={Paths.home}>
+        <Link scroll={false} href={Paths.home}>
           <a aria-label='home' className={classnames([styles.home])}>
             <SvgContainer svgWidth={24} svgHeight={24}>
               <HomeIcon className={styles.icon} title='home icon' />

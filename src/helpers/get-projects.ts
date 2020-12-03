@@ -4,6 +4,8 @@ const getNextProject = (
   projects: Projects,
   current: Project,
 ): Project | null => {
+  if (!current) return null;
+
   const currentProjectIndex = projects.findIndex(
     (project) => project.path === current.path,
   );
@@ -17,6 +19,8 @@ const getPreviousProject = (
   projects: Projects,
   current: Project,
 ): Project | null => {
+  if (!current) return null;
+
   const currentProjectIndex = projects.findIndex(
     (project) => project.path === current.path,
   );

@@ -25,7 +25,7 @@ export const FullscreenLink: React.FC<FullscreenLinkProps> = ({
 }) => {
   return (
     <section className={styles.container}>
-      <Link href={href}>
+      <Link scroll={false} href={href}>
         <a className={styles.link}>
           <div className='w-full'>
             <div className='m-b-sm'>

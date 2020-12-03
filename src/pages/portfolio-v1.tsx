@@ -20,6 +20,7 @@ import {
   getNextProject,
   getPreviousProject,
 } from '@/helpers/get-projects';
+import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 interface PortfolioV1Props {
   projects: Projects;
@@ -27,6 +28,8 @@ interface PortfolioV1Props {
 }
 
 const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
+  useScrollToTop();
+
   const currentProject = React.useMemo(
     () => getCurrentProject(projects, pathname),
     [projects, pathname],

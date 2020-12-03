@@ -12,8 +12,11 @@ import {
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
 import { jobs, skills } from '@/data/about';
 import { decodeHtml } from '@/helpers/decode-html';
+import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 const About: React.FC = () => {
+  useScrollToTop();
+
   const SEO = {
     title: `Portfolio ${decodeHtml('&mdash;')} About`,
     // eslint-disable-next-line quotes

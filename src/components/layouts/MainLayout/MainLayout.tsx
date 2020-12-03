@@ -1,12 +1,7 @@
 import { Footer } from '@components/Footer/Footer';
 import { Navigation } from '@components/Navigation/Navigation';
 import classnames from 'classnames';
-import {
-  AnimatePresence,
-  motion,
-  useTransform,
-  useViewportScroll,
-} from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { DefaultSeo } from 'next-seo';
 import SEO from 'next-seo.config';
 import React from 'react';
@@ -42,9 +37,6 @@ export const MainLayout: React.FC = ({ children }) => {
         animate='enter'
         exit='exit'
         variants={pageTransitionVariants}
-        transition={{
-          opacity: { duration: 3 },
-        }}
         className={styles.layoutContainer}>
         <div
           data-drawer-status={drawerState.status}
