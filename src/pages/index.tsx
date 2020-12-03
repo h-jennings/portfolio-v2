@@ -1,8 +1,9 @@
 import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
+import { motion } from 'framer-motion';
 import { NextPage } from 'next';
 
-import { PageWithLayoutType } from '@/components/layouts/layout.model';
+import { pageTransitionVariants } from '@/animation/page-transition';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
@@ -14,7 +15,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = () => {
   return (
-    <>
+    <MainLayout>
       <section className={classnames(['p-relative', styles.container])}>
         <div className='d-flex flx-j-fe'>
           <h1 className={classnames(['ta-r md:m-b-lg', styles.headline])}>
@@ -44,7 +45,7 @@ const Home: NextPage<HomeProps> = () => {
         </h1>
         <SelectedWorkList projects={projects} />
       </section>
-    </>
+    </MainLayout>
   );
 };
 
@@ -54,10 +55,6 @@ Home.getInitialProps = async () => {
   return {
     projects: proj,
   };
-};
-
-(Home as PageWithLayoutType).getLayout = (page) => {
-  return <MainLayout>{page}</MainLayout>;
 };
 
 export default Home;

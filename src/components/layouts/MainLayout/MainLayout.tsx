@@ -1,20 +1,21 @@
 import { Footer } from '@components/Footer/Footer';
 import { Navigation } from '@components/Navigation/Navigation';
 import classnames from 'classnames';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import {
+  AnimatePresence,
+  motion,
+  useTransform,
+  useViewportScroll,
+} from 'framer-motion';
 import { DefaultSeo } from 'next-seo';
 import SEO from 'next-seo.config';
 import React from 'react';
 import Media from 'react-media';
 
+import { pageTransitionVariants } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
-import {
-  drawerReducer,
-  initialDrawerState,
-  MenuDrawerContext,
-} from '@/context/menu-drawer';
-import { ThemeProvider } from '@/context/theme';
+import { useMenuDrawer } from '@/context/menu-drawer';
 
 import styles from './MainLayout.module.scss';
 
@@ -31,65 +32,54 @@ export const MainLayout: React.FC = ({ children }) => {
   const footerOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
   const containerOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0.9]);
 
-  // * State Management for Drawer
-  const [drawerState, dispatch] = React.useReducer(
-    drawerReducer,
-    initialDrawerState,
-  );
-
-  const value = React.useMemo(
-    () => ({
-      drawerState,
-      dispatch,
-    }),
-    [drawerState],
-  );
+  const { drawerState } = useMenuDrawer();
 
   return (
-    <ThemeProvider>
-      <MenuDrawerContext.Provider value={value}>
-        <DefaultSeo {...SEO} />
-        <div className={styles.layoutContainer}>
-          <div
-            data-drawer-status={drawerState.status}
-            className={classnames([
-              'd-flex flx-j-c w-full',
-              styles.siteContent,
-            ])}>
-            <div className={styles.bgBlock} />
-            <div className={classnames(['w-full', styles.main])}>
-              <Media
-                queries={{ mobile: breakpoint }}
-                defaultMatches={{ mobile: false }}>
-                {(matches) => {
-                  return (
-                    <>
-                      {matches.mobile ? <MobileNavigation /> : <Navigation />}
-                    </>
-                  );
-                }}
-              </Media>
-              <motion.div
-                style={{ scale: containerScale, opacity: containerOpacity }}
-                className={styles.contentWrapper}>
-                <div
-                  aria-label='page-content'
-                  className={classnames(['flx-g-1 flx-s-1', styles.content])}>
-                  {children}
-                </div>
-              </motion.div>
-              <motion.div
-                style={{ opacity: footerOpacity }}
-                className={styles.footerContainer}>
-                <div className={styles.footerWrapper}>
-                  <Footer />
-                </div>
-              </motion.div>
-            </div>
+    <>
+      <DefaultSeo {...SEO} />
+      <motion.div
+        initial='initial'
+        animate='enter'
+        exit='exit'
+        variants={pageTransitionVariants}
+        transition={{
+          opacity: { duration: 3 },
+        }}
+        className={styles.layoutContainer}>
+        <div
+          data-drawer-status={drawerState.status}
+          className={classnames(['d-flex flx-j-c w-full', styles.siteContent])}>
+          <div className={styles.bgBlock} />
+          <div className={classnames(['w-full', styles.main])}>
+            <Media
+              queries={{ mobile: breakpoint }}
+              defaultMatches={{ mobile: false }}>
+              {(matches) => {
+                return (
+                  <>{matches.mobile ? <MobileNavigation /> : <Navigation />}</>
+                );
+              }}
+            </Media>
+            <motion.div
+              style={{ scale: containerScale, opacity: containerOpacity }}
+              className={styles.contentWrapper}>
+              <div
+                aria-label='page-content'
+                className={classnames(['flx-g-1 flx-s-1', styles.content])}>
+                {children}
+              </div>
+            </motion.div>
+            <motion.div
+              style={{ opacity: footerOpacity }}
+              className={styles.footerContainer}>
+              <div className={styles.footerWrapper}>
+                <Footer />
+              </div>
+            </motion.div>
           </div>
-          <MenuDrawer />
         </div>
-      </MenuDrawerContext.Provider>
-    </ThemeProvider>
+        <MenuDrawer />
+      </motion.div>
+    </>
   );
 };

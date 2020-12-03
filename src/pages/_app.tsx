@@ -1,7 +1,16 @@
 import '@scss/index.scss';
 
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
+import React from 'react';
+
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import {
+  drawerReducer,
+  initialDrawerState,
+  MenuDrawerContext,
+} from '@/context/menu-drawer';
+import { ThemeProvider } from '@/context/theme';
 
 interface AppLayoutProps {
   Component: PageWithLayoutType;
@@ -9,9 +18,30 @@ interface AppLayoutProps {
 }
 
 const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
-  const getLayout =
-    Component.getLayout || ((page) => <MainLayout>{page}</MainLayout>);
-  return getLayout(<Component {...pageProps} />);
+  // * State Management for Drawer
+  const [drawerState, dispatch] = React.useReducer(
+    drawerReducer,
+    initialDrawerState,
+  );
+
+  const value = React.useMemo(
+    () => ({
+      drawerState,
+      dispatch,
+    }),
+    [drawerState],
+  );
+
+  const { route } = useRouter();
+  return (
+    <ThemeProvider>
+      <MenuDrawerContext.Provider value={value}>
+        <AnimatePresence initial={false} exitBeforeEnter>
+          <Component {...pageProps} key={route} />
+        </AnimatePresence>
+      </MenuDrawerContext.Provider>
+    </ThemeProvider>
+  );
 };
 
 export default MyApp;
