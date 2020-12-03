@@ -3,6 +3,8 @@
 import classnames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
 import { useReducer } from 'react';
 import Media from 'react-media';
 
@@ -84,9 +86,23 @@ const SelectedWorkList: React.FC<SelectedWorkListProps> = ({ projects }) => {
 };
 
 const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
-  // TODO: Reset theme on route
+  const router = useRouter();
 
   const { setTheme } = useTheme();
+
+  // Cleaning up app theme when route is changed
+  React.useEffect(
+    function resetThemeOnRouteChange() {
+      const resetTheme = (): void => {
+        setTheme('dark');
+      };
+
+      router.events.on('routeChangeStart', resetTheme);
+
+      return () => router.events.off('routeChangeStart', resetTheme);
+    },
+    [setTheme, router.events],
+  );
   const [hoverImageState, dispatch] = useReducer(
     hoverImageReducer,
     initialHoverImageState,
@@ -151,7 +167,6 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
                 onMouseLeave={() => handleLinkAction()}
                 onFocus={() => handleLinkAction(idx)}
                 onBlur={() => handleLinkAction()}
-                onClick={() => handleLinkAction()}
                 className={classnames([
                   'd-flex space-x-lg md:space-x-md',
                   styles.link,
