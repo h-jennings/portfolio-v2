@@ -1,0 +1,11 @@
+.container {
+  width: 25px;
+  background-color: red;
+  height: 25px;
+}
+.outer {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  clip-path: url(#arrow);
+}

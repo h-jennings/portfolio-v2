@@ -2,6 +2,7 @@ import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
 
+import { ArrowButton } from '@/components/ArrowButton/ArrowButton';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';

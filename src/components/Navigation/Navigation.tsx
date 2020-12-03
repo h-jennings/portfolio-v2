@@ -29,9 +29,6 @@ export const Navigation: React.FC = () => {
         </Link>
         <div>
           <div className={classnames(['d-flex space-x-xl'])}>
-            <Link scroll={false} href={Paths.work}>
-              <a className='underline-effect'>work</a>
-            </Link>
             <Link scroll={false} href={Paths.about}>
               <a className='underline-effect'>about</a>
             </Link>

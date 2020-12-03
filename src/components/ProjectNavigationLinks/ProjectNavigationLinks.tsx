@@ -2,7 +2,6 @@ import classnames from 'classnames';
 import Link from 'next/link';
 
 import { Project } from '@/data/projects';
-import { Paths } from '@/models/paths';
 
 import styles from './ProjectNavigationLinks.module.scss';
 
@@ -31,11 +30,6 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
           </Link>
         </li>
       ) : null}
-      <li>
-        <Link scroll={false} href={Paths.work}>
-          <a className='underline-effect'>All Projects</a>
-        </Link>
-      </li>
     </ul>
   );
 };

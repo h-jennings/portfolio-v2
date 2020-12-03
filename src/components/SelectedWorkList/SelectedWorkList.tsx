@@ -92,7 +92,7 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
 
   // Cleaning up app theme when route is changed
   React.useEffect(
-    function resetThemeOnRouteChange() {
+    function resetThemeOnRouteStart() {
       const resetTheme = (): void => {
         setTheme('dark');
       };
@@ -100,6 +100,19 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
       router.events.on('routeChangeStart', resetTheme);
 
       return () => router.events.off('routeChangeStart', resetTheme);
+    },
+    [setTheme, router.events],
+  );
+
+  React.useEffect(
+    function resetThemeOnRouteComplete() {
+      const resetTheme = (): void => {
+        setTheme('dark');
+      };
+
+      router.events.on('routeChangeComplete', resetTheme);
+
+      return () => router.events.off('routeChangeComplete', resetTheme);
     },
     [setTheme, router.events],
   );
