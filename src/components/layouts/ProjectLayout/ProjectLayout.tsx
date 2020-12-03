@@ -7,7 +7,6 @@ import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
 
-import { WithPageAnimation } from '../WithPageAnimation/WithPageAnimation';
 import styles from './ProjectLayout.module.scss';
 
 export const ProjectLayout: React.FC = ({ children }) => {
@@ -21,23 +20,21 @@ export const ProjectLayout: React.FC = ({ children }) => {
     [currentProject],
   );
   return (
-    <WithPageAnimation>
-      <div className={classnames({ [styles.pagePad]: !nextProject })}>
-        {children}
-        {nextProject ? (
-          <RevealBox>
-            <FullscreenLink
-              cta='Explore next project'
-              href={nextProject.path}
-              title={nextProject.name}
-              imageWidth={nextProject.preview.width}
-              imageHeight={nextProject.preview.height}
-              alt='Picture of me'
-              src={nextProject.preview.src}
-            />
-          </RevealBox>
-        ) : null}
-      </div>
-    </WithPageAnimation>
+    <div className={classnames({ [styles.pagePad]: !nextProject })}>
+      {children}
+      {nextProject ? (
+        <RevealBox>
+          <FullscreenLink
+            cta='Explore next project'
+            href={nextProject.path}
+            title={nextProject.name}
+            imageWidth={nextProject.preview.width}
+            imageHeight={nextProject.preview.height}
+            alt='Picture of me'
+            src={nextProject.preview.src}
+          />
+        </RevealBox>
+      ) : null}
+    </div>
   );
 };

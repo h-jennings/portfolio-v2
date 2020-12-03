@@ -4,10 +4,10 @@ import { pageTransitionVariants } from '@/animation/page-transition';
 
 export const WithPageAnimation: React.FC = ({ children }) => {
   return (
-    <AnimatePresence initial={false} exitBeforeEnter>
+    <AnimatePresence exitBeforeEnter>
       <motion.div
-        initial='initial'
         animate='enter'
+        initial='initial'
         exit='exit'
         variants={pageTransitionVariants}>
         {children}

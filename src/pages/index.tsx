@@ -4,8 +4,6 @@ import { NextPage } from 'next';
 
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { WithPageAnimation } from '@/components/layouts/WithPageAnimation/WithPageAnimation';
-import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
@@ -16,24 +14,22 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = () => {
   return (
-    <WithPageAnimation>
+    <>
       <section className={classnames(['p-relative', styles.container])}>
         <div className='d-flex flx-j-fe'>
           <h1 className={classnames(['ta-r md:m-b-lg', styles.headline])}>
-            <RevealText>Front End</RevealText>
-            <RevealText>Engineer</RevealText>
+            <span className='d-block'>Front End</span>
+            <span className='d-block'>Engineer</span>
           </h1>
         </div>
         <div className={classnames(['p-absolute', styles.intro])}>
-          <RevealBox>
-            <p className={classnames(['fz-base'])}>
-              Hunter Jennings is currently working at Guidehouse in Washington
-              D.C.{' '}
-              <span role='img' aria-label='American Flag emoji'>
-                🇺🇸
-              </span>
-            </p>
-          </RevealBox>
+          <p className={classnames(['fz-base'])}>
+            Hunter Jennings is currently working at Guidehouse in Washington
+            D.C.{' '}
+            <span role='img' aria-label='American Flag emoji'>
+              🇺🇸
+            </span>
+          </p>
         </div>
       </section>
       <section
@@ -48,7 +44,7 @@ const Home: NextPage<HomeProps> = () => {
         </h1>
         <SelectedWorkList projects={projects} />
       </section>
-    </WithPageAnimation>
+    </>
   );
 };
 
