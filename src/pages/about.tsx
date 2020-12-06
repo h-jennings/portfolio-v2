@@ -95,6 +95,7 @@ const About: React.FC = () => {
           </SplitContentRight>
         </SplitLayout>
       </div>
+      <div style={{ height: '50vh' }}>contact me section</div>
     </MainLayout>
   );
 };

@@ -42,6 +42,17 @@ export const MainLayout: React.FC = ({ children }) => {
     [currentProject],
   );
 
+  const [canScroll, setCanScroll] = React.useState(false);
+
+  // Locks scroll on the body element
+  React.useEffect(() => {
+    if (!canScroll) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [canScroll]);
+
   return (
     <>
       <DefaultSeo {...SEO} />
@@ -50,6 +61,7 @@ export const MainLayout: React.FC = ({ children }) => {
         animate='enter'
         exit='exit'
         variants={pageTransitionVariants}
+        onAnimationComplete={() => setCanScroll(true)}
         className={styles.layoutContainer}>
         <div
           data-drawer-status={drawerState.status}

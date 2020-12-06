@@ -2,7 +2,9 @@ html {
   font-family: var(--ff-primary);
   color: var(--color-white);
   font-size: var(--fz-base);
+  scroll-behavior: smooth;
 }
+
 .root {
   background-color: var(--ui-bg);
 }
@@ -10,4 +12,22 @@ html {
 // Util for identifying elements in the DOM
 .\? {
   outline: 1px solid red;
+}
+
+/* Scrollbar Styling */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-white) var(--ui-bg);
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--ui-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: var(--color-white);
 }

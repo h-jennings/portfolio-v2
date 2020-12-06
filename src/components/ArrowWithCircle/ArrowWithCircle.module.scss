@@ -1,0 +1,40 @@
+@import '@scss/global/core/_mixins';
+
+.circle {
+  width: 83px;
+  height: 83px;
+  background-color: var(--color-white);
+  @include default-transition;
+}
+[data-state='active'] {
+  .circle {
+    transform: scale(1.1);
+  }
+}
+
+.outer {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+}
+
+.arrow {
+  width: 24px;
+  @include default-transition;
+  transform: translateY(-100%);
+
+  path {
+    fill: var(--color-black);
+  }
+}
+
+[data-state='active'] {
+  .arrow {
+    transform: translateY(0%);
+  }
+}

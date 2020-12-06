@@ -1,13 +1,15 @@
 import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
+import Link from 'next/link';
 
-import { ArrowButton } from '@/components/ArrowButton/ArrowButton';
+import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { RevealText } from '@/components/RevealText/RevealText';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
+import { Paths } from '@/models/paths';
 
 interface HomeProps {
   projects: Projects;
@@ -34,6 +36,12 @@ const Home: NextPage<HomeProps> = () => {
             </span>
           </p>
         </div>
+        <Link href={Paths.work}>
+          <a
+            className={classnames('link-reset p-absolute', styles.arrowButton)}>
+            <ArrowWithCircle />
+          </a>
+        </Link>
       </section>
       <section
         id='selected-work'
@@ -46,7 +54,7 @@ const Home: NextPage<HomeProps> = () => {
           <RevealText>Selected Work</RevealText>
         </h1>
         <SelectedWorkList projects={projects} />
-      </section>
+      </section>{' '}
     </MainLayout>
   );
 };

@@ -27,13 +27,13 @@
     position: static;
   }
 }
+.arrowButton {
+  bottom: 64px;
+  right: 0;
+}
 
 .work {
   min-height: 100vh;
-  @include break-max-width(md) {
-    // min-height: calc(100vh - (var(--nav-height) + 48px));
-    min-height: 80vh;
-  }
 }
 
 .workHeadline {
