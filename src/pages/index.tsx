@@ -21,8 +21,8 @@ const Home: NextPage<HomeProps> = () => {
   return (
     <MainLayout>
       <section className={classnames(['p-relative', styles.container])}>
-        <div className='d-flex flx-j-fe'>
-          <h1 className={classnames(['ta-r md:m-b-lg', styles.headline])}>
+        <div className={classnames('d-flex flx-j-fe', styles.headlineWrapper)}>
+          <h1 className={classnames(['ta-r md:m-b-xl', styles.headline])}>
             <span className='d-block'>Front End</span>
             <span className='d-block'>Engineer</span>
           </h1>

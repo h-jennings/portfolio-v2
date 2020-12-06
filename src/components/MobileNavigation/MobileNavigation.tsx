@@ -3,6 +3,7 @@ import { ReactComponent as MenuIcon } from '@assets/svg/mobile-menu.svg';
 import { SvgContainer } from '@components/SvgContainer/SvgContainer';
 import classnames from 'classnames';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useMenuDrawer } from '@/context/menu-drawer';
 import { Paths } from '@/models/paths';
@@ -10,12 +11,13 @@ import { Paths } from '@/models/paths';
 import styles from './MobileNavigation.module.scss';
 
 export const MobileNavigation: React.FC = () => {
+  const { pathname } = useRouter();
   const { dispatch } = useMenuDrawer();
 
   return (
     <>
       <nav className={classnames([styles.container])}>
-        <Link scroll={false} href={Paths.home}>
+        <Link scroll={pathname === Paths.home ? true : false} href={Paths.home}>
           <a aria-label='home' className={classnames([styles.home])}>
             <SvgContainer svgWidth={24} svgHeight={24}>
               <HomeIcon className={styles.icon} title='home icon' />

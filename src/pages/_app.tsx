@@ -18,6 +18,21 @@ interface AppLayoutProps {
 }
 
 const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
+  React.useEffect(function setVisualViewportVariable() {
+    const root = document.documentElement;
+
+    const setVisualVhProperty = (): void => {
+      const vizVh = window.visualViewport.height;
+      root.style.setProperty('--vizVh', `${vizVh}px`);
+    };
+
+    setVisualVhProperty();
+
+    window.addEventListener('resize', setVisualVhProperty);
+
+    return () => window.removeEventListener('resize', setVisualVhProperty);
+  }, []);
+
   // * State Management for Drawer
   const [drawerState, dispatch] = React.useReducer(
     drawerReducer,
@@ -36,7 +51,7 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider>
       <MenuDrawerContext.Provider value={value}>
-        <AnimatePresence initial={false} exitBeforeEnter>
+        <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={route} />
         </AnimatePresence>
       </MenuDrawerContext.Provider>

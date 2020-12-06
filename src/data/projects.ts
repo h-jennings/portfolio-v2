@@ -7,6 +7,7 @@ interface Preview {
 
 export interface Project {
   name: string;
+  role: string;
   path: string;
   preview: Preview;
   year: number;
@@ -17,6 +18,7 @@ export type Projects = Project[];
 export const projects: Projects = [
   {
     name: 'Department of Defense',
+    role: 'Development',
     year: 2020,
     path: ProjectPaths.dod.toString(),
     preview: {
@@ -27,6 +29,7 @@ export const projects: Projects = [
   },
   {
     name: 'Caffeinator',
+    role: 'Design & Development',
     year: 2019,
     path: ProjectPaths.caffeinator.toString(),
     preview: {
@@ -37,6 +40,7 @@ export const projects: Projects = [
   },
   {
     name: 'Portfolio - V1',
+    role: 'Design & Development',
     year: 2019,
     path: ProjectPaths.portfolioV1.toString(),
     preview: {

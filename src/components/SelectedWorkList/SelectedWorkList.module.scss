@@ -29,6 +29,9 @@
 }
 
 // * MOBILE STYLES
+.mobileList {
+  list-style: none;
+}
 .mobilePreviewItem {
   &:nth-of-type(odd) {
     padding-right: var(--gutter);
@@ -40,6 +43,9 @@
     padding-left: var(--gutter);
     .mobilePreview {
       transform: translateX(var(--gutter));
+    }
+    .mobileListText {
+      padding-left: var(--gutter);
     }
   }
 }
@@ -58,4 +64,11 @@
 }
 .mobilePreviewImage {
   object-fit: cover;
+}
+.linkIcon {
+  width: 16px;
+  transform: rotate(-45deg);
+  path {
+    fill: var(--text-01);
+  }
 }

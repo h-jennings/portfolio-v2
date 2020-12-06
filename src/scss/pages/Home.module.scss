@@ -6,7 +6,12 @@
   min-height: calc(100vh - var(--nav-height));
 
   @include break-max-width(md) {
-    min-height: calc(100vh - (var(--nav-height) + 48px));
+    min-height: calc(var(--vizVh) - (var(--nav-height) + 48px));
+  }
+}
+.headlineWrapper {
+  @include break-max-width(md) {
+    justify-content: flex-start;
   }
 }
 .headline {
@@ -21,15 +26,18 @@
   left: 0;
   max-width: 297px;
   @include break-max-width(md) {
-    p {
-      font-size: var(--fz-sm);
-    }
+    // p {
+    //   font-size: var(--fz-sm);
+    // }
     position: static;
   }
 }
 .arrowButton {
   bottom: 64px;
   right: 0;
+  @include break-max-width(md) {
+    bottom: 24px;
+  }
 }
 
 .work {
@@ -37,5 +45,5 @@
 }
 
 .workHeadline {
-  font-size: clamp(var(--fz-base), 5vw, var(--fz-lg));
+  font-size: clamp(var(--fz-md), 5vw, var(--fz-lg));
 }

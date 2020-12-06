@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import classnames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,6 +15,7 @@ import { AppThemes, useTheme } from '@/context/theme';
 import { Project } from '@/data/projects';
 import { Colors } from '@/models/colors';
 
+import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './SelectedWorkList.module.scss';
 
 type HoverImageState =
@@ -206,8 +208,10 @@ const Mobile: React.FC<SelectedWorkListProps> = ({ projects }) => {
   return (
     <ol className={styles.mobileList}>
       {projects.map((proj) => (
-        <li key={proj.path} className={styles.mobilePreviewItem}>
-          <div className={styles.mobilePreview}>
+        <li
+          key={proj.path}
+          className={classnames('m-b-xxl', styles.mobilePreviewItem)}>
+          <div className={classnames('m-b-md', styles.mobilePreview)}>
             <div className={styles.mobilePreviewImageContainerOuter}>
               <div className={styles.mobilePreviewImageContainerInner}>
                 <Image
@@ -217,6 +221,20 @@ const Mobile: React.FC<SelectedWorkListProps> = ({ projects }) => {
                 />
               </div>
             </div>
+          </div>
+          <div className={styles.mobileListText}>
+            <div className='text-h3 m-b-xsm'>{proj.role}</div>
+            <div className='text-h2 m-b-xsm'>{proj.name}</div>
+            <Link scroll={false} href={proj.path}>
+              <a className='link-reset d-inline-flex space-x-sm flx-a-c'>
+                <span className='d-block'>View Project</span>
+                <div className={styles.linkIcon}>
+                  <SvgContainer svgHeight={24} svgWidth={24}>
+                    <ArrowIcon />
+                  </SvgContainer>
+                </div>
+              </a>
+            </Link>
           </div>
         </li>
       ))}
