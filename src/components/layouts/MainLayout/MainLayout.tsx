@@ -8,7 +8,10 @@ import SEO from 'next-seo.config';
 import React from 'react';
 import Media from 'react-media';
 
-import { pageTransitionVariants } from '@/animation/page-transition';
+import {
+  pageTransitionVariants,
+  wipeTransitionVariants,
+} from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
 import { useMenuDrawer } from '@/context/menu-drawer';
@@ -99,6 +102,11 @@ export const MainLayout: React.FC = ({ children }) => {
         </div>
         <MenuDrawer />
       </motion.div>
+      <motion.div
+        animate='enter'
+        variants={wipeTransitionVariants}
+        className={styles.wipe}
+      />
     </>
   );
 };
