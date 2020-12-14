@@ -105,7 +105,7 @@ export const MainLayout: React.FC = ({ children }) => {
         </div>
         <MenuDrawer />
       </motion.div>
-      {/* ! SHOULD BE PERFORMED IN CALLBACK */}
+      {/* PAGE TRANSITION ELEMENT */}
       <motion.div
         animate={wiperState.status}
         variants={wipeTransitionVariants}

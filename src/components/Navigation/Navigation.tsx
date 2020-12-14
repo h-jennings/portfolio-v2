@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { Paths } from '@/models/paths';
 
+import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './Navigation.module.scss';
 
@@ -32,9 +33,9 @@ export const Navigation: React.FC = () => {
         </Link>
         <div>
           <div className={classnames(['d-flex space-x-xl'])}>
-            <Link scroll={false} href={Paths.about}>
-              <a className='underline-effect'>about</a>
-            </Link>
+            <LinkWithPageTransition route={Paths.about}>
+              about
+            </LinkWithPageTransition>
           </div>
         </div>
       </div>

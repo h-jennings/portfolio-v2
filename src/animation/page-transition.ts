@@ -3,6 +3,8 @@ export const transition = {
   duration: 0.35,
   ease: [0.4, 0.0, 0.2, 1],
 };
+export const wipeTransitionDuration = transition.duration * 2;
+
 export const pageTransitionVariants = {
   initial: {
     opacity: 0,
@@ -11,7 +13,7 @@ export const pageTransitionVariants = {
     opacity: 1,
     transition: {
       ...transition,
-      delay: transition.duration * 2,
+      delay: wipeTransitionDuration,
     },
   },
   exit: {
@@ -33,7 +35,7 @@ export const wipeTransitionVariants = {
     x: ['100%', '0%', '-100%'],
     transition: {
       ...transition,
-      duration: transition.duration * 2,
+      duration: wipeTransitionDuration,
       timings: [0.1, 0.8, 1],
     },
   },

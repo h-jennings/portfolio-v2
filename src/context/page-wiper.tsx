@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { transition } from '@/animation/page-transition';
+import { wipeTransitionDuration } from '@/animation/page-transition';
 
 /* 
   !! CONSIDER GROUPING PAGE TRANSITIONS INTO ON REDUCER/CONTEXT
@@ -120,13 +120,17 @@ function usePageWiper(): PageWiperContextType {
   return context;
 }
 
-function usePageWiperEffects({ state, dispatch }: PageWiperContextType): void {
+export function usePageWiperEffects({
+  state,
+  dispatch,
+}: PageWiperContextType): void {
   React.useEffect(() => {
     let enterTransition: number;
     let exitTransition: number;
 
     switch (state.status) {
       case PageWiperStateNames.idle: {
+        console.log('idle state');
         break;
       }
       case PageWiperStateNames.enter: {
@@ -135,7 +139,7 @@ function usePageWiperEffects({ state, dispatch }: PageWiperContextType): void {
         // * Transition after 500ms second
         enterTransition = window.setTimeout(() => {
           dispatch({ type: PageWiperActionNames.NEXT });
-        }, transition.duration * 1000 * 2);
+        }, wipeTransitionDuration * 1000);
         break;
       }
       case PageWiperStateNames.exit: {
