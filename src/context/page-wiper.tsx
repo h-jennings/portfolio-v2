@@ -139,7 +139,7 @@ export function usePageWiperEffects({
         // * Transition after 500ms second
         enterTransition = window.setTimeout(() => {
           dispatch({ type: PageWiperActionNames.NEXT });
-        }, wipeTransitionDuration * 1000);
+        }, wipeTransitionDuration * 1000 * 2);
         break;
       }
       case PageWiperStateNames.exit: {
