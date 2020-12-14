@@ -19,7 +19,7 @@ export const pageTransitionVariants = {
   exit: {
     opacity: 0,
     transition: {
-      ...transition,
+      duration: 0,
     },
   },
 };
