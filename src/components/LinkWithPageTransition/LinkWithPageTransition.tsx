@@ -22,11 +22,15 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
 
     router.push(route);
 
-    // // * State transition
-    // setTimeout(() => {
-    //   dispatch({ type: PageWiperActionNames.CLICK });
-    // }, wipeTransitionDuration * 1000);
+    // * State transition
+    setTimeout(() => {
+      dispatch({ type: PageWiperActionNames.CLICK });
+    }, wipeTransitionDuration * 1000);
   }
+
+  React.useEffect(() => {
+    router.prefetch(props.route);
+  }, [props.route, router]);
   return (
     <a
       {...props}
