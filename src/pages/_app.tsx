@@ -54,7 +54,7 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
       <PageWiperProvider>
         <MenuDrawerContext.Provider value={value}>
           <AnimatePresence initial={false} exitBeforeEnter>
-            <Component {...pageProps} />
+            <Component {...pageProps} key={route} />
           </AnimatePresence>
         </MenuDrawerContext.Provider>
       </PageWiperProvider>

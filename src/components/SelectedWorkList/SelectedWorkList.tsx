@@ -199,7 +199,7 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
           </RevealText>
         </li>
       ))}
-      <HoverImage src={hoverImageState.src} status={hoverImageState.status} />
+      {/* <HoverImage src={hoverImageState.src} status={hoverImageState.status} /> */}
     </ol>
   );
 };
