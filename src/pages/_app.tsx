@@ -23,7 +23,7 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
     const root = document.documentElement;
 
     const setVisualVhProperty = (): void => {
-      const vizVh = window.visualViewport.height;
+      const vizVh = window?.visualViewport?.height ?? window.innerHeight;
       root.style.setProperty('--vizVh', `${vizVh}px`);
     };
 
