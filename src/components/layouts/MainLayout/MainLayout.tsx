@@ -10,12 +10,12 @@ import Media from 'react-media';
 
 import {
   pageTransitionVariants,
-  // wipeTransitionVariants,
+  wipeTransitionVariants,
 } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
 import { useMenuDrawer } from '@/context/menu-drawer';
-// import { usePageWiper } from '@/context/page-wiper';
+import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
 
@@ -57,7 +57,7 @@ export const MainLayout: React.FC = ({ children }) => {
     }
   }, [canScroll]);
 
-  // const { state: wiperState } = usePageWiper();
+  const { state: wiperState } = usePageWiper();
 
   return (
     <>
@@ -105,6 +105,13 @@ export const MainLayout: React.FC = ({ children }) => {
         </div>
         <MenuDrawer />
       </motion.div>
+      {/* PAGE TRANSITION ELEMENT */}
+      <motion.div
+        data-status={wiperState.status}
+        animate={wiperState.status}
+        variants={wipeTransitionVariants}
+        className={styles.wipe}
+      />
     </>
   );
 };

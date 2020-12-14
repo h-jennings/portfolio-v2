@@ -1,23 +1,16 @@
 import '@scss/index.scss';
 
-import styles from '@scss/pages/App.module.scss';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import { wipeTransitionVariants } from '@/animation/page-transition';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import {
   drawerReducer,
   initialDrawerState,
   MenuDrawerContext,
 } from '@/context/menu-drawer';
-import {
-  initialPageWiperState,
-  PageWiperContext,
-  pageWiperReducer,
-  usePageWiperEffects,
-} from '@/context/page-wiper';
+import { PageWiperProvider } from '@/context/page-wiper';
 import { ThemeProvider } from '@/context/theme';
 
 interface AppLayoutProps {
@@ -30,7 +23,7 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
     const root = document.documentElement;
 
     const setVisualVhProperty = (): void => {
-      const vizVh = window?.visualViewport?.height;
+      const vizVh = window.visualViewport.height;
       root.style.setProperty('--vizVh', `${vizVh}px`);
     };
 
@@ -55,29 +48,16 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
     [drawerState],
   );
 
-  const [wiperState, wiperDispatch] = React.useReducer(
-    pageWiperReducer,
-    initialPageWiperState,
-  );
-  usePageWiperEffects({ state: wiperState, dispatch: wiperDispatch });
   const { route } = useRouter();
   return (
     <ThemeProvider>
-      <PageWiperContext.Provider
-        value={{ state: wiperState, dispatch: wiperDispatch }}>
+      <PageWiperProvider>
         <MenuDrawerContext.Provider value={value}>
           <AnimatePresence initial={false} exitBeforeEnter>
             <Component {...pageProps} key={route} />
           </AnimatePresence>
-          {/* PAGE TRANSITION ELEMENT */}
-          <motion.div
-            data-status={wiperState.status}
-            animate={wiperState.status}
-            variants={wipeTransitionVariants}
-            className={styles.wipe}
-          />
         </MenuDrawerContext.Provider>
-      </PageWiperContext.Provider>
+      </PageWiperProvider>
     </ThemeProvider>
   );
 };
