@@ -20,12 +20,13 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
     e.preventDefault();
     if (router.pathname === route) return;
 
-    router.push(route);
-
     // * State transition
-    setTimeout(() => {
-      dispatch({ type: PageWiperActionNames.CLICK });
-    }, wipeTransitionDuration * 1000);
+    window.requestAnimationFrame(() => {
+      router.push(route);
+      setTimeout(() => {
+        dispatch({ type: PageWiperActionNames.CLICK });
+      }, wipeTransitionDuration * 1000);
+    });
   }
   return (
     <a
