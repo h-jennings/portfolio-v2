@@ -15,6 +15,7 @@ import {
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
 import { useMenuDrawer } from '@/context/menu-drawer';
+import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
 
@@ -55,6 +56,8 @@ export const MainLayout: React.FC = ({ children }) => {
       document.body.classList.remove('no-scroll');
     }
   }, [canScroll]);
+
+  const { state: wiperState } = usePageWiper();
 
   return (
     <>
@@ -102,8 +105,9 @@ export const MainLayout: React.FC = ({ children }) => {
         </div>
         <MenuDrawer />
       </motion.div>
+      {/* ! SHOULD BE PERFORMED IN CALLBACK */}
       <motion.div
-        animate='enter'
+        animate={wiperState.status}
         variants={wipeTransitionVariants}
         className={styles.wipe}
       />

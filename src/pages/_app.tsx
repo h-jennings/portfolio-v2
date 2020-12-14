@@ -10,6 +10,7 @@ import {
   initialDrawerState,
   MenuDrawerContext,
 } from '@/context/menu-drawer';
+import { PageWiperProvider } from '@/context/page-wiper';
 import { ThemeProvider } from '@/context/theme';
 
 interface AppLayoutProps {
@@ -50,11 +51,13 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
   const { route } = useRouter();
   return (
     <ThemeProvider>
-      <MenuDrawerContext.Provider value={value}>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={route} />
-        </AnimatePresence>
-      </MenuDrawerContext.Provider>
+      <PageWiperProvider>
+        <MenuDrawerContext.Provider value={value}>
+          <AnimatePresence initial={false} exitBeforeEnter>
+            <Component {...pageProps} key={route} />
+          </AnimatePresence>
+        </MenuDrawerContext.Provider>
+      </PageWiperProvider>
     </ThemeProvider>
   );
 };

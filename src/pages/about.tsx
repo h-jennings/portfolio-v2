@@ -10,12 +10,14 @@ import {
   SplitLayout,
 } from '@/components/layouts/SplitLayout/SplitLayout';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
+import { PageWiperActionNames, usePageWiper } from '@/context/page-wiper';
 import { jobs, skills } from '@/data/about';
 import { decodeHtml } from '@/helpers/decode-html';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 const About: React.FC = () => {
   useScrollToTop();
+  const { dispatch } = usePageWiper();
 
   const SEO = {
     title: `Portfolio ${decodeHtml('&mdash;')} About`,
@@ -95,7 +97,12 @@ const About: React.FC = () => {
           </SplitContentRight>
         </SplitLayout>
       </div>
-      <div style={{ height: '50vh' }}>contact me section</div>
+      <div style={{ height: '50vh' }}>
+        <h1>Contact me section</h1>
+        <button onClick={() => dispatch({ type: PageWiperActionNames.CLICK })}>
+          transition page
+        </button>
+      </div>
     </MainLayout>
   );
 };
