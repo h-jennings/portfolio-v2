@@ -3,7 +3,7 @@ export const transition = {
   duration: 0.35,
   ease: [0.4, 0.0, 0.2, 1],
 };
-export const wipeTransitionDuration = transition.duration * 2;
+export const wipeTransitionDuration = transition.duration * 1.5;
 
 export const pageTransitionVariants = {
   initial: {
@@ -13,7 +13,7 @@ export const pageTransitionVariants = {
     opacity: 1,
     transition: {
       ...transition,
-      delay: wipeTransitionDuration,
+      delay: wipeTransitionDuration * 2,
     },
   },
   exit: {
@@ -32,17 +32,17 @@ export const wipeTransitionVariants = {
     },
   },
   enter: {
-    x: ['100%', '0%', '-100%'],
+    x: '0%',
     transition: {
       ...transition,
       duration: wipeTransitionDuration,
-      timings: [0.1, 0.8, 1],
     },
   },
   exit: {
     x: '-100%',
     transition: {
-      duration: 0,
+      ...transition,
+      duration: wipeTransitionDuration,
     },
   },
 };

@@ -24,16 +24,19 @@ export const Navigation: React.FC = () => {
           'd-flex flx-j-sb p-y-xl w-full w-max-xl',
           styles.wrapper,
         ])}>
-        <Link scroll={pathname === Paths.home ? true : false} href={Paths.home}>
-          <a aria-label='home' className={classnames([styles.home])}>
-            <SvgContainer svgWidth={24} svgHeight={24}>
-              <HomeIcon className={styles.icon} title='home icon' />
-            </SvgContainer>
-          </a>
-        </Link>
+        <LinkWithPageTransition
+          aria-label='home'
+          className={classnames([styles.home])}
+          route={Paths.home}>
+          <SvgContainer svgWidth={24} svgHeight={24}>
+            <HomeIcon className={styles.icon} title='home icon' />
+          </SvgContainer>
+        </LinkWithPageTransition>
         <div>
           <div className={classnames(['d-flex space-x-xl'])}>
-            <LinkWithPageTransition route={Paths.about}>
+            <LinkWithPageTransition
+              className='underline-effect'
+              route={Paths.about}>
               about
             </LinkWithPageTransition>
           </div>

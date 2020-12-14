@@ -107,6 +107,7 @@ export const MainLayout: React.FC = ({ children }) => {
       </motion.div>
       {/* PAGE TRANSITION ELEMENT */}
       <motion.div
+        data-status={wiperState.status}
         animate={wiperState.status}
         variants={wipeTransitionVariants}
         className={styles.wipe}

@@ -146,7 +146,9 @@ export function usePageWiperEffects({
         console.log('In exit state');
 
         // * Transition after 500ms second
-        dispatch({ type: PageWiperActionNames.NEXT });
+        exitTransition = window.setTimeout(() => {
+          dispatch({ type: PageWiperActionNames.NEXT });
+        }, wipeTransitionDuration * 1000);
         break;
       }
 

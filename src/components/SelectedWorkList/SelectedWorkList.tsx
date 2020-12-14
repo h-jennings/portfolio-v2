@@ -15,6 +15,7 @@ import { AppThemes, useTheme } from '@/context/theme';
 import { Project } from '@/data/projects';
 import { Colors } from '@/models/colors';
 
+import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './SelectedWorkList.module.scss';
 
@@ -176,26 +177,25 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
       {projects.map((proj, idx) => (
         <li key={proj.path} className={styles.listItem}>
           <RevealText>
-            <Link scroll={false} href={proj.path}>
-              <a
-                onMouseEnter={() => handleLinkAction(idx)}
-                onMouseLeave={() => handleLinkAction()}
-                onFocus={() => handleLinkAction(idx)}
-                onBlur={() => handleLinkAction()}
-                className={classnames([
-                  'd-flex space-x-lg md:space-x-md',
-                  styles.link,
-                ])}>
-                <div
-                  aria-hidden={true}
-                  className={styles.bar}
-                  style={{ backgroundColor: linkData[idx].hex ?? Colors.white }}
-                />
-                <div className={classnames(['lh-1', styles.listItemText])}>
-                  {proj.name}
-                </div>
-              </a>
-            </Link>
+            <LinkWithPageTransition
+              route={proj.path}
+              onMouseEnter={() => handleLinkAction(idx)}
+              onMouseLeave={() => handleLinkAction()}
+              onFocus={() => handleLinkAction(idx)}
+              onBlur={() => handleLinkAction()}
+              className={classnames([
+                'd-flex space-x-lg md:space-x-md',
+                styles.link,
+              ])}>
+              <div
+                aria-hidden={true}
+                className={styles.bar}
+                style={{ backgroundColor: linkData[idx].hex ?? Colors.white }}
+              />
+              <div className={classnames(['lh-1', styles.listItemText])}>
+                {proj.name}
+              </div>
+            </LinkWithPageTransition>
           </RevealText>
         </li>
       ))}

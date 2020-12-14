@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -10,28 +6,33 @@ import { PageWiperActionNames, usePageWiper } from '@/context/page-wiper';
 
 interface LinkWithPageTransitionProps {
   route: string;
-  children?: React.ReactNode;
+  [prop: string]: any;
 }
-export const LinkWithPageTransition = React.forwardRef<
-  HTMLAnchorElement,
-  LinkWithPageTransitionProps
->((props, ref) => {
+export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
+  props,
+) => {
   const { dispatch } = usePageWiper();
   const router = useRouter();
-  function handleLinkClick(route: string) {
+  function handleLinkClick(
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    route: string,
+  ) {
+    e.preventDefault();
     if (router.pathname === route) return;
 
-    dispatch({ type: PageWiperActionNames.CLICK });
+    router.push(route);
+
+    // * State transition
     setTimeout(() => {
-      /* 
-        TODO: Need to adjust timing of transition
-        Honestly will most likely need to ditch AnimatePresence stuff, 
-        other than enter I think...
-      */
-      router.push(route);
-    }, (wipeTransitionDuration / 2) * 1000);
+      dispatch({ type: PageWiperActionNames.CLICK });
+    }, wipeTransitionDuration * 1000);
   }
   return (
-    <a ref={ref} {...props} onClick={() => handleLinkClick(props.route)} />
+    <a
+      {...props}
+      href={props.route}
+      onClick={(e) => handleLinkClick(e, props.route)}>
+      {props.children}
+    </a>
   );
-});
+};
