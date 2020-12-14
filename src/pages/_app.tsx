@@ -1,16 +1,23 @@
 import '@scss/index.scss';
 
-import { AnimatePresence } from 'framer-motion';
+import styles from '@scss/pages/App.module.scss';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React from 'react';
 
+import { wipeTransitionVariants } from '@/animation/page-transition';
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
 import {
   drawerReducer,
   initialDrawerState,
   MenuDrawerContext,
 } from '@/context/menu-drawer';
-import { PageWiperProvider } from '@/context/page-wiper';
+import {
+  initialPageWiperState,
+  PageWiperContext,
+  pageWiperReducer,
+  usePageWiperEffects,
+} from '@/context/page-wiper';
 import { ThemeProvider } from '@/context/theme';
 
 interface AppLayoutProps {
@@ -48,16 +55,29 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
     [drawerState],
   );
 
+  const [wiperState, wiperDispatch] = React.useReducer(
+    pageWiperReducer,
+    initialPageWiperState,
+  );
+  usePageWiperEffects({ state: wiperState, dispatch: wiperDispatch });
   const { route } = useRouter();
   return (
     <ThemeProvider>
-      <PageWiperProvider>
+      <PageWiperContext.Provider
+        value={{ state: wiperState, dispatch: wiperDispatch }}>
         <MenuDrawerContext.Provider value={value}>
           <AnimatePresence initial={false} exitBeforeEnter>
             <Component {...pageProps} key={route} />
           </AnimatePresence>
+          {/* PAGE TRANSITION ELEMENT */}
+          <motion.div
+            data-status={wiperState.status}
+            animate={wiperState.status}
+            variants={wipeTransitionVariants}
+            className={styles.wipe}
+          />
         </MenuDrawerContext.Provider>
-      </PageWiperProvider>
+      </PageWiperContext.Provider>
     </ThemeProvider>
   );
 };

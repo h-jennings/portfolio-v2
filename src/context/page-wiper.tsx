@@ -120,10 +120,7 @@ function usePageWiper(): PageWiperContextType {
   return context;
 }
 
-export function usePageWiperEffects({
-  state,
-  dispatch,
-}: PageWiperContextType): void {
+function usePageWiperEffects({ state, dispatch }: PageWiperContextType): void {
   React.useEffect(() => {
     let enterTransition: number;
     let exitTransition: number;
@@ -175,4 +172,10 @@ const PageWiperProvider: React.FC = ({ children }) => {
   );
 };
 
-export { PageWiperProvider, usePageWiper };
+export {
+  initialPageWiperState,
+  PageWiperContext,
+  pageWiperReducer,
+  usePageWiper,
+  usePageWiperEffects,
+};
