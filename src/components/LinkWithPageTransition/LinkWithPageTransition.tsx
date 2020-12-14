@@ -22,10 +22,10 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
 
     router.push(route);
 
-    // * State transition
-    setTimeout(() => {
-      dispatch({ type: PageWiperActionNames.CLICK });
-    }, wipeTransitionDuration * 1000);
+    // // * State transition
+    // setTimeout(() => {
+    //   dispatch({ type: PageWiperActionNames.CLICK });
+    // }, wipeTransitionDuration * 1000);
   }
   return (
     <a
