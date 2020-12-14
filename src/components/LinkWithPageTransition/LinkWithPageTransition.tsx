@@ -22,7 +22,9 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
 
     // * State transition
     window.requestAnimationFrame(() => {
-      router.push(route);
+      router.push(route, undefined, {
+        shallow: true,
+      });
       setTimeout(() => {
         dispatch({ type: PageWiperActionNames.CLICK });
       }, wipeTransitionDuration * 1000);
