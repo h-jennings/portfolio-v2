@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import { wipeTransitionDuration } from '@/animation/page-transition';
+import { wipeTransitionTotalTimeInMs } from '@/animation/page-transition';
 import { PageWiperActionNames, usePageWiper } from '@/context/page-wiper';
 
 interface LinkWithPageTransitionProps {
@@ -20,11 +20,13 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
     e.preventDefault();
     if (router.pathname === route) return;
 
-    dispatch({ type: PageWiperActionNames.CLICK });
     // * State transition
+    dispatch({ type: PageWiperActionNames.CLICK });
+
+    // Change route at wipe transition midpoint
     setTimeout(() => {
       router.push(route);
-    }, wipeTransitionDuration * 1000);
+    }, wipeTransitionTotalTimeInMs / 2);
   }
 
   React.useEffect(() => {

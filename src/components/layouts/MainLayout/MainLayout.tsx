@@ -9,7 +9,7 @@ import React from 'react';
 import Media from 'react-media';
 
 import {
-  pageTransitionVariants,
+  pageContentTransitionVariants,
   wipeTransitionVariants,
 } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
@@ -46,17 +46,6 @@ export const MainLayout: React.FC = ({ children }) => {
     [currentProject],
   );
 
-  const [canScroll, setCanScroll] = React.useState(false);
-
-  // Locks scroll on the body element
-  React.useEffect(() => {
-    if (!canScroll) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-  }, [canScroll]);
-
   const { state: wiperState } = usePageWiper();
 
   return (
@@ -66,8 +55,7 @@ export const MainLayout: React.FC = ({ children }) => {
         initial='initial'
         animate='enter'
         exit='exit'
-        variants={pageTransitionVariants}
-        onAnimationComplete={() => setCanScroll(true)}
+        variants={pageContentTransitionVariants}
         className={styles.layoutContainer}>
         <div
           data-drawer-status={drawerState.status}
@@ -107,7 +95,6 @@ export const MainLayout: React.FC = ({ children }) => {
       </motion.div>
       {/* PAGE TRANSITION ELEMENT */}
       <motion.div
-        data-status={wiperState.status}
         animate={wiperState.status}
         variants={wipeTransitionVariants}
         className={styles.wipe}

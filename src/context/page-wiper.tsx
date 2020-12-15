@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { wipeTransitionDuration } from '@/animation/page-transition';
+import {
+  transitionDurationInMs,
+  wipeTransitionTotalTimeInMs,
+} from '@/animation/page-transition';
 
 /* 
   !! CONSIDER GROUPING PAGE TRANSITIONS INTO ON REDUCER/CONTEXT
@@ -29,7 +32,7 @@ const initialPageWiperState: PageWiperState = {
   status: PageWiperStateNames.idle,
 };
 
-function handleIdleStates(
+function handleIdleState(
   state: PageWiperState,
   action: PageWiperActions,
 ): PageWiperState {
@@ -47,7 +50,7 @@ function handleIdleStates(
   }
 }
 
-function handleEnterStates(
+function handleEnterState(
   state: PageWiperState,
   action: PageWiperActions,
 ): PageWiperState {
@@ -65,7 +68,7 @@ function handleEnterStates(
   }
 }
 
-function handleExitStates(
+function handleExitState(
   state: PageWiperState,
   action: PageWiperActions,
 ): PageWiperState {
@@ -89,15 +92,15 @@ function pageWiperReducer(
 ): PageWiperState {
   switch (state.status) {
     case PageWiperStateNames.idle: {
-      return handleIdleStates(state, action);
+      return handleIdleState(state, action);
     }
 
     case PageWiperStateNames.enter: {
-      return handleEnterStates(state, action);
+      return handleEnterState(state, action);
     }
 
     case PageWiperStateNames.exit: {
-      return handleExitStates(state, action);
+      return handleExitState(state, action);
     }
 
     default:
@@ -129,31 +132,27 @@ export function usePageWiperEffects({
     let exitTransition: number;
 
     switch (state.status) {
-      case PageWiperStateNames.idle: {
-        console.log('idle state');
-        break;
-      }
       case PageWiperStateNames.enter: {
-        console.log('Enter state');
-
-        // * Transition after 500ms second
+        // Locking page scroll
+        document.body.classList.add('no-scroll');
+        // * Transition to exit state (with pause)
         enterTransition = window.setTimeout(() => {
           dispatch({ type: PageWiperActionNames.NEXT });
-        }, wipeTransitionDuration * 1000 * 2);
+        }, wipeTransitionTotalTimeInMs);
         break;
       }
       case PageWiperStateNames.exit: {
-        console.log('In exit state');
-
-        // * Transition after 500ms second
+        // * Transition back to idle state
         exitTransition = window.setTimeout(() => {
           dispatch({ type: PageWiperActionNames.NEXT });
-        }, wipeTransitionDuration * 1000);
+          // Removing page scroll lock
+          document.body.classList.remove('no-scroll');
+        }, transitionDurationInMs);
         break;
       }
 
       default:
-        throw new Error('unhandled state change');
+        break;
     }
 
     () => {
