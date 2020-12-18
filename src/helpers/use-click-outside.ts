@@ -6,7 +6,6 @@ export const useClickOutside = (
 ): void => {
   const handleClick = (e: MouseEvent) => {
     if (ref.current && !ref.current.contains(e.target)) {
-      // console.log('clicked outside!', { element: e.target });
       callback();
     }
   };
