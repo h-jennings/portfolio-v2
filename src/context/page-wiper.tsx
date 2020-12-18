@@ -1,21 +1,23 @@
 import React from 'react';
+import {
+  EffectFunction,
+  EffectReducer,
+  EffectReducerExec,
+  useEffectReducer,
+} from 'use-effect-reducer';
 
 import {
   transitionDurationInMs,
   wipeTransitionTotalTimeInMs,
 } from '@/animation/page-transition';
 
-/* 
-  !! CONSIDER GROUPING PAGE TRANSITIONS INTO ON REDUCER/CONTEXT
-  * i.e. Initial loading, page wipe, etc.
-*/
-
-export enum PageWiperStateNames {
+// * TYPES
+enum PageWiperStateNames {
   idle = 'idle',
   enter = 'enter',
   exit = 'exit',
 }
-export type PageWiperState =
+type PageWiperState =
   | { status: PageWiperStateNames.idle }
   | { status: PageWiperStateNames.enter }
   | { status: PageWiperStateNames.exit };
@@ -24,20 +26,62 @@ export enum PageWiperActionNames {
   CLICK = 'CLICK',
   NEXT = 'NEXT',
 }
-export type PageWiperActions =
+type PageWiperActions =
   | { type: PageWiperActionNames.CLICK }
   | { type: PageWiperActionNames.NEXT };
+
+type PageWiperEffects =
+  | {
+      type: 'enterTransition';
+    }
+  | {
+      type: 'exitTransition';
+    };
 
 const initialPageWiperState: PageWiperState = {
   status: PageWiperStateNames.idle,
 };
 
+// * Effects
+const enterTransitionEffect: EffectFunction<
+  PageWiperState,
+  PageWiperActions,
+  PageWiperEffects
+> = (_state, _effect, dispatch) => {
+  // Locking page scroll
+  document.body.classList.add('no-scroll');
+
+  const enterTransition = window.setTimeout(() => {
+    dispatch({ type: PageWiperActionNames.NEXT });
+  }, wipeTransitionTotalTimeInMs);
+
+  return () => window.clearTimeout(enterTransition);
+};
+
+const exitTransitionEffect: EffectFunction<
+  PageWiperState,
+  PageWiperActions,
+  PageWiperEffects
+> = (_state, _effect, dispatch) => {
+  // Removing page scroll lock
+  document.body.classList.remove('no-scroll');
+
+  const exitTransition = window.setTimeout(() => {
+    dispatch({ type: PageWiperActionNames.NEXT });
+  }, transitionDurationInMs);
+
+  return () => window.clearTimeout(exitTransition);
+};
+
+// * STATES
 function handleIdleState(
   state: PageWiperState,
   action: PageWiperActions,
+  exec: EffectReducerExec<PageWiperState, PageWiperActions, PageWiperEffects>,
 ): PageWiperState {
   switch (action.type) {
     case PageWiperActionNames.CLICK: {
+      exec({ type: 'enterTransition' });
       return {
         ...state,
         status: PageWiperStateNames.enter,
@@ -53,9 +97,11 @@ function handleIdleState(
 function handleEnterState(
   state: PageWiperState,
   action: PageWiperActions,
+  exec: EffectReducerExec<PageWiperState, PageWiperActions, PageWiperEffects>,
 ): PageWiperState {
   switch (action.type) {
     case PageWiperActionNames.NEXT: {
+      exec({ type: 'exitTransition' });
       return {
         ...state,
         status: PageWiperStateNames.exit,
@@ -86,17 +132,19 @@ function handleExitState(
   }
 }
 
-function pageWiperReducer(
-  state: PageWiperState,
-  action: PageWiperActions,
-): PageWiperState {
+// * REDUCER
+const pageWiperReducer: EffectReducer<
+  PageWiperState,
+  PageWiperActions,
+  PageWiperEffects
+> = (state, action, exec) => {
   switch (state.status) {
     case PageWiperStateNames.idle: {
-      return handleIdleState(state, action);
+      return handleIdleState(state, action, exec);
     }
 
     case PageWiperStateNames.enter: {
-      return handleEnterState(state, action);
+      return handleEnterState(state, action, exec);
     }
 
     case PageWiperStateNames.exit: {
@@ -106,7 +154,7 @@ function pageWiperReducer(
     default:
       throw new Error('Unhandled state');
   }
-}
+};
 
 interface PageWiperContextType {
   state: PageWiperState;
@@ -123,50 +171,15 @@ function usePageWiper(): PageWiperContextType {
   return context;
 }
 
-export function usePageWiperEffects({
-  state,
-  dispatch,
-}: PageWiperContextType): void {
-  React.useEffect(() => {
-    let enterTransition: number;
-    let exitTransition: number;
-
-    switch (state.status) {
-      case PageWiperStateNames.enter: {
-        // Locking page scroll
-        document.body.classList.add('no-scroll');
-        // * Transition to exit state (with pause)
-        enterTransition = window.setTimeout(() => {
-          dispatch({ type: PageWiperActionNames.NEXT });
-        }, wipeTransitionTotalTimeInMs);
-        break;
-      }
-      case PageWiperStateNames.exit: {
-        // * Transition back to idle state
-        exitTransition = window.setTimeout(() => {
-          dispatch({ type: PageWiperActionNames.NEXT });
-          // Removing page scroll lock
-          document.body.classList.remove('no-scroll');
-        }, transitionDurationInMs);
-        break;
-      }
-
-      default:
-        break;
-    }
-
-    () => {
-      window.clearTimeout(enterTransition);
-      window.clearTimeout(exitTransition);
-    };
-  }, [state.status, dispatch]);
-}
 const PageWiperProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = React.useReducer(
+  const [state, dispatch] = useEffectReducer(
     pageWiperReducer,
     initialPageWiperState,
+    {
+      enterTransition: enterTransitionEffect,
+      exitTransition: exitTransitionEffect,
+    },
   );
-  usePageWiperEffects({ state, dispatch });
   return (
     <PageWiperContext.Provider value={{ state, dispatch }}>
       {children}
