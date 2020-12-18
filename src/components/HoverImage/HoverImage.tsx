@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { defaultSpringAnimation } from '@/animation/spring-animation';
 import { useMouseCoordinates } from '@/helpers/use-mouse-coordinates';
@@ -31,12 +31,23 @@ export const HoverImage: React.FC<HoverImageProps> = ({ src, status }) => {
       style={{
         left: `${mouseX}px`,
         top: `${mouseY}px`,
-        backgroundImage: src ? `url('${src}')` : 'none',
       }}
       className={styles.container}
       variants={hoverImageVariants}
       animate={status}
-      initial='hidden'
-    />
+      initial='hidden'>
+      <AnimatePresence exitBeforeEnter>
+        {src ? (
+          <motion.img
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            className={styles.image}
+            src={src}
+            key={src}
+          />
+        ) : null}
+      </AnimatePresence>
+    </motion.div>
   );
 };

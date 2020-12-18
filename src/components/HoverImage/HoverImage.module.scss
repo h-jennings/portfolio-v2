@@ -5,7 +5,8 @@
   position: fixed;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  background-position: center;
-  background-size: cover;
   z-index: 1;
+}
+.image {
+  object-fit: cover;
 }

@@ -37,7 +37,8 @@
     "react-intersection-observer": "^8.31.0",
     "react-media": "^1.10.0",
     "sass": "~1.29.0",
-    "scheduler": "^0.20.1"
+    "scheduler": "^0.20.1",
+    "use-effect-reducer": "^0.7.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.1",

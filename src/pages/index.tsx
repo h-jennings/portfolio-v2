@@ -2,6 +2,7 @@ import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
 import Link from 'next/link';
+import React from 'react';
 
 import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
@@ -17,6 +18,10 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = () => {
   useScrollToTop();
+
+  const [shouldRenderHoverImage, setShouldRenderHoverImage] = React.useState<
+    boolean
+  >(false);
 
   return (
     <MainLayout>
@@ -45,6 +50,9 @@ const Home: NextPage<HomeProps> = () => {
       </section>
       <section
         id='selected-work'
+        onMouseOver={() => setShouldRenderHoverImage(true)}
+        onMouseLeave={() => setShouldRenderHoverImage(false)}
+        onFocus={() => setShouldRenderHoverImage(true)}
         className={classnames(['p-t-xxl md:p-t-lg', styles.work])}>
         <h1
           className={classnames([
@@ -53,7 +61,10 @@ const Home: NextPage<HomeProps> = () => {
           ])}>
           <RevealText>Selected Work</RevealText>
         </h1>
-        <SelectedWorkList projects={projects} />
+        <SelectedWorkList
+          projects={projects}
+          shouldRenderHoverImage={shouldRenderHoverImage}
+        />
       </section>{' '}
     </MainLayout>
   );

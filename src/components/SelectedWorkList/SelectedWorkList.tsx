@@ -66,9 +66,13 @@ interface ILinkData {
 }
 interface SelectedWorkListProps {
   projects: Project[];
+  shouldRenderHoverImage?: boolean;
 }
 
-const SelectedWorkList: React.FC<SelectedWorkListProps> = ({ projects }) => {
+const SelectedWorkList: React.FC<SelectedWorkListProps> = ({
+  projects,
+  shouldRenderHoverImage,
+}) => {
   // Breakpoint for the navigation options
   const breakpoint = '(max-width: 768px)';
   return (
@@ -79,7 +83,10 @@ const SelectedWorkList: React.FC<SelectedWorkListProps> = ({ projects }) => {
             {matches.mobile ? (
               <Mobile projects={projects} />
             ) : (
-              <Desktop projects={projects} />
+              <Desktop
+                shouldRenderHoverImage={shouldRenderHoverImage}
+                projects={projects}
+              />
             )}
           </>
         );
@@ -88,7 +95,10 @@ const SelectedWorkList: React.FC<SelectedWorkListProps> = ({ projects }) => {
   );
 };
 
-const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
+const Desktop: React.FC<SelectedWorkListProps> = ({
+  projects,
+  shouldRenderHoverImage,
+}) => {
   const router = useRouter();
 
   const { setTheme } = useTheme();
@@ -172,35 +182,47 @@ const Desktop: React.FC<SelectedWorkListProps> = ({ projects }) => {
     handleHoverImageStateChange(idx);
   };
   return (
-    <ol
-      className={classnames(['space-y-xl md:space-y-md p-b-xxl', styles.list])}>
-      {projects.map((proj, idx) => (
-        <li key={proj.path} className={styles.listItem}>
-          <RevealText>
-            <LinkWithPageTransition
-              route={proj.path}
-              onMouseEnter={() => handleLinkAction(idx)}
-              onMouseLeave={() => handleLinkAction()}
-              onFocus={() => handleLinkAction(idx)}
-              onBlur={() => handleLinkAction()}
-              className={classnames([
-                'd-flex space-x-lg md:space-x-md',
-                styles.link,
-              ])}>
-              <div
-                aria-hidden={true}
-                className={styles.bar}
-                style={{ backgroundColor: linkData[idx].hex ?? Colors.white }}
-              />
-              <div className={classnames(['lh-1', styles.listItemText])}>
-                {proj.name}
-              </div>
-            </LinkWithPageTransition>
-          </RevealText>
-        </li>
-      ))}
-      <HoverImage src={hoverImageState.src} status={hoverImageState.status} />
-    </ol>
+    <>
+      <ol
+        className={classnames([
+          'space-y-xl md:space-y-md p-b-xxl',
+          styles.list,
+        ])}>
+        {projects.map((proj, idx) => (
+          <li key={proj.path} className={styles.listItem}>
+            <RevealText>
+              <LinkWithPageTransition
+                route={proj.path}
+                onMouseEnter={() => handleLinkAction(idx)}
+                onMouseLeave={() => handleLinkAction()}
+                onFocus={() => handleLinkAction(idx)}
+                onBlur={() => handleLinkAction()}
+                className={classnames([
+                  'd-flex space-x-lg md:space-x-md',
+                  styles.link,
+                ])}>
+                <div
+                  aria-hidden={true}
+                  className={styles.bar}
+                  style={{ backgroundColor: linkData[idx].hex ?? Colors.white }}
+                />
+                <div className={classnames(['lh-1', styles.listItemText])}>
+                  {proj.name}
+                </div>
+              </LinkWithPageTransition>
+            </RevealText>
+          </li>
+        ))}
+      </ol>
+      {/* 
+        TODO: Need to alter the logic for this component
+        1. Component mouse coordinates are only updated in on mouseover
+        2. Images are preloaded and optimized 
+       */}
+      {shouldRenderHoverImage ? (
+        <HoverImage src={hoverImageState.src} status={hoverImageState.status} />
+      ) : null}
+    </>
   );
 };
 
