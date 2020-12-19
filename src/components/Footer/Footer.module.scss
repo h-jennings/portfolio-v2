@@ -1,3 +1,6 @@
+@import '@scss/global/config';
+@import '@scss/global/breakpoints';
+
 .footer {
   background-color: var(--color-grey);
   padding: 0 var(--gutter, 90px);
@@ -14,17 +17,36 @@
 
 .content {
   max-width: 1440px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--gap-primary);
+  width: 100%;
+  display: flex;
+
+  @media screen and (max-width: 800px) {
+    flex-flow: column;
+    padding: 0;
+  }
 }
 
 .copyright {
-  grid-column: span 3;
 }
-.time {
-  grid-column: span 2;
+.locationDetails {
+  @media screen and (max-width: 800px) {
+    justify-content: space-between;
+    margin: 0;
+  }
 }
-.weather {
-  grid-column: span 2;
+
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  @media screen and (max-width: 800px) {
+    justify-content: space-between;
+    margin: 0;
+  }
+  a {
+    color: var(--color-black);
+    &::after {
+      background-color: var(--color-black);
+    }
+  }
 }

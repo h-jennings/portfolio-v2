@@ -247,16 +247,16 @@ const Mobile: React.FC<SelectedWorkListProps> = ({ projects }) => {
           <div className={styles.mobileListText}>
             <div className='text-h3 m-b-xsm'>{proj.role}</div>
             <div className='text-h2 m-b-xsm'>{proj.name}</div>
-            <Link scroll={false} href={proj.path}>
-              <a className='link-reset d-inline-flex space-x-sm flx-a-c'>
-                <span className='d-block'>View Project</span>
-                <div className={styles.linkIcon}>
-                  <SvgContainer svgHeight={24} svgWidth={24}>
-                    <ArrowIcon />
-                  </SvgContainer>
-                </div>
-              </a>
-            </Link>
+            <LinkWithPageTransition
+              route={proj.path}
+              className='link-reset d-inline-flex space-x-sm flx-a-c'>
+              <span className='d-block'>View Project</span>
+              <div className={styles.linkIcon}>
+                <SvgContainer svgHeight={24} svgWidth={24}>
+                  <ArrowIcon />
+                </SvgContainer>
+              </div>
+            </LinkWithPageTransition>
           </div>
         </li>
       ))}

@@ -18,7 +18,11 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
     route: string,
   ) {
     e.preventDefault();
-    if (router.pathname === route) return;
+    if (router.pathname === route) {
+      router.push(route);
+      window.scrollTo(0, 0);
+      return;
+    }
 
     // * State transition
     dispatch({ type: PageWiperActionNames.CLICK });
