@@ -1,3 +1,4 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React from 'react';
 import {
   EffectFunction,
@@ -48,8 +49,7 @@ const enterTransitionEffect: EffectFunction<
   PageWiperActions,
   PageWiperEffects
 > = (_state, _effect, dispatch) => {
-  // Locking page scroll
-  document.body.classList.add('no-scroll');
+  disableBodyScroll(document.body);
 
   const enterTransition = window.setTimeout(() => {
     dispatch({ type: PageWiperActionNames.NEXT });
@@ -63,8 +63,7 @@ const exitTransitionEffect: EffectFunction<
   PageWiperActions,
   PageWiperEffects
 > = (_state, _effect, dispatch) => {
-  // Removing page scroll lock
-  document.body.classList.remove('no-scroll');
+  enableBodyScroll(document.body);
 
   const exitTransition = window.setTimeout(() => {
     dispatch({ type: PageWiperActionNames.NEXT });

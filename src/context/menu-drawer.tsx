@@ -1,4 +1,11 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React from 'react';
+import {
+  EffectFunction,
+  EffectReducer,
+  EffectReducerExec,
+  useEffectReducer,
+} from 'use-effect-reducer';
 
 export type DrawerState = { status: 'open' } | { status: 'closed' };
 export type DrawerActions =
@@ -6,27 +13,91 @@ export type DrawerActions =
       type: 'OPEN';
     }
   | { type: 'CLOSE' };
+type DrawerEffects =
+  | {
+      type: 'bodyLock';
+    }
+  | {
+      type: 'bodyUnlock';
+    };
 
 const initialDrawerState: DrawerState = { status: 'closed' };
 
-function drawerReducer(state: DrawerState, action: DrawerActions): DrawerState {
+const lockBodyOnOpen: EffectFunction<
+  DrawerState,
+  DrawerActions,
+  DrawerEffects
+> = () => {
+  disableBodyScroll(document.body);
+};
+
+const unlockBodyOnClose: EffectFunction<
+  DrawerState,
+  DrawerActions,
+  DrawerEffects
+> = () => {
+  enableBodyScroll(document.body);
+};
+
+const handleOpenState = (
+  state: DrawerState,
+  action: DrawerActions,
+  exec: EffectReducerExec<DrawerState, DrawerActions, DrawerEffects>,
+): DrawerState => {
   switch (action.type) {
-    case 'OPEN': {
-      return {
-        ...state,
-        status: 'open',
-      };
-    }
     case 'CLOSE': {
+      exec({ type: 'bodyUnlock' });
+
       return {
         ...state,
         status: 'closed',
       };
     }
+
     default:
-      throw new Error('impossible state');
+      return state;
   }
-}
+};
+
+const handleClosedState = (
+  state: DrawerState,
+  action: DrawerActions,
+  exec: EffectReducerExec<DrawerState, DrawerActions, DrawerEffects>,
+): DrawerState => {
+  switch (action.type) {
+    case 'OPEN': {
+      exec({ type: 'bodyLock' });
+
+      return {
+        ...state,
+        status: 'open',
+      };
+    }
+
+    default:
+      return state;
+  }
+};
+
+const drawerReducer: EffectReducer<
+  DrawerState,
+  DrawerActions,
+  DrawerEffects
+> = (state, action, exec) => {
+  switch (state.status) {
+    case 'open': {
+      return handleOpenState(state, action, exec);
+    }
+
+    case 'closed': {
+      return handleClosedState(state, action, exec);
+    }
+
+    default:
+      throw new Error('Unhandled state');
+  }
+};
+
 interface MenuDrawerContextType {
   state: DrawerState;
   dispatch: React.Dispatch<DrawerActions>;
@@ -43,13 +114,20 @@ function useMenuDrawer(): MenuDrawerContextType {
 }
 
 const MenuDrawerProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = React.useReducer(drawerReducer, initialDrawerState);
+  const [state, dispatch] = useEffectReducer(
+    drawerReducer,
+    initialDrawerState,
+    {
+      bodyLock: lockBodyOnOpen,
+      bodyUnlock: unlockBodyOnClose,
+    },
+  );
   const value = React.useMemo(
     () => ({
       state,
       dispatch,
     }),
-    [state],
+    [state, dispatch],
   );
   return (
     <MenuDrawerContext.Provider value={value}>

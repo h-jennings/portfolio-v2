@@ -34,6 +34,7 @@ export const MainLayout: React.FC = ({ children }) => {
   const containerOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0.9]);
 
   const { pathname } = useRouter();
+
   const currentProject = React.useMemo(
     () => getCurrentProject(projects, pathname),
     [pathname],

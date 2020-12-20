@@ -8,13 +8,9 @@
     outline: none;
   }
 }
-[data-drawer-status='open'] {
-  &.container {
-    pointer-events: all;
-  }
-}
 .wrapper {
   height: 100vh;
+  height: var(--vh);
   width: 100vw;
   position: relative;
   display: flex;
