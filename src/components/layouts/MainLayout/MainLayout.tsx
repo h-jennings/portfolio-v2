@@ -14,7 +14,6 @@ import {
 } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
-import { useMenuDrawer } from '@/context/menu-drawer';
 import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
@@ -33,8 +32,6 @@ export const MainLayout: React.FC = ({ children }) => {
   const containerScale = useTransform(scrollYProgress, [0.9, 1], [1, 0.95]);
   const footerOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
   const containerOpacity = useTransform(scrollYProgress, [0.9, 1], [1, 0.9]);
-
-  const { drawerState } = useMenuDrawer();
 
   const { pathname } = useRouter();
   const currentProject = React.useMemo(
@@ -58,10 +55,9 @@ export const MainLayout: React.FC = ({ children }) => {
         variants={pageContentTransitionVariants}
         className={styles.layoutContainer}>
         <div
-          data-drawer-status={drawerState.status}
-          className={classnames(['d-flex flx-j-c w-full', styles.siteContent])}>
+          className={classnames('d-flex flx-j-c w-full', styles.siteContent)}>
           <div className={styles.bgBlock} />
-          <div className={classnames(['w-full', styles.main])}>
+          <div className={classnames('w-full', styles.main)}>
             <Media
               queries={{ mobile: breakpoint }}
               defaultMatches={{ mobile: false }}>

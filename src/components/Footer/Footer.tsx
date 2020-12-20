@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
   return (
     <footer
       aria-label='footer'
-      className={classnames(['w-full d-flex flx-j-c', styles.footer])}>
+      className={classnames('w-full d-flex flx-j-c', styles.footer)}>
       <div
         className={classnames(
           'w-full p-t-xxl p-b-xl d-flex space-x-xl lg:space-x-lg',

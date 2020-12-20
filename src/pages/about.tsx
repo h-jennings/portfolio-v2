@@ -38,7 +38,7 @@ const About: React.FC = () => {
         <SplitLayout>
           <SplitContentLeft>
             <h1 className='m-b-xl md:m-b-md'>About</h1>
-            <p className={classnames(['m-b-md', styles.paragraph])}>
+            <p className={classnames('m-b-md', styles.paragraph)}>
               Hey there, I&apos;m Hunter. I&apos;ve been wrangling pixels and
               shapes since &apos;17. I create beautiful user interfaces with
               cutting-edge web technologies. My primary areas of focus are
@@ -54,7 +54,7 @@ const About: React.FC = () => {
             </p>
           </SplitContentLeft>
           <SplitContentRight>
-            <div className={classnames(['m-b-xl', styles.image])}>
+            <div className={classnames('m-b-xl', styles.image)}>
               <ResponsiveImage
                 src={headshot}
                 altText='Picture of me'
@@ -65,7 +65,7 @@ const About: React.FC = () => {
             <section className='m-b-xl'>
               <h2 className='m-b-md'>What I Do</h2>
               <div className={styles.skillsListWrapper}>
-                <ul className={classnames([styles.skillsList])}>
+                <ul className={classnames(styles.skillsList)}>
                   {skills.map(({ title, content }) => (
                     <li key={title}>
                       <h3 className='m-b-xsm'>{title}</h3>
@@ -81,10 +81,10 @@ const About: React.FC = () => {
                 {jobs.map(({ title, when, company }) => (
                   <li
                     key={company}
-                    className={classnames([
+                    className={classnames(
                       'p-y-sm p-x-xsm',
                       styles.experienceListItem,
-                    ])}>
+                    )}>
                     <div className='text-h3'>{when}</div>
                     <div>
                       <div className='text-p ta-l'>{title}</div>

@@ -1,7 +1,6 @@
 import { LinkWithPageTransition } from '@components/LinkWithPageTransition/LinkWithPageTransition';
 import classnames from 'classnames';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import styles from './FullscreenLink.module.scss';
 
@@ -32,10 +31,7 @@ export const FullscreenLink: React.FC<FullscreenLinkProps> = ({
             <h1 className='fz-base ta-c'>{cta}</h1>
           </div>
           <h2
-            className={classnames([
-              'fz-xl ta-c m-b-lg md:m-b-md',
-              styles.title,
-            ])}>
+            className={classnames('fz-xl ta-c m-b-lg md:m-b-md', styles.title)}>
             {title}
           </h2>
           <div className={styles.imageContainer}>

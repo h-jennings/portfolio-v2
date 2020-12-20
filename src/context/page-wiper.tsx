@@ -166,7 +166,7 @@ const PageWiperContext = React.createContext({} as PageWiperContextType);
 function usePageWiper(): PageWiperContextType {
   const context = React.useContext(PageWiperContext);
   if (context === undefined) {
-    throw new Error('usePageWiper must be used within a ');
+    throw new Error('usePageWiper must be used within a PageWiperProvider');
   }
   return context;
 }
@@ -180,8 +180,16 @@ const PageWiperProvider: React.FC = ({ children }) => {
       exitTransition: exitTransitionEffect,
     },
   );
+
+  const value = React.useMemo(
+    () => ({
+      state,
+      dispatch,
+    }),
+    [state, dispatch],
+  );
   return (
-    <PageWiperContext.Provider value={{ state, dispatch }}>
+    <PageWiperContext.Provider value={value}>
       {children}
     </PageWiperContext.Provider>
   );

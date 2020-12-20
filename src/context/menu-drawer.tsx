@@ -28,7 +28,7 @@ function drawerReducer(state: DrawerState, action: DrawerActions): DrawerState {
   }
 }
 interface MenuDrawerContextType {
-  drawerState: DrawerState;
+  state: DrawerState;
   dispatch: React.Dispatch<DrawerActions>;
 }
 
@@ -42,4 +42,20 @@ function useMenuDrawer(): MenuDrawerContextType {
   return context;
 }
 
-export { drawerReducer, initialDrawerState, MenuDrawerContext, useMenuDrawer };
+const MenuDrawerProvider: React.FC = ({ children }) => {
+  const [state, dispatch] = React.useReducer(drawerReducer, initialDrawerState);
+  const value = React.useMemo(
+    () => ({
+      state,
+      dispatch,
+    }),
+    [state],
+  );
+  return (
+    <MenuDrawerContext.Provider value={value}>
+      {children}
+    </MenuDrawerContext.Provider>
+  );
+};
+
+export { MenuDrawerProvider, useMenuDrawer };

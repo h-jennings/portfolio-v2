@@ -66,7 +66,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
           <h1 className='m-b-xl md:m-b-md'>Portfolio V1</h1>
           <h2 className='m-b-lg lh-default'>{description}</h2>
 
-          <div className={classnames(['d-flex space-x-lg', styles.details])}>
+          <div className={classnames('d-flex space-x-lg', styles.details)}>
             <ProjectNavigationLinks next={nextProject} previous={prevProject} />
 
             {/* make component */}

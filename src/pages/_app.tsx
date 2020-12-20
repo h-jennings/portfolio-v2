@@ -5,13 +5,10 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
-import {
-  drawerReducer,
-  initialDrawerState,
-  MenuDrawerContext,
-} from '@/context/menu-drawer';
+import { MenuDrawerProvider } from '@/context/menu-drawer';
 import { PageWiperProvider } from '@/context/page-wiper';
 import { ThemeProvider } from '@/context/theme';
+import { useVisualViewportHeight } from '@/helpers/use-visual-viewport-height';
 
 interface AppLayoutProps {
   Component: PageWithLayoutType;
@@ -19,44 +16,18 @@ interface AppLayoutProps {
 }
 
 const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
-  React.useEffect(function setVisualViewportVariable() {
-    const root = document.documentElement;
-
-    const setVisualVhProperty = (): void => {
-      const vizVh = window?.visualViewport?.height ?? window.innerHeight;
-      root.style.setProperty('--vizVh', `${vizVh}px`);
-    };
-
-    setVisualVhProperty();
-
-    window.addEventListener('resize', setVisualVhProperty);
-
-    return () => window.removeEventListener('resize', setVisualVhProperty);
-  }, []);
-
-  // * State Management for Drawer
-  const [drawerState, dispatch] = React.useReducer(
-    drawerReducer,
-    initialDrawerState,
-  );
-
-  const value = React.useMemo(
-    () => ({
-      drawerState,
-      dispatch,
-    }),
-    [drawerState],
-  );
-
   const { route } = useRouter();
+
+  useVisualViewportHeight();
+
   return (
     <ThemeProvider>
       <PageWiperProvider>
-        <MenuDrawerContext.Provider value={value}>
+        <MenuDrawerProvider>
           <AnimatePresence initial={false}>
             <Component {...pageProps} key={route} />
           </AnimatePresence>
-        </MenuDrawerContext.Provider>
+        </MenuDrawerProvider>
       </PageWiperProvider>
     </ThemeProvider>
   );

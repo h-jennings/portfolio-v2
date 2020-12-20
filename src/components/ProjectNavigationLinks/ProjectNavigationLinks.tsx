@@ -1,5 +1,4 @@
 import classnames from 'classnames';
-import Link from 'next/link';
 
 import { Project } from '@/data/projects';
 
@@ -16,7 +15,7 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
   previous,
 }) => {
   return (
-    <ul className={classnames(['space-y-xsm', styles.container])}>
+    <ul className={classnames('space-y-xsm', styles.container)}>
       {previous ? (
         <li>
           <LinkWithPageTransition

@@ -29,7 +29,7 @@ const menuDrawerContainerVariants = {
 };
 
 export const MenuDrawer: React.FC = () => {
-  const { dispatch, drawerState } = useMenuDrawer();
+  const { dispatch, state: drawerState } = useMenuDrawer();
   const projs = [...projects];
   const ref = React.useRef(null);
 
@@ -59,20 +59,20 @@ export const MenuDrawer: React.FC = () => {
       animate={status}
       variants={menuDrawerContainerVariants}
       initial='closed'
-      className={classnames(['p-fixed', styles.container])}>
+      className={classnames('p-fixed', styles.container)}>
       <div className={styles.wrapper}>
         <motion.div
           ref={ref}
-          className={classnames(['p-y-lg p-x-md', styles.drawer])}>
+          className={classnames('p-y-lg p-x-md', styles.drawer)}>
           <header className='d-flex flx-j-sb'>
             <h1 className='fz-base'>Selected Work</h1>
             <button onClick={() => dispatch({ type: 'CLOSE' })}>close</button>
           </header>
-          <ol className={classnames(['space-y-sm', styles.list])}>
+          <ol className={classnames('space-y-sm', styles.list)}>
             {projs.map((proj) => (
               <li
                 key={proj.path}
-                className={classnames(['fz-md', styles.listItem])}>
+                className={classnames('fz-md', styles.listItem)}>
                 <Link href={proj.path}>
                   <a onClick={() => dispatch({ type: 'CLOSE' })}>{proj.name}</a>
                 </Link>

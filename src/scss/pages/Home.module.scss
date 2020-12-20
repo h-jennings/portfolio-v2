@@ -6,7 +6,7 @@
   min-height: calc(100vh - var(--nav-height));
 
   @include break-max-width(md) {
-    min-height: calc(var(--vizVh) - (var(--nav-height) + 48px));
+    min-height: calc(var(--vh) - (var(--nav-height) + 48px));
   }
 }
 .headlineWrapper {

@@ -3,7 +3,6 @@
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import classnames from 'classnames';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useReducer } from 'react';
@@ -184,10 +183,7 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
   return (
     <>
       <ol
-        className={classnames([
-          'space-y-xl md:space-y-md p-b-xxl',
-          styles.list,
-        ])}>
+        className={classnames('space-y-xl md:space-y-md p-b-xxl', styles.list)}>
         {projects.map((proj, idx) => (
           <li key={proj.path} className={styles.listItem}>
             <RevealText>
@@ -197,16 +193,16 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
                 onMouseLeave={() => handleLinkAction()}
                 onFocus={() => handleLinkAction(idx)}
                 onBlur={() => handleLinkAction()}
-                className={classnames([
+                className={classnames(
                   'd-flex space-x-lg md:space-x-md',
                   styles.link,
-                ])}>
+                )}>
                 <div
                   aria-hidden={true}
                   className={styles.bar}
                   style={{ backgroundColor: linkData[idx].hex ?? Colors.white }}
                 />
-                <div className={classnames(['lh-1', styles.listItemText])}>
+                <div className={classnames('lh-1', styles.listItemText)}>
                   {proj.name}
                 </div>
               </LinkWithPageTransition>

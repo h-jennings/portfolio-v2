@@ -25,15 +25,15 @@ const Home: NextPage<HomeProps> = () => {
 
   return (
     <MainLayout>
-      <section className={classnames(['p-relative', styles.container])}>
+      <section className={classnames('p-relative', styles.container)}>
         <div className={classnames('d-flex flx-j-fe', styles.headlineWrapper)}>
-          <h1 className={classnames(['ta-r md:m-b-xl', styles.headline])}>
+          <h1 className={classnames('ta-r md:m-b-xl', styles.headline)}>
             <span className='d-block'>Front End</span>
             <span className='d-block'>Engineer</span>
           </h1>
         </div>
-        <div className={classnames(['p-absolute', styles.intro])}>
-          <p className={classnames(['fz-base'])}>
+        <div className={classnames('p-absolute', styles.intro)}>
+          <p className={classnames('fz-base')}>
             Hunter Jennings is currently working at Guidehouse in Washington
             D.C.{' '}
             <span role='img' aria-label='American Flag emoji'>
@@ -53,12 +53,12 @@ const Home: NextPage<HomeProps> = () => {
         onMouseOver={() => setShouldRenderHoverImage(true)}
         onMouseLeave={() => setShouldRenderHoverImage(false)}
         onFocus={() => setShouldRenderHoverImage(true)}
-        className={classnames(['p-t-xxl md:p-t-lg', styles.work])}>
+        className={classnames('p-t-xxl md:p-t-lg', styles.work)}>
         <h1
-          className={classnames([
+          className={classnames(
             'fz-lg m-b-xxl md:m-b-lg',
             styles.workHeadline,
-          ])}>
+          )}>
           <RevealText>Selected Work</RevealText>
         </h1>
         <SelectedWorkList

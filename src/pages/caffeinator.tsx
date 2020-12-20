@@ -66,7 +66,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
           <h1 className='m-b-xl md:m-b-md'>{projectName}</h1>
           <h2 className='m-b-lg lh-default'>{description}</h2>
 
-          <div className={classnames(['d-flex space-x-lg', styles.details])}>
+          <div className={classnames('d-flex space-x-lg', styles.details)}>
             <ProjectNavigationLinks next={nextProject} previous={prevProject} />
 
             {/* make component */}
@@ -135,7 +135,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
                 bgColor={imagePlaceholderBackgroundColor}
               />
             </div>
-            <div className={classnames(['fz-base', styles.text3])}>
+            <div className={classnames('fz-base', styles.text3)}>
               <p className='fz-base'>
                 The original concept of Hierarchal Finite State Machines
                 (Statecharts) was formalized in the 1980s by computer scientist,
