@@ -71,6 +71,12 @@
   position: fixed;
   z-index: 0;
   bottom: 0;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: var(--gutter);
+  }
 }
 
 // Page transition element

@@ -26,12 +26,14 @@
   }
 }
 
-.copyright {
-}
-.locationDetails {
-  @media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
+  .locationDetails {
     justify-content: space-between;
-    margin: 0;
+    margin: 0 0 8px 0;
+  }
+  .copyright {
+    align-self: center;
+    margin-bottom: 24px;
   }
 }
 

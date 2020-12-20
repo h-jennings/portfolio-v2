@@ -39,4 +39,8 @@ $dim-props: (
   @include break-max-width(sm) {
     --gutter: 24px;
   }
+
+  @media screen and (max-width: 800px) {
+    --footer-height: 178px;
+  }
 }
