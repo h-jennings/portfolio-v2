@@ -97,12 +97,15 @@ const About: React.FC = () => {
           </SplitContentRight>
         </SplitLayout>
       </div>
-      <div style={{ height: '50vh' }}>
-        <h1>Contact me section</h1>
-        <button onClick={() => dispatch({ type: PageWiperActionNames.CLICK })}>
-          transition page
-        </button>
-      </div>
+      <section>
+        <h1 className='m-b-xl fz-xl'>Get in touch</h1>
+        <div className={styles.contact}>
+          <p className={classnames('fz-md', styles.contactIntro)}>
+            Hunter is currently employed as a Front End Developer at Guidehouse,
+            but is open to new opportunities and inquires.
+          </p>
+        </div>
+      </section>
     </MainLayout>
   );
 };
