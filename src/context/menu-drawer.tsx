@@ -1,4 +1,4 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
 import React from 'react';
 import {
   EffectFunction,
@@ -28,7 +28,9 @@ const lockBodyOnOpen: EffectFunction<
   DrawerActions,
   DrawerEffects
 > = () => {
-  disableBodyScroll(document.body);
+  disableBodyScroll(
+    document.querySelector('[data-menu-drawer]') as HTMLDivElement,
+  );
 };
 
 const unlockBodyOnClose: EffectFunction<
@@ -36,7 +38,7 @@ const unlockBodyOnClose: EffectFunction<
   DrawerActions,
   DrawerEffects
 > = () => {
-  enableBodyScroll(document.body);
+  clearAllBodyScrollLocks();
 };
 
 const handleOpenState = (
