@@ -11,6 +11,7 @@ export interface Project {
   path: string;
   preview: Preview;
   year: number;
+  externalLink?: string;
 }
 
 export type Projects = Project[];
@@ -32,6 +33,7 @@ export const projects: Projects = [
     role: 'Design & Development',
     year: 2019,
     path: ProjectPaths.caffeinator.toString(),
+    externalLink: 'https://caffeinator.vercel.app/',
     preview: {
       src: '/images/caffeinator/caffeinator-image-3.png',
       width: 1450,
@@ -43,6 +45,7 @@ export const projects: Projects = [
     role: 'Design & Development',
     year: 2019,
     path: ProjectPaths.portfolioV1.toString(),
+    externalLink: 'https://v1.hunterjennings.dev/',
     preview: {
       src: '/images/portfolio-v1/portfolio-v1-mobile-images.jpg',
       width: 1450,

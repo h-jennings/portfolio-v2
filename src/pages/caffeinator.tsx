@@ -4,6 +4,7 @@ import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import React from 'react';
 
+import { Button } from '@/components/Button/Button';
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import {
@@ -66,7 +67,8 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
           <h1 className='m-b-xl md:m-b-md'>{projectName}</h1>
           <h2 className='m-b-lg lh-default'>{description}</h2>
 
-          <div className={classnames('d-flex space-x-lg', styles.details)}>
+          <div
+            className={classnames('d-flex space-x-lg m-b-xl', styles.details)}>
             <ProjectNavigationLinks next={nextProject} previous={prevProject} />
 
             {/* make component */}
@@ -83,6 +85,13 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
               </ul>
             </div>
           </div>
+          <Button
+            target='_blank'
+            rel='noopener noreferrer'
+            type='link'
+            href={currentProject?.externalLink ?? ''}>
+            visit website
+          </Button>
         </SplitContentLeft>
         <SplitContentRight>
           <div className={styles.mediaContainer}>
