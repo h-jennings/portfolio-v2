@@ -1,3 +1,6 @@
+@import '@scss/global/config';
+@import '@scss/global/breakpoints';
+
 .wrapper {
   padding-bottom: 144px;
 }
@@ -42,6 +45,23 @@
 .status,
 .connect {
   grid-column: 6 / 11;
+  @include break-max-width(lg) {
+    grid-column: 7 / -1;
+  }
+
+  @include break-max-width(md) {
+    grid-column: 1 / -1;
+  }
+}
+.status {
+  @include break-max-width(lg) {
+    font-size: var(--fz-base);
+  }
+}
+.connect {
+  @include break-max-width(lg) {
+    flex-flow: column;
+  }
 }
 .listItemIcon {
   transform: rotate(-45deg);

@@ -106,23 +106,29 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
         </SplitLayout>
       </div>
       <section>
-        <h1 className='m-b-xl'>Get in touch</h1>
-        <div className={classnames('p-y-xl', styles.contactSection)}>
+        <h1 className='m-b-xl lg:m-b-none'>Get in touch</h1>
+        <div className={classnames('p-y-xl lg:p-y-lg', styles.contactSection)}>
           <h2 className='text-h3'>Status</h2>
-          <p className={classnames('fz-md ta-j', styles.status)}>
+          <p className={classnames('fz-md ta-j lg:fz-base', styles.status)}>
             Hunter is currently employed as a Front End Developer at Guidehouse,
             however, he is open to new opportunities and inquires.
           </p>
         </div>
-        <div className={classnames('p-y-xl', styles.contactSection)}>
+        <div className={classnames('p-y-xl lg:p-y-lg', styles.contactSection)}>
           <h2 className='text-h3'>Connect</h2>
           <div className={classnames('d-flex flx-j-sb', styles.connect)}>
-            <ul className={classnames('space-y-sm', styles.socialLinkList)}>
+            <ul
+              className={classnames(
+                'space-y-sm lg:m-b-lg',
+                styles.socialLinkList,
+              )}>
               {externalLinks.filter(isSocialLink).map((link) => (
                 <li key={link.href}>
                   <a
+                    target='_blank'
+                    rel='noopener noreferrer'
                     className={classnames(
-                      'underline-effect fz-base d-flex space-x-sm',
+                      'underline-effect fz-base d-inline-flex space-x-sm',
                       styles.socialLinkListItem,
                     )}
                     href={link.href}>
@@ -136,7 +142,7 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                 </li>
               ))}
             </ul>
-            <div className={styles.btnContainer}>
+            <div className={classnames(styles.btnContainer)}>
               <Button type='link' href='mailto:jenningsdhunter@gmail.com'>
                 send an email
               </Button>
