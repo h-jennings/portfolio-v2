@@ -1,0 +1,34 @@
+.button {
+  border-radius: 1000px;
+  display: inline-grid;
+  column-gap: 16px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  border: 2px solid var(--color-blue);
+  background-color: var(--color-orange);
+  padding: 8px 8px 8px 16px;
+  cursor: pointer;
+  span {
+    font-size: var(--fz-base);
+    color: var(--color-blue);
+    line-height: 1;
+  }
+}
+.buttonIconContainer {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-blue);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.buttonIcon {
+  width: 14px;
+
+  svg {
+    transform: rotate(-90deg);
+  }
+  path {
+    fill: var(--color-orange);
+  }
+}

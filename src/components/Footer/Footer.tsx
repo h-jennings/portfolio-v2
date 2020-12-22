@@ -1,6 +1,12 @@
 import classnames from 'classnames';
 import React from 'react';
 
+import {
+  externalLinks,
+  isEmailLink,
+  isSocialLink,
+} from '@/data/external-links';
+
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
@@ -66,7 +72,7 @@ export const Footer: React.FC = () => {
         <div className={classnames('d-flex space-x-md flx-a-fe', styles.links)}>
           <div className={styles.contact}>
             <a
-              href='mailto:jenningsdhunter@gmail.com'
+              href={externalLinks.filter(isEmailLink)[0].href}
               className='underline-effect'>
               get in touch.
             </a>
@@ -76,33 +82,17 @@ export const Footer: React.FC = () => {
               'd-flex flx-a-fe space-x-sm',
               styles.socials,
             )}>
-            <li>
-              <a
-                className='underline-effect lh-1'
-                target='_blank'
-                rel='noopener noreferrer'
-                href='https://twitter.com/jennings_hunter'>
-                Tw
-              </a>
-            </li>
-            <li>
-              <a
-                className='underline-effect lh-1'
-                target='_blank'
-                rel='noopener noreferrer'
-                href='https://www.instagram.com/h_jennings/'>
-                In
-              </a>
-            </li>
-            <li>
-              <a
-                className='underline-effect lh-1'
-                target='_blank'
-                rel='noopener noreferrer'
-                href='https://github.com/h-jennings'>
-                Gh
-              </a>
-            </li>
+            {externalLinks.filter(isSocialLink).map((link) => (
+              <li key={link.href}>
+                <a
+                  className='underline-effect lh-1'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  href={link.href}>
+                  {link.shortName}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

@@ -33,12 +33,20 @@
   }
 }
 
-.contact {
+.contactSection {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: var(--gap-primary);
   row-gap: 48px;
 }
-.contactIntro {
-  grid-column: span 5;
+.status,
+.connect {
+  grid-column: 6 / 11;
+}
+.listItemIcon {
+  transform: rotate(-45deg);
+  width: 14px;
+  path {
+    fill: var(--color-white);
+  }
 }

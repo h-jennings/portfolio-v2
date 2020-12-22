@@ -1,8 +1,11 @@
 import headshot from '@assets/images/headshot-cropped.jpg';
+import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import styles from '@scss/pages/About.module.scss';
 import classnames from 'classnames';
+import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
+import { Button } from '@/components/Button/Button';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import {
   SplitContentLeft,
@@ -10,14 +13,19 @@ import {
   SplitLayout,
 } from '@/components/layouts/SplitLayout/SplitLayout';
 import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
-import { PageWiperActionNames, usePageWiper } from '@/context/page-wiper';
+import { SvgContainer } from '@/components/SvgContainer/SvgContainer';
 import { jobs, skills } from '@/data/about';
+import { ExternalLink, isSocialLink } from '@/data/external-links';
+import { externalLinks } from '@/data/external-links';
 import { decodeHtml } from '@/helpers/decode-html';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
-const About: React.FC = () => {
+interface AboutProps {
+  externalLinks: ExternalLink[];
+}
+
+const About: NextPage<AboutProps> = ({ externalLinks }) => {
   useScrollToTop();
-  const { dispatch } = usePageWiper();
 
   const SEO = {
     title: `Portfolio ${decodeHtml('&mdash;')} About`,
@@ -98,16 +106,51 @@ const About: React.FC = () => {
         </SplitLayout>
       </div>
       <section>
-        <h1 className='m-b-xl fz-xl'>Get in touch</h1>
-        <div className={styles.contact}>
-          <p className={classnames('fz-md', styles.contactIntro)}>
+        <h1 className='m-b-xl'>Get in touch</h1>
+        <div className={classnames('p-y-xl', styles.contactSection)}>
+          <h2 className='text-h3'>Status</h2>
+          <p className={classnames('fz-md ta-j', styles.status)}>
             Hunter is currently employed as a Front End Developer at Guidehouse,
-            but is open to new opportunities and inquires.
+            however, he is open to new opportunities and inquires.
           </p>
+        </div>
+        <div className={classnames('p-y-xl', styles.contactSection)}>
+          <h2 className='text-h3'>Connect</h2>
+          <div className={classnames('d-flex flx-j-sb', styles.connect)}>
+            <ul className={classnames('space-y-sm', styles.socialLinkList)}>
+              {externalLinks.filter(isSocialLink).map((link) => (
+                <li key={link.href}>
+                  <a
+                    className={classnames(
+                      'underline-effect fz-base d-flex space-x-sm',
+                      styles.socialLinkListItem,
+                    )}
+                    href={link.href}>
+                    <div className={styles.listItemIcon}>
+                      <SvgContainer svgHeight={14} svgWidth={14}>
+                        <ArrowIcon />
+                      </SvgContainer>
+                    </div>
+                    <span>{link.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className={styles.btnContainer}>
+              <Button type='link' href='mailto:jenningsdhunter@gmail.com'>
+                send an email
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </MainLayout>
   );
 };
 
+About.getInitialProps = async () => {
+  return {
+    externalLinks,
+  };
+};
 export default About;

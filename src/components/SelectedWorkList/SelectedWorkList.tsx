@@ -210,11 +210,6 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
           </li>
         ))}
       </ol>
-      {/* 
-        TODO: Need to alter the logic for this component
-        1. Component mouse coordinates are only updated in on mouseover
-        2. Images are preloaded and optimized 
-       */}
       {shouldRenderHoverImage ? (
         <HoverImage src={hoverImageState.src} status={hoverImageState.status} />
       ) : null}
