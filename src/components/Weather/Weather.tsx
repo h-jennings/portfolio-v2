@@ -105,7 +105,7 @@ const fetchWeather: EffectFunction<
   WeatherActions,
   WeatherEffects
 > = (_state, _effect, dispatch) => {
-  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?id=4140963&units=imperial&appid=${process.env.WEATHER_API_KEY}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?id=4140963&units=imperial&appid=${process.env.WEATHER_API_KEY}`;
 
   fetch(apiUrl)
     .then((data) => data.json())
