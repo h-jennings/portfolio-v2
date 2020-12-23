@@ -1,3 +1,4 @@
+import { Weather } from '@components/Weather/Weather';
 import classnames from 'classnames';
 import React from 'react';
 
@@ -57,17 +58,12 @@ export const Footer: React.FC = () => {
             styles.locationDetails,
           )}>
           <div className={styles.time}>
-            <p data-testid='time'>{currentTime ?? '0:00'}</p>
+            <time className='text-p' data-testid='time'>
+              {currentTime ?? '0:00'}
+            </time>
             <p>Washington D.C.</p>
           </div>
-          <div className={styles.weather}>
-            <p>
-              <span role='img' aria-label='sun'>
-                ☀️
-              </span>
-            </p>
-            <p>60&deg;F</p>
-          </div>
+          <Weather />
         </div>
         <div className={classnames('d-flex space-x-md flx-a-fe', styles.links)}>
           <div className={styles.contact}>

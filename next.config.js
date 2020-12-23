@@ -5,6 +5,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withImages = require('next-images');
 
 const nextConfig = {
+  env: {
+    WEATHER_API_KEY: process.env.WEATHER_API_KEY,
+  },
   webpack: (config, { isServer }) => {
     if (isServer) {
       require('./src/scripts/generate-sitemap');

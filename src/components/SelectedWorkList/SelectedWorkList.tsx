@@ -116,18 +116,6 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
     [setTheme, router.events],
   );
 
-  React.useEffect(
-    function resetThemeOnRouteComplete() {
-      const resetTheme = (): void => {
-        setTheme('dark');
-      };
-
-      router.events.on('routeChangeComplete', resetTheme);
-
-      return () => router.events.off('routeChangeComplete', resetTheme);
-    },
-    [setTheme, router.events],
-  );
   const [hoverImageState, dispatch] = useReducer(
     hoverImageReducer,
     initialHoverImageState,
