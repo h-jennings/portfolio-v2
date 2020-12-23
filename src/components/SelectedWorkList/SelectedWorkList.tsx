@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import classnames from 'classnames';
+import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -17,7 +18,6 @@ import { Colors } from '@/models/colors';
 import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './SelectedWorkList.module.scss';
-
 type HoverImageState =
   | { status: 'visible'; src: string | null }
   | { status: 'hidden'; src: string | null };
@@ -182,6 +182,17 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
   };
   return (
     <>
+      <Head>
+        {/* pre-fetching hover images */}
+        {linkData.map((link) => (
+          <link
+            key={link.action.payload.src}
+            rel='prefetch'
+            as='image'
+            href={link.action.payload.src ?? ''}
+          />
+        ))}
+      </Head>
       <ol
         className={classnames('space-y-xl md:space-y-md p-b-xxl', styles.list)}>
         {projects.map((proj, idx) => (

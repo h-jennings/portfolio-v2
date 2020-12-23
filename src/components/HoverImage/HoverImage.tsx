@@ -14,7 +14,9 @@ const hoverImageVariants = {
   },
   hidden: {
     opacity: 0,
-    ...defaultSpringAnimation,
+    transition: {
+      ...defaultSpringAnimation,
+    },
   },
 };
 

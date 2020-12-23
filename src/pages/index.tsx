@@ -65,7 +65,7 @@ const Home: NextPage<HomeProps> = () => {
           projects={projects}
           shouldRenderHoverImage={shouldRenderHoverImage}
         />
-      </section>{' '}
+      </section>
     </MainLayout>
   );
 };
