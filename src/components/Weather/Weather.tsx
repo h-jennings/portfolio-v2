@@ -151,7 +151,7 @@ export const Weather: React.FC = () => {
           {weather?.icon ? (
             <img
               style={{ width: 25, display: 'block' }}
-              src={`http://openweathermap.org/img/wn/${weather?.icon}.png`}
+              src={`https://openweathermap.org/img/wn/${weather?.icon}.png`}
               alt={weather.description}
             />
           ) : null}
