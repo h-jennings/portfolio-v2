@@ -10,7 +10,7 @@ import { useReducer } from 'react';
 import Media from 'react-media';
 
 import { HoverImage } from '@/components/HoverImage/HoverImage';
-import { RevealText } from '@/components/RevealText/RevealText';
+import { RevealTextOverflowInView } from '@/components/Reveal/Reveal';
 import { AppThemes, useTheme } from '@/context/theme';
 import { Project } from '@/data/projects';
 import { Colors } from '@/models/colors';
@@ -185,7 +185,7 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
         className={classnames('space-y-xl md:space-y-md p-b-xxl', styles.list)}>
         {projects.map((proj, idx) => (
           <li key={proj.path} className={styles.listItem}>
-            <RevealText>
+            <RevealTextOverflowInView>
               <LinkWithPageTransition
                 route={proj.path}
                 onMouseEnter={() => handleLinkAction(idx)}
@@ -205,7 +205,7 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
                   {proj.name}
                 </div>
               </LinkWithPageTransition>
-            </RevealText>
+            </RevealTextOverflowInView>
           </li>
         ))}
       </ol>

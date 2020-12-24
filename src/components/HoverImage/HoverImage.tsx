@@ -8,12 +8,14 @@ import styles from './HoverImage.module.scss';
 const hoverImageVariants = {
   visible: {
     opacity: 1,
+    transform: 'scale(1) translate(-50%, -50%)',
     transition: {
       ...defaultSpringAnimation,
     },
   },
   hidden: {
     opacity: 0,
+    transform: 'scale(0.85) translate(-50%, -50%)',
     transition: {
       ...defaultSpringAnimation,
     },

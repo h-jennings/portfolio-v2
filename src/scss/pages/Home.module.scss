@@ -17,7 +17,7 @@
 .headline {
   line-height: 1.2;
   font-size: clamp(var(--fz-lg), 7.8vw, var(--fz-super));
-  :first-child {
+  .first {
     padding-right: 6.2vw;
   }
 }

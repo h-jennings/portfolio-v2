@@ -6,7 +6,11 @@ import React from 'react';
 
 import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { RevealText } from '@/components/RevealText/RevealText';
+import {
+  RevealContainerOnEnter,
+  RevealTextOverflowInView,
+  RevealTextOverflowOnEnter,
+} from '@/components/Reveal/Reveal';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
@@ -28,18 +32,24 @@ const Home: NextPage<HomeProps> = () => {
       <section className={classnames('p-relative', styles.container)}>
         <div className={classnames('d-flex flx-j-fe', styles.headlineWrapper)}>
           <h1 className={classnames('ta-r md:m-b-xl', styles.headline)}>
-            <span className='d-block'>Front End</span>
-            <span className='d-block'>Engineer</span>
+            <span className={classnames('d-block', styles.first)}>
+              <RevealTextOverflowOnEnter>Front End</RevealTextOverflowOnEnter>
+            </span>
+            <span className='d-block'>
+              <RevealTextOverflowOnEnter>Engineer</RevealTextOverflowOnEnter>
+            </span>
           </h1>
         </div>
         <div className={classnames('p-absolute', styles.intro)}>
-          <p className={classnames('fz-base')}>
-            Hunter Jennings is currently working at Guidehouse in Washington
-            D.C.{' '}
-            <span role='img' aria-label='American Flag emoji'>
-              🇺🇸
-            </span>
-          </p>
+          <RevealContainerOnEnter>
+            <p className={classnames('fz-base')}>
+              Hunter Jennings is currently working at Guidehouse in Washington
+              D.C.{' '}
+              <span role='img' aria-label='American Flag emoji'>
+                🇺🇸
+              </span>
+            </p>
+          </RevealContainerOnEnter>
         </div>
         <Link href={Paths.work}>
           <a
@@ -59,7 +69,7 @@ const Home: NextPage<HomeProps> = () => {
             'fz-lg m-b-xxl md:m-b-lg',
             styles.workHeadline,
           )}>
-          <RevealText>Selected Work</RevealText>
+          <RevealTextOverflowInView>Selected Work</RevealTextOverflowInView>
         </h1>
         <SelectedWorkList
           projects={projects}

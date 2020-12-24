@@ -1,20 +1,24 @@
-export const transition = {
+export const defaultTweenTransition = {
   type: 'tween',
   duration: 0.35,
   ease: [0.4, 0.0, 0.2, 1],
 };
-export const transitionDurationInMs = transition.duration * 1000;
-export const wipeTransitionTotalTime = transition.duration * 3;
+export const transitionDurationInMs = defaultTweenTransition.duration * 1000;
+export const wipeTransitionTotalTime = defaultTweenTransition.duration * 3;
 export const wipeTransitionTotalTimeInMs = wipeTransitionTotalTime * 1000;
+
+export const revealElementDelay = wipeTransitionTotalTime + 0.2;
 
 export const pageContentTransitionVariants = {
   initial: {
     opacity: 0,
+    visibility: 'hidden',
   },
   enter: {
     opacity: 1,
+    visibility: 'visible',
     transition: {
-      ...transition,
+      ...defaultTweenTransition,
       delay: wipeTransitionTotalTime,
     },
   },
@@ -36,13 +40,13 @@ export const wipeTransitionVariants = {
   enter: {
     x: '0%',
     transition: {
-      ...transition,
+      ...defaultTweenTransition,
     },
   },
   exit: {
     x: '-100%',
     transition: {
-      ...transition,
+      ...defaultTweenTransition,
     },
   },
 };
