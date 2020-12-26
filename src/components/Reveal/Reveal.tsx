@@ -58,7 +58,8 @@ const textOverflowOnEnterVariant = {
     opacity: 1,
     transition: {
       ...defaultTweenTransition,
-      delay: revealElementDelay + 0.3,
+      duration: 0.75,
+      delay: revealElementDelay + 0.5,
     },
   },
   idle: {
@@ -117,7 +118,8 @@ const revealContainerOnEnterVariants = {
     opacity: 1,
     transition: {
       ...defaultTweenTransition,
-      delay: revealElementDelay + 0.3,
+      duration: 0.75,
+      delay: revealElementDelay,
     },
   },
   idle: {
