@@ -1,3 +1,8 @@
+import {
+  RevealContainerOnEnter,
+  RevealTextOverflowInView,
+  RevealTextOverflowOnEnter,
+} from '@components/Reveal/Reveal';
 import styles from '@scss/pages/Home.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
@@ -6,11 +11,6 @@ import React from 'react';
 
 import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import {
-  RevealContainerOnEnter,
-  RevealTextOverflowInView,
-  RevealTextOverflowOnEnter,
-} from '@/components/Reveal/Reveal';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
@@ -53,6 +53,7 @@ const Home: NextPage<HomeProps> = () => {
         </div>
         <Link href={Paths.work}>
           <a
+            aria-label='selected work link'
             className={classnames('link-reset p-absolute', styles.arrowButton)}>
             <ArrowWithCircle />
           </a>

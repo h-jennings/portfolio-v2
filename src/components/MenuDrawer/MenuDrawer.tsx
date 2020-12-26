@@ -64,6 +64,7 @@ export const MenuDrawer: React.FC = () => {
             )}>
             <div className='d-flex flx-a-c flx-d-c space-y-xsm p-t-xsm p-x-xsm'>
               <button
+                aria-label='close-menu'
                 className={classnames('button-reset', styles.closeBtn)}
                 onClick={() => dispatch({ type: 'CLOSE' })}>
                 <div className={styles.closeIcon}>
@@ -96,24 +97,23 @@ export const MenuDrawer: React.FC = () => {
             <div className={styles.workListTitle}>selected work</div>
             <ol className={classnames(styles.list)}>
               {projs.map((proj) => (
-                <Link key={proj.path} href={proj.path}>
-                  <a
-                    className={styles.listLink}
-                    onClick={() => dispatch({ type: 'CLOSE' })}>
-                    <li
+                <li key={proj.path} className={classnames(styles.listItem)}>
+                  <Link href={proj.path}>
+                    <a
                       className={classnames(
-                        'fz-md d-flex flx-j-sb flx-a-c',
-                        styles.listItem,
-                      )}>
+                        'p-sm w-full fz-md d-flex flx-j-sb flx-a-c',
+                        styles.listLink,
+                      )}
+                      onClick={() => dispatch({ type: 'CLOSE' })}>
                       {proj.name}
                       <div className={styles.arrow}>
                         <SvgContainer svgWidth={24} svgHeight={24}>
                           <ArrowIcon />
                         </SvgContainer>
                       </div>
-                    </li>
-                  </a>
-                </Link>
+                    </a>
+                  </Link>
+                </li>
               ))}
             </ol>
           </div>
