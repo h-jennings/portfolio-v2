@@ -24,7 +24,7 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
     <ThemeProvider>
       <PageWiperProvider>
         <MenuDrawerProvider>
-          <AnimatePresence initial={false}>
+          <AnimatePresence initial={true}>
             <Component {...pageProps} key={route} />
           </AnimatePresence>
         </MenuDrawerProvider>

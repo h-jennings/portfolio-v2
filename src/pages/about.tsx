@@ -80,17 +80,19 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
           </SplitContentLeft>
           <SplitContentRight>
             <div className={classnames('m-b-xl', styles.image)}>
-              <ResponsiveImage
-                src={headshot}
-                altText='Picture of me'
-                width={646}
-                height={667}
-              />
+              <RevealContainerOnEnter>
+                <ResponsiveImage
+                  src={headshot}
+                  altText='Picture of me'
+                  width={646}
+                  height={667}
+                />
+              </RevealContainerOnEnter>
             </div>
             <section className='m-b-xl'>
-              <h2 className='m-b-md'>
-                <RevealTextOverflowOnEnter>What I Do</RevealTextOverflowOnEnter>
-              </h2>
+              <RevealContainerOnEnter>
+                <h2 className='m-b-md'>What I Do</h2>
+              </RevealContainerOnEnter>
               <div className={styles.skillsListWrapper}>
                 <ul className={classnames(styles.skillsList)}>
                   {skills.map(({ title, content }) => (
