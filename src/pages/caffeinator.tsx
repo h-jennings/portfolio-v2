@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import React from 'react';
-import Media from 'react-media';
 
 import { Button } from '@/components/Button/Button';
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
@@ -18,6 +17,7 @@ import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
 import {
   RevealContainerInView,
   RevealContainerOnEnter,
+  RevealDiffContainerMethodsAtBreakpoint,
   RevealTextOverflowOnEnter,
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
@@ -29,7 +29,6 @@ import {
   getPreviousProject,
 } from '@/helpers/get-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
-import { Breakpoints } from '@/models/breakpoints';
 
 interface CaffeinatorProps {
   projects: Projects;
@@ -120,90 +119,38 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
         <SplitContentRight>
           <div className={styles.mediaContainer}>
             <div className={styles.image1}>
-              <Media
-                queries={{ mobile: Breakpoints.lg }}
-                defaultMatches={{ mobile: false }}>
-                {(matches) => {
-                  const content = (
-                    <ResponsiveImage
-                      height={816}
-                      width={1450}
-                      src='/images/caffeinator/caffeinator-image-1.png'
-                      altText='screenshot of caffeinator homepage'
-                      bgColor={imagePlaceholderBackgroundColor}
-                    />
-                  );
-                  return (
-                    <>
-                      {matches.mobile ? (
-                        <RevealContainerInView>{content}</RevealContainerInView>
-                      ) : (
-                        <RevealContainerOnEnter>
-                          {content}
-                        </RevealContainerOnEnter>
-                      )}
-                    </>
-                  );
-                }}
-              </Media>
+              <RevealDiffContainerMethodsAtBreakpoint threshold={0.3}>
+                <ResponsiveImage
+                  height={816}
+                  width={1450}
+                  src='/images/caffeinator/caffeinator-image-1.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </RevealDiffContainerMethodsAtBreakpoint>
             </div>
             <div className={styles.image2}>
-              <Media
-                queries={{ mobile: Breakpoints.lg }}
-                defaultMatches={{ mobile: false }}>
-                {(matches) => {
-                  const content = (
-                    <ResponsiveImage
-                      height={646}
-                      width={808}
-                      src='/images/caffeinator/caffeinator-image-2.png'
-                      altText='screenshot of caffeinator homepage'
-                      bgColor={imagePlaceholderBackgroundColor}
-                    />
-                  );
-                  return (
-                    <>
-                      {matches.mobile ? (
-                        <RevealContainerInView>{content}</RevealContainerInView>
-                      ) : (
-                        <RevealContainerOnEnter>
-                          {content}
-                        </RevealContainerOnEnter>
-                      )}
-                    </>
-                  );
-                }}
-              </Media>
+              <RevealDiffContainerMethodsAtBreakpoint>
+                <ResponsiveImage
+                  height={646}
+                  width={808}
+                  src='/images/caffeinator/caffeinator-image-2.png'
+                  altText='screenshot of caffeinator homepage'
+                  bgColor={imagePlaceholderBackgroundColor}
+                />
+              </RevealDiffContainerMethodsAtBreakpoint>
             </div>
             <div className={styles.text1}>
-              <Media
-                queries={{ mobile: Breakpoints.lg }}
-                defaultMatches={{ mobile: false }}>
-                {(matches) => {
-                  const content = (
-                    <p>
-                      My goal for this project was simple: I wanted to learn the
-                      concept of hierarchal finite state machines. To accomplish
-                      this, I chose to use the growing JavaScript library:
-                      XState. In order to learn the ins-and-outs of the
-                      programming concept, I decided to make an app that was
-                      complex enough to go beyond the basics, but still be a
-                      reasonable side project.
-                    </p>
-                  );
-                  return (
-                    <>
-                      {matches.mobile ? (
-                        <RevealContainerInView>{content}</RevealContainerInView>
-                      ) : (
-                        <RevealContainerOnEnter>
-                          {content}
-                        </RevealContainerOnEnter>
-                      )}
-                    </>
-                  );
-                }}
-              </Media>
+              <RevealDiffContainerMethodsAtBreakpoint>
+                <p>
+                  My goal for this project was simple: I wanted to learn the
+                  concept of hierarchal finite state machines. To accomplish
+                  this, I chose to use the growing JavaScript library: XState.
+                  In order to learn the ins-and-outs of the programming concept,
+                  I decided to make an app that was complex enough to go beyond
+                  the basics, but still be a reasonable side project.
+                </p>
+              </RevealDiffContainerMethodsAtBreakpoint>
             </div>
             <div className={styles.text2}>
               <RevealContainerInView>

@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 import React from 'react';
-import Media from 'react-media';
 
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
@@ -17,6 +16,7 @@ import { ResponsiveImage } from '@/components/ResponsiveImage/ResponsiveImage';
 import {
   RevealContainerInView,
   RevealContainerOnEnter,
+  RevealDiffContainerMethodsAtBreakpoint,
   RevealTextOverflowOnEnter,
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
@@ -28,7 +28,6 @@ import {
   getPreviousProject,
 } from '@/helpers/get-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
-import { Breakpoints } from '@/models/breakpoints';
 
 interface DoD {
   projects: Projects;
@@ -135,31 +134,13 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
               </RevealContainerInView>
             </div>
             <div className={styles.text1}>
-              <Media
-                queries={{ mobile: Breakpoints.lg }}
-                defaultMatches={{ mobile: false }}>
-                {(matches) => {
-                  const content = (
-                    <p>
-                      The F-35 Joint Strike Fighter Program needed a way to make
-                      sense of data disseminated across a massive, multi-decade
-                      long project to create the next generation of defense
-                      technology.
-                    </p>
-                  );
-                  return (
-                    <>
-                      {matches.mobile ? (
-                        <RevealContainerInView>{content}</RevealContainerInView>
-                      ) : (
-                        <RevealContainerOnEnter>
-                          {content}
-                        </RevealContainerOnEnter>
-                      )}
-                    </>
-                  );
-                }}
-              </Media>
+              <RevealDiffContainerMethodsAtBreakpoint>
+                <p>
+                  The F-35 Joint Strike Fighter Program needed a way to make
+                  sense of data disseminated across a massive, multi-decade long
+                  project to create the next generation of defense technology.
+                </p>
+              </RevealDiffContainerMethodsAtBreakpoint>
             </div>
             <div className={styles.text2}>
               <RevealContainerInView>

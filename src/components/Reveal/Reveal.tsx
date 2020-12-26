@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
+import Media from 'react-media';
 
 import {
   defaultTweenTransition,
   revealElementDelay,
 } from '@/animation/page-transition';
+import { Breakpoints } from '@/models/breakpoints';
 
 import styles from './Reveal.module.scss';
 
@@ -130,5 +132,34 @@ export const RevealContainerOnEnter: React.FC = ({ children }) => {
       variants={revealContainerOnEnterVariants}>
       {children}
     </motion.div>
+  );
+};
+
+interface RevealDiffContainerMethodsAtBreakpointProps {
+  breakpoint?: Breakpoints;
+  threshold?: number;
+}
+
+export const RevealDiffContainerMethodsAtBreakpoint: React.FC<RevealDiffContainerMethodsAtBreakpointProps> = ({
+  children,
+  breakpoint = Breakpoints.lg,
+  threshold = 0.2,
+}) => {
+  return (
+    <Media queries={{ mobile: breakpoint }} defaultMatches={{ mobile: false }}>
+      {(matches) => {
+        return (
+          <>
+            {matches.mobile ? (
+              <RevealContainerInView threshold={threshold}>
+                {children}
+              </RevealContainerInView>
+            ) : (
+              <RevealContainerOnEnter>{children}</RevealContainerOnEnter>
+            )}
+          </>
+        );
+      }}
+    </Media>
   );
 };
