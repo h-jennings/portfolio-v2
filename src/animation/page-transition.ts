@@ -12,11 +12,9 @@ export const revealElementDelay = wipeTransitionTotalTime + 0.2;
 export const pageContentTransitionVariants = {
   initial: {
     opacity: 0,
-    visibility: 'hidden',
   },
   enter: {
     opacity: 1,
-    visibility: 'visible',
     transition: {
       ...defaultTweenTransition,
       delay: wipeTransitionTotalTime,
