@@ -33,8 +33,6 @@ const menuDrawerContainerVariants = {
 
 export const MenuDrawer: React.FC = () => {
   const { dispatch, state: drawerState } = useMenuDrawer();
-  const projs = [...projects];
-  const ref = React.useRef(null);
 
   const { status } = drawerState;
 
@@ -56,7 +54,7 @@ export const MenuDrawer: React.FC = () => {
       initial='closed'
       className={classnames('p-fixed', styles.container)}>
       <div className={styles.wrapper}>
-        <motion.div ref={ref} className={classnames(styles.drawer)}>
+        <motion.div className={classnames(styles.drawer)}>
           <header
             className={classnames(
               'd-flex flx-j-fs flx-d-c flx-a-fe',
@@ -96,16 +94,16 @@ export const MenuDrawer: React.FC = () => {
             </div>
             <div className={styles.workListTitle}>selected work</div>
             <ol className={classnames(styles.list)}>
-              {projs.map((proj) => (
-                <li key={proj.path} className={classnames(styles.listItem)}>
-                  <Link href={proj.path}>
+              {projects.map((project) => (
+                <li key={project.path} className={classnames(styles.listItem)}>
+                  <Link href={project.path}>
                     <a
                       className={classnames(
                         'p-sm w-full fz-md d-flex flx-j-sb flx-a-c',
                         styles.listLink,
                       )}
                       onClick={() => dispatch({ type: 'CLOSE' })}>
-                      {proj.name}
+                      {project.name}
                       <div className={styles.arrow}>
                         <SvgContainer svgWidth={24} svgHeight={24}>
                           <ArrowIcon />

@@ -1,4 +1,4 @@
-import React, { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 export type AppThemes = 'dark' | 'light' | 'orange' | 'blue' | 'grey';
 type UpdateAppTheme = Dispatch<SetStateAction<AppThemes>>;
@@ -11,10 +11,10 @@ interface ThemeContextType {
 const ThemeContext = React.createContext({} as ThemeContextType);
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const root = React.useRef() as MutableRefObject<HTMLDivElement>;
+  const root = React.useRef<HTMLDivElement>(null);
   const [theme, setTheme] = React.useState<AppThemes>('dark');
   React.useEffect(() => {
-    root.current.dataset.theme = theme;
+    root.current && (root.current.dataset.theme = theme);
   }, [theme]);
 
   const value = React.useMemo(
