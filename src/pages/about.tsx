@@ -4,7 +4,7 @@ import styles from '@scss/pages/About.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
-import React, { MutableRefObject } from 'react';
+import React from 'react';
 
 import { Button } from '@/components/Button/Button';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
@@ -46,22 +46,17 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
     },
   };
 
-  const pageTitle = React.useRef() as MutableRefObject<any>;
-  const intro1 = React.useRef() as MutableRefObject<any>;
-
   return (
     <MainLayout>
       <div className={styles.wrapper}>
         <NextSeo {...SEO} />
         <SplitLayout>
           <SplitContentLeft>
-            <h1 ref={pageTitle} className='m-b-xl md:m-b-md'>
+            <h1 className='m-b-xl md:m-b-md'>
               <RevealTextOverflowOnEnter>About</RevealTextOverflowOnEnter>
             </h1>
             <RevealContainerOnEnter>
-              <p
-                ref={intro1}
-                className={classnames('m-b-md', styles.paragraph)}>
+              <p className={classnames('m-b-md', styles.paragraph)}>
                 Hey there, I&apos;m Hunter. I&apos;ve been wrangling pixels and
                 shapes since &apos;17. I create beautiful user interfaces with
                 cutting-edge web technologies. My primary areas of focus are

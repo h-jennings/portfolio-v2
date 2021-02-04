@@ -1,10 +1,10 @@
-import { Project, Projects } from '@/data/projects';
+import { isProject, Project, Projects } from '@/data/projects';
 
 const getNextProject = (
   projects: Projects,
-  current: Project,
+  current: Project | null,
 ): Project | null => {
-  if (!current) return null;
+  if (current == null) return null;
 
   const currentProjectIndex = projects.findIndex(
     (project) => project.path === current.path,
@@ -12,27 +12,30 @@ const getNextProject = (
 
   const nextProject = projects[currentProjectIndex + 1];
 
-  return nextProject ? nextProject : null;
+  return isProject(nextProject) ? nextProject : null;
 };
 
 const getPreviousProject = (
   projects: Projects,
-  current: Project,
+  current: Project | null,
 ): Project | null => {
-  if (!current) return null;
+  if (current == null) return null;
 
   const currentProjectIndex = projects.findIndex(
     (project) => project.path === current.path,
   );
 
-  const prevProject = projects[currentProjectIndex - 1];
+  const previousProject = projects[currentProjectIndex - 1];
 
-  return prevProject ? prevProject : null;
+  return isProject(previousProject) ? previousProject : null;
 };
 
-const getCurrentProject = (projects: Projects, path: string): Project => {
+const getCurrentProject = (
+  projects: Projects,
+  path: string,
+): Project | null => {
   const currentProject = projects.filter((project) => project.path === path)[0];
-  return currentProject;
+  return isProject(currentProject) ? currentProject : null;
 };
 
 export { getCurrentProject, getNextProject, getPreviousProject };

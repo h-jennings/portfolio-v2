@@ -22,11 +22,7 @@ import {
 import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
-import {
-  getCurrentProject,
-  getNextProject,
-  getPreviousProject,
-} from '@/helpers/get-projects';
+import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 interface DoD {
@@ -37,17 +33,9 @@ interface DoD {
 const DoD: NextPage<DoD> = ({ projects, pathname }) => {
   useScrollToTop();
 
-  const currentProject = React.useMemo(
-    () => getCurrentProject(projects, pathname),
-    [projects, pathname],
-  );
-  const nextProject = React.useMemo(
-    () => getNextProject(projects, currentProject),
-    [projects, currentProject],
-  );
-  const prevProject = React.useMemo(
-    () => getPreviousProject(projects, currentProject),
-    [projects, currentProject],
+  const { currentProject, nextProject, previousProject } = useProjects(
+    projects,
+    pathname,
   );
 
   // * SEO
@@ -72,7 +60,7 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
         <SplitContentLeft>
           <h1 className='m-b-xl md:m-b-md'>
             <RevealTextOverflowOnEnter>
-              {currentProject.name}
+              {currentProject?.name}
             </RevealTextOverflowOnEnter>
           </h1>
           <RevealContainerOnEnter>
@@ -83,7 +71,7 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
             <RevealContainerOnEnter>
               <ProjectNavigationLinks
                 next={nextProject}
-                previous={prevProject}
+                previous={previousProject}
               />
             </RevealContainerOnEnter>
 
@@ -186,10 +174,8 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
 };
 
 DoD.getInitialProps = async ({ pathname }) => {
-  const proj = projects;
-
   return {
-    projects: proj,
+    projects,
     pathname,
   };
 };

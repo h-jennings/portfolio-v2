@@ -16,6 +16,10 @@ export interface Project {
 
 export type Projects = Project[];
 
+export function isProject(arg: unknown): arg is Project {
+  return arg != null && typeof (arg as Project).path === 'string';
+}
+
 export const projects: Projects = [
   {
     name: 'Department of Defense',

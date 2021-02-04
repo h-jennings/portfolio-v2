@@ -21,13 +21,9 @@ import {
   RevealTextOverflowOnEnter,
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
-import { Projects, projects } from '@/data/projects';
+import { isProject, Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
-import {
-  getCurrentProject,
-  getNextProject,
-  getPreviousProject,
-} from '@/helpers/get-projects';
+import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 interface PortfolioV1Props {
@@ -38,17 +34,9 @@ interface PortfolioV1Props {
 const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   useScrollToTop();
 
-  const currentProject = React.useMemo(
-    () => getCurrentProject(projects, pathname),
-    [projects, pathname],
-  );
-  const nextProject = React.useMemo(
-    () => getNextProject(projects, currentProject),
-    [projects, currentProject],
-  );
-  const prevProject = React.useMemo(
-    () => getPreviousProject(projects, currentProject),
-    [projects, currentProject],
+  const { currentProject, nextProject, previousProject } = useProjects(
+    projects,
+    pathname,
   );
 
   // * SEO
@@ -82,7 +70,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
             <RevealContainerOnEnter>
               <ProjectNavigationLinks
                 next={nextProject}
-                previous={prevProject}
+                previous={previousProject}
               />
             </RevealContainerOnEnter>
             {/* make component */}
@@ -176,7 +164,7 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
           </div>
         </SplitContentRight>
       </SplitLayout>
-      {nextProject ? (
+      {isProject(nextProject) ? (
         <RevealBox>
           <FullscreenLink
             cta='Explore next project'
@@ -194,10 +182,8 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
 };
 
 PortfolioV1.getInitialProps = async ({ pathname }) => {
-  const proj = projects;
-
   return {
-    projects: proj,
+    projects,
     pathname,
   };
 };

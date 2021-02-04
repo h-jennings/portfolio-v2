@@ -21,13 +21,9 @@ import {
   RevealTextOverflowOnEnter,
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
-import { Projects, projects } from '@/data/projects';
+import { isProject, Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
-import {
-  getCurrentProject,
-  getNextProject,
-  getPreviousProject,
-} from '@/helpers/get-projects';
+import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 
 interface CaffeinatorProps {
@@ -38,20 +34,10 @@ interface CaffeinatorProps {
 const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
   useScrollToTop();
 
-  const currentProject = React.useMemo(
-    () => getCurrentProject(projects, pathname),
-    [projects, pathname],
+  const { currentProject, nextProject, previousProject } = useProjects(
+    projects,
+    pathname,
   );
-  const nextProject = React.useMemo(
-    () => getNextProject(projects, currentProject),
-    [projects, currentProject],
-  );
-  const prevProject = React.useMemo(
-    () => getPreviousProject(projects, currentProject),
-    [projects, currentProject],
-  );
-
-  const projectName = currentProject.name;
 
   const imagePlaceholderBackgroundColor = '#FFB959';
   const title = `Portfolio ${decodeHtml('&mdash;')} Caffeinator`;
@@ -71,7 +57,9 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
       <SplitLayout>
         <SplitContentLeft>
           <h1 className='m-b-xl md:m-b-md'>
-            <RevealTextOverflowOnEnter>{projectName}</RevealTextOverflowOnEnter>
+            <RevealTextOverflowOnEnter>
+              {currentProject?.name}
+            </RevealTextOverflowOnEnter>
           </h1>
           <RevealContainerOnEnter>
             <h2 className='m-b-lg lh-default'>{description}</h2>
@@ -82,7 +70,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
             <RevealContainerOnEnter>
               <ProjectNavigationLinks
                 next={nextProject}
-                previous={prevProject}
+                previous={previousProject}
               />
             </RevealContainerOnEnter>
 
@@ -200,7 +188,7 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
           </div>
         </SplitContentRight>
       </SplitLayout>
-      {nextProject ? (
+      {isProject(nextProject) ? (
         <RevealBox>
           <FullscreenLink
             cta='Explore next project'
@@ -218,10 +206,8 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
 };
 
 Caffeinator.getInitialProps = async ({ pathname }) => {
-  const proj = projects;
-
   return {
-    projects: proj,
+    projects,
     pathname,
   };
 };

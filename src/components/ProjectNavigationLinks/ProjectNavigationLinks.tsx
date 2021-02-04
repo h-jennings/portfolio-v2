@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 
-import { Project } from '@/data/projects';
+import { isProject, Project } from '@/data/projects';
 
 import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import styles from './ProjectNavigationLinks.module.scss';
@@ -16,7 +16,7 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
 }) => {
   return (
     <ul className={classnames('space-y-xsm', styles.container)}>
-      {previous ? (
+      {isProject(previous) ? (
         <li>
           <LinkWithPageTransition
             route={previous.path}
@@ -25,7 +25,7 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
           </LinkWithPageTransition>
         </li>
       ) : null}
-      {next ? (
+      {isProject(next) ? (
         <li>
           <LinkWithPageTransition
             route={next.path}
