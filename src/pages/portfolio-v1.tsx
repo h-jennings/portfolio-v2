@@ -128,25 +128,22 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
             <div className={styles.text1}>
               <RevealDiffContainerMethodsAtBreakpoint>
                 <p>
-                  My goal for this project was simple: I wanted to learn the
-                  concept of hierarchal finite state machines. To accomplish
-                  this, I chose to use the growing JavaScript library: XState.
-                  In order to learn the ins-and-outs of the programming concept,
-                  I decided to make an app that was complex enough to go beyond
-                  the basics, but still be a reasonable side project.
+                  My first foray into the React world. This project completely
+                  altered the way I think about composing and architecting front
+                  end web applications. I wanted a platform to showcase some of
+                  the side projects I was working on at the time, while also
+                  serving as a testing ground for new techniques and libraries I
+                  was learning.
                 </p>
               </RevealDiffContainerMethodsAtBreakpoint>
             </div>
             <div className={styles.text2}>
               <RevealContainerInView>
                 <p className={styles.text2}>
-                  The bulk of the application is essentially a gigantic state
-                  machine with complex transitions based on user interactions
-                  and time. This project completely changed the way I think
-                  about front end interactions and application state. Since
-                  completing this app, I&apos;ve taken these concepts and
-                  applied them to production-level applications due to their
-                  framework-agnostic nature.
+                  Publishing this portfolio was a major milestone in crossing
+                  over from a developer that likened himself as a tinkerer in
+                  the FED space, to having the skills to realize, and implement
+                  nearly any piece of UI that he could think of.
                 </p>
               </RevealContainerInView>
             </div>
