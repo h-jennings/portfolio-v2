@@ -43,6 +43,11 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
       description:
         // eslint-disable-next-line quotes
         "I'm Hunter. I've been wrangling pixels and shapes since 2017",
+      images: [
+        {
+          url: '/images/social/social-screen_about.png',
+        },
+      ],
     },
   };
 

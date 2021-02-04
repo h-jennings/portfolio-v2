@@ -11,6 +11,12 @@ const SEO = {
     type: 'website',
     locale: 'en_IE',
     url: 'https://www.hunterjennings.dev',
+    images: [
+      {
+        url: '/images/social/social-screen_home.png',
+        alt: 'Screenshot of webpage',
+      },
+    ],
     title,
     description,
   },

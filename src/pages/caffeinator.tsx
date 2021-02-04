@@ -48,6 +48,11 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
     openGraph: {
       title,
       description,
+      images: [
+        {
+          url: '/images/social/social-screen_caffeinator.png',
+        },
+      ],
     },
   };
 

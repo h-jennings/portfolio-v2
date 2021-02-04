@@ -48,6 +48,11 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
     openGraph: {
       title,
       description,
+      images: [
+        {
+          url: '/images/social/social-screen_dod.png',
+        },
+      ],
     },
   };
 
