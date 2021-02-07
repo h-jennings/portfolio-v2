@@ -1,7 +1,5 @@
-import Image from 'next/image';
-
 import { Colors } from '@/models/colors';
-
+import Image from 'next/image';
 import styles from './ResponsiveImage.module.scss';
 
 interface ResponsiveImageProps {

@@ -1,7 +1,6 @@
 import { LinkWithPageTransition } from '@components/LinkWithPageTransition/LinkWithPageTransition';
 import classnames from 'classnames';
 import Image from 'next/image';
-
 import styles from './FullscreenLink.module.scss';
 
 interface FullscreenLinkProps {

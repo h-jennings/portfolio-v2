@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
-import React from 'react';
-
 import { wipeTransitionTotalTimeInMs } from '@/animation/page-transition';
 import { PageWiperActionNames, usePageWiper } from '@/context/page-wiper';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 interface LinkWithPageTransitionProps {
   route: string;

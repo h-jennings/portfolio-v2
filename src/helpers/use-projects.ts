@@ -1,7 +1,5 @@
-import React from 'react';
-
 import { Project, Projects } from '@/data/projects';
-
+import React from 'react';
 import {
   getCurrentProject,
   getNextProject,

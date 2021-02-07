@@ -1,9 +1,3 @@
-import styles from '@scss/pages/Portfolio-v1.module.scss';
-import classnames from 'classnames';
-import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
-import React from 'react';
-
 import { Button } from '@/components/Button/Button';
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
@@ -25,6 +19,11 @@ import { isProject, Projects, projects } from '@/data/projects';
 import { decodeHtml } from '@/helpers/decode-html';
 import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
+import styles from '@scss/pages/Portfolio-v1.module.scss';
+import classnames from 'classnames';
+import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 interface PortfolioV1Props {
   projects: Projects;

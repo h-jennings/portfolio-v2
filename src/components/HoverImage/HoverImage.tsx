@@ -1,8 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion';
-
 import { defaultSpringAnimation } from '@/animation/spring-animation';
 import { useMouseCoordinates } from '@/helpers/use-mouse-coordinates';
-
+import { AnimatePresence, motion } from 'framer-motion';
 import styles from './HoverImage.module.scss';
 
 const hoverImageVariants = {

@@ -1,18 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { defaultSpringAnimation } from '@/animation/spring-animation';
+import { useMenuDrawer } from '@/context/menu-drawer';
+import { projects } from '@/data/projects';
+import { useKeypressListener } from '@/helpers/use-keypress-listener';
+import { Paths } from '@/models/paths';
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import { ReactComponent as CloseIcon } from '@assets/svg/close-icon.svg';
 import classnames from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
-
-import { defaultSpringAnimation } from '@/animation/spring-animation';
-import { useMenuDrawer } from '@/context/menu-drawer';
-import { projects } from '@/data/projects';
-import { useKeypressListener } from '@/helpers/use-keypress-listener';
-import { Paths } from '@/models/paths';
-
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './MenuDrawer.module.scss';
 

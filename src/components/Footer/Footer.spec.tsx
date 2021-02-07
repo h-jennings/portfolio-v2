@@ -1,5 +1,4 @@
 import { render, screen, waitFor } from '@testing-library/react';
-
 import { Footer } from './Footer';
 
 function setup() {

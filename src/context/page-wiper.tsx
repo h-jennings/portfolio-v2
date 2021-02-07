@@ -1,3 +1,7 @@
+import {
+  transitionDurationInMs,
+  wipeTransitionTotalTimeInMs,
+} from '@/animation/page-transition';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React from 'react';
 import {
@@ -6,11 +10,6 @@ import {
   EffectReducerExec,
   useEffectReducer,
 } from 'use-effect-reducer';
-
-import {
-  transitionDurationInMs,
-  wipeTransitionTotalTimeInMs,
-} from '@/animation/page-transition';
 
 // * TYPES
 enum PageWiperStateNames {

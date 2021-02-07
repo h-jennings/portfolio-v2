@@ -1,7 +1,5 @@
-import classnames from 'classnames';
-
 import { isProject, Project } from '@/data/projects';
-
+import classnames from 'classnames';
 import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import styles from './ProjectNavigationLinks.module.scss';
 

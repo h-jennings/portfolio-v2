@@ -1,23 +1,21 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
-import classnames from 'classnames';
-import Head from 'next/head';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import React from 'react';
-import { useReducer } from 'react';
-import Media from 'react-media';
-
 import { HoverImage } from '@/components/HoverImage/HoverImage';
 import { RevealTextOverflowInView } from '@/components/Reveal/Reveal';
 import { AppThemes, useTheme } from '@/context/theme';
 import { Project } from '@/data/projects';
 import { Colors } from '@/models/colors';
-
+import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
+import classnames from 'classnames';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import React, { useReducer } from 'react';
+import Media from 'react-media';
 import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './SelectedWorkList.module.scss';
+
 type HoverImageState =
   | { status: 'visible'; src: string | null }
   | { status: 'hidden'; src: string | null };

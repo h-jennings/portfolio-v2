@@ -1,13 +1,11 @@
-import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
-import classnames from 'classnames';
-import { motion } from 'framer-motion';
-import React from 'react';
-
 import {
   defaultTweenTransition,
   revealElementDelay,
 } from '@/animation/page-transition';
-
+import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
+import classnames from 'classnames';
+import { motion } from 'framer-motion';
+import React from 'react';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './ArrowWithCircle.module.scss';
 

@@ -1,8 +1,6 @@
+import { Paths } from '@/models/paths';
 import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
 import classnames from 'classnames';
-
-import { Paths } from '@/models/paths';
-
 import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './Navigation.module.scss';

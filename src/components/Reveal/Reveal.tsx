@@ -1,14 +1,12 @@
-import { motion } from 'framer-motion';
-import React from 'react';
-import { useInView } from 'react-intersection-observer';
-import Media from 'react-media';
-
 import {
   defaultTweenTransition,
   revealElementDelay,
 } from '@/animation/page-transition';
 import { Breakpoints } from '@/models/breakpoints';
-
+import { motion } from 'framer-motion';
+import React from 'react';
+import { useInView } from 'react-intersection-observer';
+import Media from 'react-media';
 import styles from './Reveal.module.scss';
 
 interface InViewProps {

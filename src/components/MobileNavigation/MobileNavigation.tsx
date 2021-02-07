@@ -1,11 +1,9 @@
+import { useMenuDrawer } from '@/context/menu-drawer';
+import { Paths } from '@/models/paths';
 import { ReactComponent as HomeIcon } from '@assets/svg/home-icon.svg';
 import { ReactComponent as MenuIcon } from '@assets/svg/mobile-menu.svg';
 import { SvgContainer } from '@components/SvgContainer/SvgContainer';
 import classnames from 'classnames';
-
-import { useMenuDrawer } from '@/context/menu-drawer';
-import { Paths } from '@/models/paths';
-
 import { LinkWithPageTransition } from '../LinkWithPageTransition/LinkWithPageTransition';
 import styles from './MobileNavigation.module.scss';
 

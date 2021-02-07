@@ -1,13 +1,3 @@
-import { Footer } from '@components/Footer/Footer';
-import { Navigation } from '@components/Navigation/Navigation';
-import classnames from 'classnames';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
-import { useRouter } from 'next/router';
-import { DefaultSeo } from 'next-seo';
-import SEO from 'next-seo.config';
-import React from 'react';
-import Media from 'react-media';
-
 import {
   pageContentTransitionVariants,
   wipeTransitionVariants,
@@ -17,7 +7,15 @@ import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation
 import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
-
+import { Footer } from '@components/Footer/Footer';
+import { Navigation } from '@components/Navigation/Navigation';
+import classnames from 'classnames';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { DefaultSeo } from 'next-seo';
+import SEO from 'next-seo.config';
+import { useRouter } from 'next/router';
+import React from 'react';
+import Media from 'react-media';
 import styles from './MainLayout.module.scss';
 
 export const MainLayout: React.FC = ({ children }) => {

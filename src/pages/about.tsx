@@ -1,11 +1,3 @@
-import headshot from '@assets/images/headshot-cropped.jpg';
-import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
-import styles from '@scss/pages/About.module.scss';
-import classnames from 'classnames';
-import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
-import React from 'react';
-
 import { Button } from '@/components/Button/Button';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import {
@@ -22,10 +14,20 @@ import {
 } from '@/components/Reveal/Reveal';
 import { SvgContainer } from '@/components/SvgContainer/SvgContainer';
 import { jobs, skills } from '@/data/about';
-import { ExternalLink, isSocialLink } from '@/data/external-links';
-import { externalLinks } from '@/data/external-links';
+import {
+  ExternalLink,
+  externalLinks,
+  isSocialLink,
+} from '@/data/external-links';
 import { decodeHtml } from '@/helpers/decode-html';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
+import headshot from '@assets/images/headshot-cropped.jpg';
+import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
+import styles from '@scss/pages/About.module.scss';
+import classnames from 'classnames';
+import { NextPage } from 'next';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
 interface AboutProps {
   externalLinks: ExternalLink[];

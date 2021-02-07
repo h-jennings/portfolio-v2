@@ -1,12 +1,10 @@
-import classnames from 'classnames';
-import { useRouter } from 'next/router';
-import React from 'react';
-
 import { FullscreenLink } from '@/components/FullscreenLink/FullscreenLink';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
-
+import classnames from 'classnames';
+import { useRouter } from 'next/router';
+import React from 'react';
 import styles from './ProjectLayout.module.scss';
 
 export const ProjectLayout: React.FC = ({ children }) => {

@@ -1,6 +1,5 @@
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import classnames from 'classnames';
-
 import { SvgContainer } from '../SvgContainer/SvgContainer';
 import styles from './Button.module.scss';
 

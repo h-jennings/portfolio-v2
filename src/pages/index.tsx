@@ -1,3 +1,9 @@
+import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
+import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
+import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
+import { Projects, projects } from '@/data/projects';
+import { useScrollToTop } from '@/helpers/use-scroll-to-top';
+import { Paths } from '@/models/paths';
 import {
   RevealContainerOnEnter,
   RevealTextOverflowInView,
@@ -8,13 +14,6 @@ import classnames from 'classnames';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
-
-import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
-import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
-import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
-import { Projects, projects } from '@/data/projects';
-import { useScrollToTop } from '@/helpers/use-scroll-to-top';
-import { Paths } from '@/models/paths';
 
 interface HomeProps {
   projects: Projects;
