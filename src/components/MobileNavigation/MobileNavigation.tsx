@@ -16,14 +16,16 @@ export const MobileNavigation: React.FC = () => {
         <LinkWithPageTransition
           aria-label='home'
           className={classnames(styles.home)}
-          route={Paths.home}>
+          route={Paths.home}
+        >
           <SvgContainer svgWidth={24} svgHeight={24}>
             <HomeIcon className={styles.icon} title='home icon' />
           </SvgContainer>
         </LinkWithPageTransition>
         <button
           className={styles.menu}
-          onClick={() => dispatch({ type: 'OPEN' })}>
+          onClick={() => dispatch({ type: 'OPEN' })}
+        >
           <SvgContainer svgWidth={48} svgHeight={8}>
             <MenuIcon className={styles.icon} />
           </SvgContainer>

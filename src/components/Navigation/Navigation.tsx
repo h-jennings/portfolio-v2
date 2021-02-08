@@ -12,16 +12,19 @@ export const Navigation: React.FC = () => {
       className={classnames(
         'w-full d-flex flx-j-c z-over',
         styles.navContainer,
-      )}>
+      )}
+    >
       <div
         className={classnames(
           'd-flex flx-j-sb p-y-xl w-full w-max-xl',
           styles.wrapper,
-        )}>
+        )}
+      >
         <LinkWithPageTransition
           aria-label='home'
           className={classnames(styles.home)}
-          route={Paths.home}>
+          route={Paths.home}
+        >
           <SvgContainer svgWidth={24} svgHeight={24}>
             <HomeIcon className={styles.icon} title='home icon' />
           </SvgContainer>
@@ -30,7 +33,8 @@ export const Navigation: React.FC = () => {
           <div className={classnames('d-flex space-x-xl')}>
             <LinkWithPageTransition
               className='underline-effect'
-              route={Paths.about}>
+              route={Paths.about}
+            >
               about
             </LinkWithPageTransition>
           </div>

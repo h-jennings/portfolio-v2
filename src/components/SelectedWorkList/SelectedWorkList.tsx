@@ -180,7 +180,8 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
         ))}
       </Head>
       <ol
-        className={classnames('space-y-xl md:space-y-md p-b-xxl', styles.list)}>
+        className={classnames('space-y-xl md:space-y-md p-b-xxl', styles.list)}
+      >
         {projects.map((proj, idx) => (
           <li key={proj.path} className={styles.listItem}>
             <RevealTextOverflowInView>
@@ -193,7 +194,8 @@ const Desktop: React.FC<SelectedWorkListProps> = ({
                 className={classnames(
                   'd-flex space-x-lg md:space-x-md',
                   styles.link,
-                )}>
+                )}
+              >
                 <div
                   aria-hidden={true}
                   className={styles.bar}
@@ -220,7 +222,8 @@ const Mobile: React.FC<SelectedWorkListProps> = ({ projects }) => {
       {projects.map((proj) => (
         <li
           key={proj.path}
-          className={classnames('m-b-xxl', styles.mobilePreviewItem)}>
+          className={classnames('m-b-xxl', styles.mobilePreviewItem)}
+        >
           <div className={classnames('m-b-md', styles.mobilePreview)}>
             <div className={styles.mobilePreviewImageContainerOuter}>
               <div className={styles.mobilePreviewImageContainerInner}>
@@ -237,7 +240,8 @@ const Mobile: React.FC<SelectedWorkListProps> = ({ projects }) => {
             <div className='text-h2 m-b-xsm'>{proj.name}</div>
             <LinkWithPageTransition
               route={proj.path}
-              className='link-reset d-inline-flex space-x-sm flx-a-c'>
+              className='link-reset d-inline-flex space-x-sm flx-a-c'
+            >
               <span className='d-block'>View Project</span>
               <div className={styles.linkIcon}>
                 <SvgContainer svgHeight={24} svgWidth={24}>

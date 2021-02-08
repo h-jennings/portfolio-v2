@@ -28,7 +28,8 @@ export const RevealBox: React.FC = ({ children }) => {
       ref={ref}
       initial='hidden'
       animate={inView ? 'visible' : 'hidden'}
-      variants={imageRevealVariant}>
+      variants={imageRevealVariant}
+    >
       {children}
     </motion.div>
   );

@@ -4,7 +4,6 @@ import {
 } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
-import { PageLoader } from '@/components/PageLoader/PageLoader';
 import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
@@ -56,14 +55,17 @@ export const MainLayout: React.FC = ({ children }) => {
         animate='enter'
         exit='exit'
         variants={pageContentTransitionVariants}
-        className={styles.layoutContainer}>
+        className={styles.layoutContainer}
+      >
         <div
-          className={classnames('d-flex flx-j-c w-full', styles.siteContent)}>
+          className={classnames('d-flex flx-j-c w-full', styles.siteContent)}
+        >
           <div className={styles.bgBlock} />
           <div className={classnames('w-full', styles.main)}>
             <Media
               queries={{ mobile: breakpoint }}
-              defaultMatches={{ mobile: false }}>
+              defaultMatches={{ mobile: false }}
+            >
               {(matches) => {
                 return (
                   <>{matches.mobile ? <MobileNavigation /> : <Navigation />}</>
@@ -72,18 +74,21 @@ export const MainLayout: React.FC = ({ children }) => {
             </Media>
             <motion.div
               style={{ scale: containerScale, opacity: containerOpacity }}
-              className={styles.contentWrapper}>
+              className={styles.contentWrapper}
+            >
               <div
                 aria-label='page-content'
                 className={classnames('flx-g-1 flx-s-1', styles.content, {
                   [styles.pagePad]: !nextProject,
-                })}>
+                })}
+              >
                 {children}
               </div>
             </motion.div>
             <motion.div
               style={{ opacity: footerOpacity }}
-              className={styles.footerContainer}>
+              className={styles.footerContainer}
+            >
               <div className={styles.footerWrapper}>
                 <Footer />
               </div>
@@ -99,7 +104,7 @@ export const MainLayout: React.FC = ({ children }) => {
         className={styles.wipe}
       />
       <div className='hide-if-empty'>
-        <PageLoader current={current} />
+        {/* <PageLoader current={current} /> */}
       </div>
     </>
   );

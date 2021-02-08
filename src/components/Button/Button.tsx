@@ -36,7 +36,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
       ) : (
         <button
           className={classnames('button-reset', styles.button)}
-          {...props}>
+          {...props}
+        >
           <span>{props.children}</span>
           <ButtonIcon />
         </button>

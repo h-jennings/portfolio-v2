@@ -50,19 +50,22 @@ export const MenuDrawer: React.FC = () => {
       animate={status}
       variants={menuDrawerContainerVariants}
       initial='closed'
-      className={classnames('p-fixed', styles.container)}>
+      className={classnames('p-fixed', styles.container)}
+    >
       <div className={styles.wrapper}>
         <motion.div className={classnames(styles.drawer)}>
           <header
             className={classnames(
               'd-flex flx-j-fs flx-d-c flx-a-fe',
               styles.drawerHeader,
-            )}>
+            )}
+          >
             <div className='d-flex flx-a-c flx-d-c space-y-xsm p-t-xsm p-x-xsm'>
               <button
                 aria-label='close-menu'
                 className={classnames('button-reset', styles.closeBtn)}
-                onClick={() => dispatch({ type: 'CLOSE' })}>
+                onClick={() => dispatch({ type: 'CLOSE' })}
+              >
                 <div className={styles.closeIcon}>
                   <SvgContainer svgWidth={24} svgHeight={24}>
                     <CloseIcon />
@@ -78,7 +81,8 @@ export const MenuDrawer: React.FC = () => {
               <Link href={Paths.about}>
                 <a
                   className={classnames('link-reset fz-md lh-1')}
-                  onClick={() => dispatch({ type: 'CLOSE' })}>
+                  onClick={() => dispatch({ type: 'CLOSE' })}
+                >
                   <div className='d-flex flx-j-sb flx-a-c p-sm'>
                     <div>About</div>
                     <div className={styles.arrow}>
@@ -100,7 +104,8 @@ export const MenuDrawer: React.FC = () => {
                         'p-sm w-full fz-md d-flex flx-j-sb flx-a-c',
                         styles.listLink,
                       )}
-                      onClick={() => dispatch({ type: 'CLOSE' })}>
+                      onClick={() => dispatch({ type: 'CLOSE' })}
+                    >
                       {project.name}
                       <div className={styles.arrow}>
                         <SvgContainer svgWidth={24} svgHeight={24}>

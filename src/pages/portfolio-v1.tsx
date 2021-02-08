@@ -70,7 +70,8 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
           </RevealContainerOnEnter>
 
           <div
-            className={classnames('d-flex space-x-lg m-b-xl', styles.details)}>
+            className={classnames('d-flex space-x-lg m-b-xl', styles.details)}
+          >
             <RevealContainerOnEnter>
               <ProjectNavigationLinks
                 next={nextProject}
@@ -100,7 +101,8 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
               target='_blank'
               rel='noopener noreferrer'
               type='link'
-              href={currentProject?.externalLink ?? ''}>
+              href={currentProject?.externalLink ?? ''}
+            >
               visit website
             </Button>
           </RevealContainerOnEnter>

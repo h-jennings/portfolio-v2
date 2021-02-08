@@ -39,7 +39,8 @@ export const LinkWithPageTransition: React.FC<LinkWithPageTransitionProps> = (
     <a
       {...props}
       href={props.route}
-      onClick={(e) => handleLinkClick(e, props.route)}>
+      onClick={(e) => handleLinkClick(e, props.route)}
+    >
       {props.children}
     </a>
   );

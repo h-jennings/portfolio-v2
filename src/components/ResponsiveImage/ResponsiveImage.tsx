@@ -24,7 +24,8 @@ export const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
         paddingTop: `${(height / width) * 100}%`,
         backgroundColor: bgColor,
       }}
-      data-testid='responsive-image-container'>
+      data-testid='responsive-image-container'
+    >
       <div className={styles.inner}>
         <Image src={src} width={width} height={height} alt={altText} />
       </div>

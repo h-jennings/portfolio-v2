@@ -12,7 +12,8 @@ export const SvgContainer: React.FC<SvgContainerProps> = ({
   return (
     <div
       className={styles.outer}
-      style={{ paddingTop: `${(svgHeight / svgWidth) * 100}%` }}>
+      style={{ paddingTop: `${(svgHeight / svgWidth) * 100}%` }}
+    >
       {children}
     </div>
   );

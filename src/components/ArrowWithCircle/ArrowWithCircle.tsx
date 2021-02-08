@@ -35,12 +35,14 @@ export const ArrowWithCircle: React.FC = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         data-state={isHovered ? 'active' : 'inactive'}
-        className={classnames(styles.container)}>
+        className={classnames(styles.container)}
+      >
         <div
           className={classnames(
             'd-flex flx-j-c flx-a-c rc-round',
             styles.circle,
-          )}>
+          )}
+        >
           <div className={styles.outer}>
             <div className={classnames(styles.inner)}>
               <div className={styles.arrow}>

@@ -38,12 +38,14 @@ export const Footer: React.FC = () => {
   return (
     <footer
       aria-label='footer'
-      className={classnames('w-full d-flex flx-j-c', styles.footer)}>
+      className={classnames('w-full d-flex flx-j-c', styles.footer)}
+    >
       <div
         className={classnames(
           'w-full p-t-xxl p-b-xl d-flex space-x-xl lg:space-x-lg',
           styles.content,
-        )}>
+        )}
+      >
         <div className={styles.copyright}>
           <p>design and development &mdash;</p>
           <p className='p-l-md'>
@@ -54,7 +56,8 @@ export const Footer: React.FC = () => {
           className={classnames(
             'd-flex space-x-xl lg:space-x-lg',
             styles.locationDetails,
-          )}>
+          )}
+        >
           <div className={styles.time}>
             <time className='text-p' data-testid='time'>
               {currentTime ?? '0:00'}
@@ -67,22 +70,22 @@ export const Footer: React.FC = () => {
           <div className={styles.contact}>
             <a
               href={externalLinks.filter(isEmailLink)[0].href}
-              className='underline-effect'>
+              className='underline-effect'
+            >
               get in touch.
             </a>
           </div>
           <ul
-            className={classnames(
-              'd-flex flx-a-fe space-x-sm',
-              styles.socials,
-            )}>
+            className={classnames('d-flex flx-a-fe space-x-sm', styles.socials)}
+          >
             {externalLinks.filter(isSocialLink).map((link) => (
               <li key={link.href}>
                 <a
                   className='underline-effect lh-1'
                   target='_blank'
                   rel='noopener noreferrer'
-                  href={link.href}>
+                  href={link.href}
+                >
                   {link.shortName}
                 </a>
               </li>

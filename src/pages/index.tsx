@@ -53,7 +53,8 @@ const Home: NextPage<HomeProps> = () => {
         <Link href={Paths.work}>
           <a
             aria-label='selected work link'
-            className={classnames('link-reset p-absolute', styles.arrowButton)}>
+            className={classnames('link-reset p-absolute', styles.arrowButton)}
+          >
             <ArrowWithCircle />
           </a>
         </Link>
@@ -63,12 +64,11 @@ const Home: NextPage<HomeProps> = () => {
         onMouseOver={() => setShouldRenderHoverImage(true)}
         onMouseLeave={() => setShouldRenderHoverImage(false)}
         onFocus={() => setShouldRenderHoverImage(true)}
-        className={classnames('p-t-xxl md:p-t-lg', styles.work)}>
+        className={classnames('p-t-xxl md:p-t-lg', styles.work)}
+      >
         <h1
-          className={classnames(
-            'fz-lg m-b-xxl md:m-b-lg',
-            styles.workHeadline,
-          )}>
+          className={classnames('fz-lg m-b-xxl md:m-b-lg', styles.workHeadline)}
+        >
           <RevealTextOverflowInView>Selected Work</RevealTextOverflowInView>
         </h1>
         <SelectedWorkList

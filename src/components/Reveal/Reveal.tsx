@@ -43,7 +43,8 @@ export const RevealTextOverflowInView: React.FC<InViewProps> = ({
         initial='hidden'
         animate={inView ? 'visible' : 'hidden'}
         variants={textOverflowInViewVariant}
-        className={styles.inner}>
+        className={styles.inner}
+      >
         {children}
       </motion.span>
     </span>
@@ -72,7 +73,8 @@ export const RevealTextOverflowOnEnter: React.FC = ({ children }) => {
         initial='idle'
         animate='enter'
         variants={textOverflowOnEnterVariant}
-        className={styles.inner}>
+        className={styles.inner}
+      >
         {children}
       </motion.span>
     </span>
@@ -105,7 +107,8 @@ export const RevealContainerInView: React.FC<InViewProps> = ({
       ref={ref}
       initial='hidden'
       animate={inView ? 'visible' : 'hidden'}
-      variants={revealContainerInViewVariants}>
+      variants={revealContainerInViewVariants}
+    >
       {children}
     </motion.div>
   );
@@ -129,7 +132,8 @@ export const RevealContainerOnEnter: React.FC = ({ children }) => {
     <motion.div
       initial='idle'
       animate='enter'
-      variants={revealContainerOnEnterVariants}>
+      variants={revealContainerOnEnterVariants}
+    >
       {children}
     </motion.div>
   );

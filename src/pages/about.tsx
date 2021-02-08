@@ -121,7 +121,8 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                     className={classnames(
                       'p-y-sm p-x-xsm',
                       styles.experienceListItem,
-                    )}>
+                    )}
+                  >
                     <div className='text-h3'>
                       <RevealTextOverflowInView>
                         {when}
@@ -180,7 +181,8 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                 className={classnames(
                   'space-y-sm lg:m-b-lg',
                   styles.socialLinkList,
-                )}>
+                )}
+              >
                 {externalLinks.filter(isSocialLink).map((link) => (
                   <li key={link.href}>
                     <a
@@ -190,7 +192,8 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                         'underline-effect fz-base d-inline-flex space-x-sm',
                         styles.socialLinkListItem,
                       )}
-                      href={link.href}>
+                      href={link.href}
+                    >
                       <div className={styles.listItemIcon}>
                         <SvgContainer svgHeight={14} svgWidth={14}>
                           <ArrowIcon />

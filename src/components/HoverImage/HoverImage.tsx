@@ -37,7 +37,8 @@ export const HoverImage: React.FC<HoverImageProps> = ({ src, status }) => {
       className={styles.container}
       variants={hoverImageVariants}
       animate={status}
-      initial='hidden'>
+      initial='hidden'
+    >
       <AnimatePresence exitBeforeEnter>
         {src ? (
           <motion.img

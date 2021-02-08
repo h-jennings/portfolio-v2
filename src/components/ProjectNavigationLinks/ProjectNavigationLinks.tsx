@@ -18,7 +18,8 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
         <li>
           <LinkWithPageTransition
             route={previous.path}
-            className='underline-effect'>
+            className='underline-effect'
+          >
             Previous Project
           </LinkWithPageTransition>
         </li>
@@ -27,7 +28,8 @@ export const ProjectNavigationLinks: React.FC<ProjectNavigationLinksProps> = ({
         <li>
           <LinkWithPageTransition
             route={next.path}
-            className='underline-effect'>
+            className='underline-effect'
+          >
             Next Project
           </LinkWithPageTransition>
         </li>
