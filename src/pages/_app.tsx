@@ -27,7 +27,9 @@ const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
 
   // TODO: Create custom hook (need to pass values from useMachine)
   React.useEffect(function initPageAnimation() {
-    send('INIT');
+    if (current.matches('idle')) {
+      send('INIT');
+    }
   });
 
   return (

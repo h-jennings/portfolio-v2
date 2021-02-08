@@ -1,7 +1,8 @@
-import { Machine } from 'xstate';
+import { Machine, sendParent } from 'xstate';
 
 export interface PageLoadingAnimationSchema {
   states: {
+    idle: any;
     animating: any;
     complete: any;
   };
@@ -19,12 +20,29 @@ export const pageLoadingAnimationMachine = Machine<
   id: 'initial-page-loading-machine',
   initial: 'animating',
   states: {
+    idle: {
+      entry: sendParent(() => ({
+        type: 'ANIMATION_UPDATED',
+        animationState: 'idle',
+      })),
+      on: {
+        INIT: 'animating',
+      },
+    },
     animating: {
+      entry: sendParent(() => ({
+        type: 'ANIMATION_UPDATED',
+        animationState: 'animating',
+      })),
       after: {
         2000: 'complete',
       },
     },
     complete: {
+      entry: sendParent(() => ({
+        type: 'ANIMATION_UPDATED',
+        animationState: 'complete',
+      })),
       type: 'final',
     },
   },

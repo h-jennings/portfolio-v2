@@ -4,6 +4,7 @@ import {
 } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
+import { PageLoader } from '@/components/PageLoader/PageLoader';
 import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
@@ -97,7 +98,9 @@ export const MainLayout: React.FC = ({ children }) => {
         variants={wipeTransitionVariants}
         className={styles.wipe}
       />
-      {/* <PageLoader current={current} /> */}
+      <div className='hide-if-empty'>
+        <PageLoader current={current} />
+      </div>
     </>
   );
 };

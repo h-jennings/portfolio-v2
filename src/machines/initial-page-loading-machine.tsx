@@ -1,6 +1,9 @@
 import React from 'react';
-import { Machine } from 'xstate';
-import { pageLoadingAnimationMachine } from './page-loading-animation-machine';
+import { assign, Machine, send } from 'xstate';
+import {
+  pageLoadingAnimationMachine,
+  PageLoadingAnimationSchema,
+} from './page-loading-animation-machine';
 
 interface InitialPageLoadingSchema {
   states: {
@@ -10,35 +13,64 @@ interface InitialPageLoadingSchema {
   };
 }
 
-type InitialPageLoadingContext = any;
+export interface InitialPageLoadingContext {
+  animationState: keyof PageLoadingAnimationSchema['states'];
+}
 
-type InitialPageLoadingEvents = { type: 'INIT' };
+type InitialPageLoadingEvents =
+  | { type: 'INIT' }
+  | { type: 'ANIMATION_UPDATED' };
 
 export const initialPageLoadingMachine = Machine<
   InitialPageLoadingContext,
   InitialPageLoadingSchema,
   InitialPageLoadingEvents
->({
-  id: 'initial-page-loading-machine',
-  initial: 'idle',
-  states: {
-    idle: {
-      on: {
-        INIT: 'loading',
-      },
+>(
+  {
+    id: 'initial-page-loading-machine',
+    initial: 'idle',
+    context: {
+      animationState: 'idle',
     },
-    loading: {
-      invoke: {
-        id: 'loadingAnimation',
-        src: pageLoadingAnimationMachine,
-        onDone: 'loaded',
+    states: {
+      idle: {
+        on: {
+          INIT: 'loading',
+        },
       },
-    },
-    loaded: {
-      type: 'final',
+      loading: {
+        invoke: {
+          id: 'loadingAnimation',
+          src: pageLoadingAnimationMachine,
+          onDone: 'loaded',
+        },
+        entry: send('INIT', { to: 'loadingAnimation' }),
+        on: {
+          ANIMATION_UPDATED: {
+            actions: ['updateAnimationState'],
+          },
+        },
+      },
+      loaded: {
+        type: 'final',
+        on: {
+          ANIMATION_UPDATED: {
+            actions: ['updateAnimationState'],
+          },
+        },
+      },
     },
   },
-});
+  {
+    actions: {
+      updateAnimationState: assign({
+        animationState: (_context, event: any) => {
+          return event?.animationState;
+        },
+      }),
+    },
+  },
+);
 
 // * Hooks
 export const InitialPageLoadingMachineContext = React.createContext(

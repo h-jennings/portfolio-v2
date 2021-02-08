@@ -27,3 +27,8 @@
 .no-scroll {
   overflow-y: hidden;
 }
+.hide-if-empty {
+  &:empty {
+    display: none;
+  }
+}
