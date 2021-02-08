@@ -7,6 +7,7 @@ import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation
 import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
+import { useInitialPageLoadingMachine } from '@/machines/initial-page-loading-machine';
 import { Footer } from '@components/Footer/Footer';
 import { Navigation } from '@components/Navigation/Navigation';
 import classnames from 'classnames';
@@ -43,6 +44,8 @@ export const MainLayout: React.FC = ({ children }) => {
   );
 
   const { state: wiperState } = usePageWiper();
+
+  const [current, ,] = useInitialPageLoadingMachine();
 
   return (
     <>
@@ -94,6 +97,7 @@ export const MainLayout: React.FC = ({ children }) => {
         variants={wipeTransitionVariants}
         className={styles.wipe}
       />
+      {/* <PageLoader current={current} /> */}
     </>
   );
 };
