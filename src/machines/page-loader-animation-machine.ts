@@ -17,8 +17,8 @@ export const tweenTiming: Record<
 > = {
   idle: 0,
   enter: 500,
-  progress: 2000,
-  wipe: 700,
+  progress: 1500,
+  wipe: 500,
   expand: 500,
   complete: 0,
 };
