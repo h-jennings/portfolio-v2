@@ -16,13 +16,11 @@ import {
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { isProject, Projects, projects } from '@/data/projects';
-import { decodeHtml } from '@/helpers/decode-html';
 import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 import styles from '@scss/pages/Caffeinator.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
 import React from 'react';
 
 interface CaffeinatorProps {
@@ -39,25 +37,10 @@ const Caffeinator: NextPage<CaffeinatorProps> = ({ projects, pathname }) => {
   );
 
   const imagePlaceholderBackgroundColor = '#FFB959';
-  const title = `Portfolio ${decodeHtml('&mdash;')} Caffeinator`;
   const description = 'An app for building the perfect cup of coffee.';
-  const SEO = {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: [
-        {
-          url: '/images/social/social-screen_caffeinator.png',
-        },
-      ],
-    },
-  };
 
   return (
     <MainLayout>
-      <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
           <h1 className='m-b-xl md:m-b-md'>

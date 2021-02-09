@@ -19,14 +19,12 @@ import {
   externalLinks,
   isSocialLink,
 } from '@/data/external-links';
-import { decodeHtml } from '@/helpers/decode-html';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 import headshot from '@assets/images/headshot-cropped.jpg';
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import styles from '@scss/pages/About.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
 import React from 'react';
 
 interface AboutProps {
@@ -36,27 +34,9 @@ interface AboutProps {
 const About: NextPage<AboutProps> = ({ externalLinks }) => {
   useScrollToTop();
 
-  const SEO = {
-    title: `Portfolio ${decodeHtml('&mdash;')} About`,
-    // eslint-disable-next-line quotes
-    description: "I'm Hunter. I've been wrangling pixels and shapes since 2017",
-    openGraph: {
-      title: `Portfolio ${decodeHtml('&mdash;')} About`,
-      description:
-        // eslint-disable-next-line quotes
-        "I'm Hunter. I've been wrangling pixels and shapes since 2017",
-      images: [
-        {
-          url: '/images/social/social-screen_about.png',
-        },
-      ],
-    },
-  };
-
   return (
     <MainLayout>
       <div className={styles.wrapper}>
-        <NextSeo {...SEO} />
         <SplitLayout>
           <SplitContentLeft>
             <h1 className='m-b-xl md:m-b-md'>

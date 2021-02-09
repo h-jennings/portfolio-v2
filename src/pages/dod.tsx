@@ -15,13 +15,11 @@ import {
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { Projects, projects } from '@/data/projects';
-import { decodeHtml } from '@/helpers/decode-html';
 import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 import styles from '@scss/pages/Portfolio-v1.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
 import React from 'react';
 
 interface DoD {
@@ -37,29 +35,13 @@ const DoD: NextPage<DoD> = ({ projects, pathname }) => {
     pathname,
   );
 
-  // * SEO
-  const title = `Portfolio ${decodeHtml('&mdash;')} DoD`;
   const description =
     'Web application for the next generation of defense technology';
-  const SEO = {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: [
-        {
-          url: '/images/social/social-screen_dod.png',
-        },
-      ],
-    },
-  };
 
   const imagePlaceholderBackgroundColor = '#969eaa';
 
   return (
     <MainLayout>
-      <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
           <h1 className='m-b-xl md:m-b-md'>

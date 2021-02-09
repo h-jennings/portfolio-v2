@@ -16,13 +16,11 @@ import {
 } from '@/components/Reveal/Reveal';
 import { RevealBox } from '@/components/RevealBox/RevealBox';
 import { isProject, Projects, projects } from '@/data/projects';
-import { decodeHtml } from '@/helpers/decode-html';
 import { useProjects } from '@/helpers/use-projects';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
 import styles from '@scss/pages/Portfolio-v1.module.scss';
 import classnames from 'classnames';
 import { NextPage } from 'next';
-import { NextSeo } from 'next-seo';
 import React from 'react';
 
 interface PortfolioV1Props {
@@ -39,27 +37,12 @@ const PortfolioV1: NextPage<PortfolioV1Props> = ({ projects, pathname }) => {
   );
 
   // * SEO
-  const title = `Portfolio ${decodeHtml('&mdash;')} V1`;
   const description = 'My first portfolio, created in 2019.';
-  const SEO = {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: [
-        {
-          url: '/images/social/social-screen_pv1.png',
-        },
-      ],
-    },
-  };
 
   const imagePlaceholderBackgroundColor = '#f72d2e';
 
   return (
     <MainLayout>
-      <NextSeo {...SEO} />
       <SplitLayout>
         <SplitContentLeft>
           <h1 className='m-b-xl md:m-b-md'>

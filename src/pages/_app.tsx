@@ -1,15 +1,16 @@
 import { PageWithLayoutType } from '@/components/layouts/layout.model';
+import { WithPageAnimations } from '@/components/WithPageAnimations/WithPageAnimations';
+import { InitialPageLoaderProvider } from '@/context/initial-page-loader-context';
 import { MenuDrawerProvider } from '@/context/menu-drawer';
 import { PageWiperProvider } from '@/context/page-wiper';
 import { ThemeProvider } from '@/context/theme';
+import { pagesMetaData } from '@/data/seo-data';
 import { useVisualViewportHeight } from '@/helpers/use-visual-viewport-height';
-import {
-  initialPageLoadingMachine,
-  InitialPageLoadingMachineContext,
-} from '@/machines/initial-page-loading-machine';
+import { initialPageLoaderMachine } from '@/machines/initial-page-loading-machine';
 import '@scss/index.scss';
 import { useMachine } from '@xstate/react';
-import { AnimatePresence } from 'framer-motion';
+import { DefaultSeo, NextSeo } from 'next-seo';
+import SEO from 'next-seo.config';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -19,31 +20,38 @@ interface AppLayoutProps {
 }
 
 const MyApp: React.FC<AppLayoutProps> = ({ Component, pageProps }) => {
+  useVisualViewportHeight();
+  const [current, send] = useMachine(initialPageLoaderMachine);
   const { route } = useRouter();
 
-  useVisualViewportHeight();
+  React.useEffect(() => {
+    send('INIT');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const [current, send] = useMachine(initialPageLoadingMachine);
-
-  // TODO: Create custom hook (need to pass values from useMachine)
-  React.useEffect(function initPageAnimation() {
-    if (current.matches('idle')) {
-      send('INIT');
-    }
-  });
-
+  const PageSEO = React.useMemo(() => {
+    const routeName = route.replace(/\//, '');
+    const seo = Object.entries(pagesMetaData).filter(([key, ,]) => {
+      return key === routeName;
+    });
+    return seo[0]?.[1] ?? null;
+  }, [route]);
   return (
-    <ThemeProvider>
-      <InitialPageLoadingMachineContext.Provider value={[current, send]}>
-        <PageWiperProvider>
-          <MenuDrawerProvider>
-            <AnimatePresence initial={true}>
-              <Component {...pageProps} key={route} />
-            </AnimatePresence>
-          </MenuDrawerProvider>
-        </PageWiperProvider>
-      </InitialPageLoadingMachineContext.Provider>
-    </ThemeProvider>
+    <>
+      <DefaultSeo {...SEO} />
+      <NextSeo {...PageSEO} />
+      <InitialPageLoaderProvider machine={{ current, send }}>
+        <ThemeProvider>
+          <PageWiperProvider>
+            <MenuDrawerProvider>
+              <WithPageAnimations>
+                <Component {...pageProps} />
+              </WithPageAnimations>
+            </MenuDrawerProvider>
+          </PageWiperProvider>
+        </ThemeProvider>
+      </InitialPageLoaderProvider>
+    </>
   );
 };
 
