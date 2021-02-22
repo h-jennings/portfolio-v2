@@ -124,14 +124,17 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                   </li>
                 ))}
               </ul>
-              <Button
-                type='link'
-                target='_blank'
-                rel='noopener noreferrer'
-                href={Paths.resume}
-              >
-                Curriculum vitae
-              </Button>
+
+              <RevealContainerInView threshold={0.3}>
+                <Button
+                  type='link'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  href={Paths.resume}
+                >
+                  Curriculum vitae
+                </Button>
+              </RevealContainerInView>
             </section>
           </SplitContentRight>
         </SplitLayout>
