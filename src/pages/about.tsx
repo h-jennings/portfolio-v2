@@ -20,6 +20,7 @@ import {
   isSocialLink,
 } from '@/data/external-links';
 import { useScrollToTop } from '@/helpers/use-scroll-to-top';
+import { Paths } from '@/models/paths';
 import headshot from '@assets/images/headshot-cropped.jpg';
 import { ReactComponent as ArrowIcon } from '@assets/svg/arrow-icon.svg';
 import styles from '@scss/pages/About.module.scss';
@@ -94,7 +95,7 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                   Where I&apos;ve done it
                 </RevealTextOverflowInView>
               </h2>
-              <ul className={styles.experienceList}>
+              <ul className={classnames('m-b-xl', styles.experienceList)}>
                 {jobs.map(({ title, when, company }) => (
                   <li
                     key={company}
@@ -123,6 +124,14 @@ const About: NextPage<AboutProps> = ({ externalLinks }) => {
                   </li>
                 ))}
               </ul>
+              <Button
+                type='link'
+                target='_blank'
+                rel='noopener noreferrer'
+                href={Paths.resume}
+              >
+                Curriculum vitae
+              </Button>
             </section>
           </SplitContentRight>
         </SplitLayout>
