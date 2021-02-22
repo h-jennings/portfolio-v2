@@ -12,26 +12,26 @@ const pagesData: Record<
     title: `Portfolio ${emDash} About`,
     // eslint-disable-next-line quotes
     description: "I'm Hunter. I've been wrangling pixels and shapes since 2017",
-    imageUrl: '/images/social/social-screen_about.png',
+    imageUrl: `${absoluteUrl}/images/social/social-screen_about.png`,
     canonical: `${absoluteUrl}${Paths.about}`,
   },
   caffeinator: {
     title: `Portfolio ${emDash} Caffeinator`,
     description: 'An app for building the perfect cup of coffee.',
-    imageUrl: '/images/social/social-screen_caffeinator.png',
+    imageUrl: `${absoluteUrl}/images/social/social-screen_caffeinator.png`,
     canonical: `${absoluteUrl}${Paths.caffeinator}`,
   },
   ['portfolio-v1']: {
     title: `Portfolio ${emDash} V1`,
     description: 'My first portfolio, created in 2019.',
-    imageUrl: '/images/social/social-screen_pv1.png',
+    imageUrl: `${absoluteUrl}/images/social/social-screen_pv1.png`,
     canonical: `${absoluteUrl}${Paths.portfolioV1}`,
   },
   dod: {
     title: `Portfolio ${emDash} DoD`,
     description:
       'Web application for the next generation of defense technology',
-    imageUrl: '/images/social/social-screen_dod.png',
+    imageUrl: `${absoluteUrl}/images/social/social-screen_dod.png`,
     canonical: `${absoluteUrl}${Paths.dod}`,
   },
 };

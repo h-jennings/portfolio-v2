@@ -13,7 +13,7 @@ const SEO = {
     url: 'https://www.hunterjennings.dev',
     images: [
       {
-        url: '/images/social/social-screen_home.png',
+        url: 'https://hunterjennings.dev/images/social/social-screen_home.png',
         alt: 'Screenshot of webpage',
       },
     ],
