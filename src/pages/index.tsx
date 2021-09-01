@@ -1,4 +1,4 @@
-import { ArrowWithCircle } from '@/components/ArrowWithCircle/ArrowWithCircle';
+import { ArrowWithCircle } from '@/components/ArrowWithCircle';
 import { MainLayout } from '@/components/layouts/MainLayout/MainLayout';
 import { SelectedWorkList } from '@/components/SelectedWorkList/SelectedWorkList';
 import { Projects, projects } from '@/data/projects';
