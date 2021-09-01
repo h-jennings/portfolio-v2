@@ -4,12 +4,11 @@ import {
 } from '@/animation/page-transition';
 import { MenuDrawer } from '@/components/MenuDrawer/MenuDrawer';
 import { MobileNavigation } from '@/components/MobileNavigation/MobileNavigation';
+import { Navigation } from '@/components/Navigation';
 import { usePageWiper } from '@/context/page-wiper';
 import { projects } from '@/data/projects';
 import { getCurrentProject, getNextProject } from '@/helpers/get-projects';
-import { useInitialPageLoadingMachine } from '@/machines/initial-page-loading-machine';
 import { Footer } from '@components/Footer/Footer';
-import { Navigation } from '@components/Navigation/Navigation';
 import classnames from 'classnames';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { DefaultSeo } from 'next-seo';
@@ -44,8 +43,6 @@ export const MainLayout: React.FC = ({ children }) => {
   );
 
   const { state: wiperState } = usePageWiper();
-
-  const [current, ,] = useInitialPageLoadingMachine();
 
   return (
     <>

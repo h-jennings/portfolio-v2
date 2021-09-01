@@ -67,6 +67,9 @@ export const {
       round: '50%',
       pill: '9999px',
     },
+    transitions: {
+      default: 'all 225ms cubic-bezier(0.4, 0, 0.2, 1)',
+    },
   },
   media: {
     sm: '(max-width: 420px)',

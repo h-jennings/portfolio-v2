@@ -11,6 +11,7 @@ export const PageLoader: React.FC<{ current: any }> = ({ current }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          style={{ top: 0, position: 'absolute', left: 0, zIndex: 999 }}
         >
           {animationState}
         </motion.div>

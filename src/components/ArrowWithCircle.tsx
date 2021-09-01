@@ -8,10 +8,6 @@ import React from 'react';
 import { styled, theme } from 'stitches.config';
 import { SvgContainer } from './SvgContainer/SvgContainer';
 
-const defaultTransition = {
-  transition: 'all 225ms cubic-bezier(0.4, 0, 0.2, 1)',
-};
-
 const arrowWithCircleVariants = {
   idle: {
     opacity: 0,
@@ -34,7 +30,7 @@ const Circle = styled(motion.div, {
   d: 'grid',
   placeContent: 'center',
   br: theme.radii.pill,
-  ...defaultTransition,
+  transition: '$default',
   '@md': {
     width: '56px',
     height: '56px',
@@ -61,12 +57,18 @@ const Inner = styled('div', {
 
 const ArrowContainer = styled('div', {
   width: '24px',
-  ...defaultTransition,
+  transition: '$default',
   transform: 'translateY(-100%)',
   path: {
     fill: '$black',
   },
   variants: {
+    variant: {
+      active: {
+        transform: 'translateY(0%)',
+      },
+      inactive: {},
+    },
     isHovered: {
       true: {
         transform: 'translateY(0%)',
@@ -76,7 +78,7 @@ const ArrowContainer = styled('div', {
 });
 const Arrow: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
   return (
-    <ArrowContainer isHovered={isHovered}>
+    <ArrowContainer variant={isHovered ? 'active' : 'inactive'}>
       <SvgContainer svgWidth={24} svgHeight={24}>
         <ArrowIcon />
       </SvgContainer>

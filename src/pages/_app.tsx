@@ -12,6 +12,9 @@ import { useMachine } from '@xstate/react';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { globalCss } from 'stitches.config';
+
+const globalStyles = globalCss({});
 
 interface AppLayoutProps {
   Component: PageWithLayoutType;
