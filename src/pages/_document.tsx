@@ -6,6 +6,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
+import { getCssText } from 'stitches.config';
 
 class MyDocument extends Document {
   static async getInitialProps(
@@ -21,6 +22,10 @@ class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           <link rel='icon' type='image/png' href='/favicon.png'></link>
+          <style
+            id='stitches'
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
+          ></style>
         </Head>
         <body>
           <Main />
