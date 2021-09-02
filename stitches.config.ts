@@ -1,3 +1,4 @@
+import { Colors } from '@/models/colors';
 import type * as Stitches from '@stitches/react';
 import { createStitches } from '@stitches/react';
 
@@ -18,6 +19,12 @@ export const {
       grey: '#a0abbb',
       blue: '#3943b7',
       orange: '#c16200',
+      uiBg: '$black',
+      ui1: '$black',
+      ui2: '$white',
+      ui3: '$grey',
+      text1: '$white',
+      text2: '$grey',
     },
     sizes: {
       auto: 'auto',
@@ -164,3 +171,51 @@ export const {
     lh: (value: any) => ({ lineHeight: value }),
   },
 });
+
+export const themeClasses = (): {
+  lightTheme: ReturnType<typeof createTheme>;
+  orangeTheme: ReturnType<typeof createTheme>;
+  blueTheme: ReturnType<typeof createTheme>;
+  greyTheme: ReturnType<typeof createTheme>;
+} => {
+  const lightTheme = createTheme({
+    colors: {
+      uiBg: Colors.white,
+      ui1: Colors.black,
+      ui2: Colors.white,
+      text1: Colors.white,
+      text2: Colors.grey,
+    },
+  });
+
+  const orangeTheme = createTheme({
+    colors: {
+      uiBg: Colors.orange,
+      ui1: Colors.white,
+      ui2: Colors.white,
+      text1: Colors.white,
+      text2: Colors.grey,
+    },
+  });
+
+  const blueTheme = createTheme({
+    colors: {
+      uiBg: Colors.blue,
+      ui1: Colors.white,
+      ui2: Colors.white,
+      text1: Colors.white,
+      text2: Colors.grey,
+    },
+  });
+
+  const greyTheme = createTheme({
+    colors: {
+      uiBg: Colors.grey,
+      ui1: Colors.black,
+      ui2: Colors.white,
+      text1: Colors.white,
+      text2: Colors.black,
+    },
+  });
+  return { lightTheme, orangeTheme, blueTheme, greyTheme };
+};
