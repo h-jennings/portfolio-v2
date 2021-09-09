@@ -85,53 +85,53 @@ export const {
     xl: '(max-width: 1440px)',
   },
   utils: {
-    m: (value: Stitches.ScaleValue<'space'>) => ({
+    m: (value: Stitches.PropertyValue<'margin'>) => ({
       margin: value,
     }),
-    mt: (value: Stitches.ScaleValue<'space'>) => ({
+    mt: (value: Stitches.PropertyValue<'margin'>) => ({
       marginTop: value,
     }),
-    mr: (value: Stitches.ScaleValue<'space'>) => ({
+    mr: (value: Stitches.PropertyValue<'margin'>) => ({
       marginRight: value,
     }),
-    mb: (value: Stitches.ScaleValue<'space'>) => ({
+    mb: (value: Stitches.PropertyValue<'margin'>) => ({
       marginBottom: value,
     }),
-    ml: (value: Stitches.ScaleValue<'space'>) => ({
+    ml: (value: Stitches.PropertyValue<'margin'>) => ({
       marginLeft: value,
     }),
-    mx: (value: Stitches.ScaleValue<'space'>) => ({
+    mx: (value: Stitches.PropertyValue<'margin'>) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    my: (value: Stitches.ScaleValue<'space'>) => ({
+    my: (value: Stitches.PropertyValue<'margin'>) => ({
       marginTop: value,
       marginBottom: value,
     }),
 
-    p: (value: Stitches.ScaleValue<'space'>) => ({
+    p: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingTop: value,
       paddingBottom: value,
       paddingLeft: value,
       paddingRight: value,
     }),
-    pt: (value: Stitches.ScaleValue<'space'>) => ({
+    pt: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingTop: value,
     }),
-    pr: (value: Stitches.ScaleValue<'space'>) => ({
+    pr: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingRight: value,
     }),
-    pb: (value: Stitches.ScaleValue<'space'>) => ({
+    pb: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingBottom: value,
     }),
-    pl: (value: Stitches.ScaleValue<'space'>) => ({
+    pl: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingLeft: value,
     }),
-    px: (value: Stitches.ScaleValue<'space'>) => ({
+    px: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    py: (value: Stitches.ScaleValue<'space'>) => ({
+    py: (value: Stitches.PropertyValue<'padding'>) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
@@ -168,7 +168,9 @@ export const {
       borderRadius: value,
     }),
 
-    lh: (value: any) => ({ lineHeight: value }),
+    lh: (value: Stitches.PropertyValue<'lineHeight'>) => ({
+      lineHeight: value,
+    }),
   },
 });
 
