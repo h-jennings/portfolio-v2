@@ -1,3 +1,5 @@
+import { Box } from '@components/primitives/Box';
+import { Text } from '@components/primitives/Text';
 import fetch from 'isomorphic-fetch';
 import React from 'react';
 import {
@@ -147,7 +149,7 @@ export const Weather: React.FC = () => {
   return (
     <>
       {status === 'success' ? (
-        <div>
+        <Box>
           {weather?.icon ? (
             <img
               style={{ width: 25, display: 'block' }}
@@ -155,8 +157,10 @@ export const Weather: React.FC = () => {
               alt={weather.description}
             />
           ) : null}
-          <p>{weather?.temp && Math.round(weather.temp)}&deg;F</p>
-        </div>
+          <Text color='3' as='p'>
+            {weather?.temp && Math.round(weather.temp)}&deg;F
+          </Text>
+        </Box>
       ) : null}
     </>
   );

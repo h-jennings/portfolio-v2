@@ -25,6 +25,7 @@ export const {
       ui3: '$grey',
       text1: '$white',
       text2: '$grey',
+      text3: '$black',
     },
     sizes: {
       auto: 'auto',
