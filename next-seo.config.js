@@ -6,14 +6,15 @@ const description = 'Front End Engineer based in Washington D.C.';
 const SEO = {
   title,
   description,
-  canonical: 'https://www.hunterjennings.dev',
+  canonical: 'https://v2.hunterjennings.dev',
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.hunterjennings.dev',
+    url: 'https://v2.hunterjennings.dev',
     images: [
       {
-        url: 'https://hunterjennings.dev/images/social/social-screen_home.png',
+        url:
+          'https://v2.hunterjennings.dev/images/social/social-screen_home.png',
         alt: 'Screenshot of webpage',
       },
     ],

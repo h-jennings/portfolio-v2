@@ -2,7 +2,7 @@ import { decodeHtml } from '@/helpers/decode-html';
 import { Paths } from '@/models/paths';
 
 const emDash = decodeHtml('&mdash;');
-const absoluteUrl = 'https://hunterjennings.dev';
+const absoluteUrl = 'https://v2.hunterjennings.dev';
 
 const pagesData: Record<
   string,
